@@ -204,8 +204,20 @@
 					<div class="card">
 						<img class="card-img-top" src="images/course_3.jpg" alt="https://unsplash.com/@dsmacinnes">
 						<div class="card-body text-center">
+<<<<<<< HEAD:index.html
 							<div class="card-title"><a href="courses.html">Cyber Security</a></div>
 							<div class="card-text">BSc (Hons) in IT specialized in CS</div>
+=======
+							<div class="card-title"><a href="courses.html">Advanced Photoshop</a></div>
+							<div class="card-text">Adobe Guide, Layes, Smart Objects etc...</div>
+						</div>
+						<div class="price_box d-flex flex-row align-items-center">
+								<div class="course_author_image">
+								<img src="images/author.jpg" alt="https://unsplash.com/@mehdizadeh">
+							</div>
+							<div class="course_author_name">Michael Smith, <span>Author</span></div>
+							<div class="course_price d-flex flex-column align-items-center justify-content-center"><span>$29</span></div>
+>>>>>>> 06c31507f8dbae95d71a35a221f3c547baa30443:index.php
 						</div>
 						
 					</div>
@@ -214,7 +226,156 @@
 		</div>		
 	</div>
 
+<<<<<<< HEAD:index.html
 	
+=======
+	<!-- Register -->
+
+	<div class="register">
+
+		<div class="container-fluid">
+			
+			<div class="row row-eq-height">
+				<div class="col-lg-6 nopadding">
+					
+					<!-- Register -->
+
+					<div class="register_section d-flex flex-column align-items-center justify-content-center">
+						<div class="register_content text-center">
+							<h1 class="register_title">Register now and get a discount <span>50%</span> discount until 1 January</h1>
+							<p class="register_text">In aliquam, augue a gravida rutrum, ante nisl fermentum nulla, vitae tempor nisl ligula vel nunc. Proin quis mi malesuada, finibus tortor fermentum. Aliquam, augue a gravida rutrum, ante nisl fermentum nulla, vitae tempo.</p>
+							<div class="button button_1 register_button mx-auto trans_200"><a href="#">register now</a></div>
+						</div>
+					</div>
+
+				</div>
+
+				<div class="col-lg-6 nopadding">
+					
+					<!-- Search -->
+
+					<div class="search_section d-flex flex-column align-items-center justify-content-center">
+						<div class="search_background" style="background-image:url(images/search_background.jpg);"></div>
+						<div class="search_content text-center">
+							<h1 class="search_title">Login to CIIT Moodle</h1>
+							<form id="search_form" class="search_form" method="post" action="index.php">
+								<input id="search_form_name" name="form_lname" class="input_field search_form_name" type="text" placeholder="Login Name" required="required" data-error="Course name is required.">
+								<input id="search_form_category" name="form_lpass" class="input_field search_form_category" type="password" placeholder="Password">
+                                <button id="search_submit_button" name="form_lsubmit" type="submit" class="search_submit_button trans_200" value="Submit">Login</button>
+							</form>
+                            <?php
+                            if(isset($_POST['form_lsubmit'])){
+                                header('Location: /courses.php');
+                                if(isset($_POST['form_lname'])&& isset($_POST['form_lpass'])){
+                                    echo "<br> Hey:" . $_POST['form_lname'] ."<br>";
+                                    echo $_POST['form_lpass']."<br>";
+                                    //DBconnect
+                                    require("connect.php");
+
+                                    //Dynamic Query
+                                    $uname = $_POST['form_lname'];
+                                    $pass = $_POST['form_lpass'];
+                                    //$sql1 = 'SELECT u_name, u_pass FROM ciit_login';
+                                    $sql = "SELECT u_name, u_pass FROM ciit_login WHERE u_name ="."'$uname'"."and u_pass ="."'$pass'" ;
+                                    echo $sql ."<br>";
+                                    $result = $conn->query($sql);
+                                    if ($result->num_rows > 0) {
+                                        // output data of each row
+                                        /*
+                                        $row = $result->fetch_assoc();
+                                        echo "uname: " . $row["u_name"]. " - password: " . $row["u_pass"]. "<br>";
+                                        $user_name = $row['u_name'];
+                                        $user_pass = $row['u_pass'];
+                                        if($uname == $user_name && $pass == $user_pass){
+                                            header('Location: http:www.google.com');
+                                        }
+                                        */
+                                        header('Location: /courses.php');
+                                    } else {
+                                        echo "0 results";
+                                    }
+
+
+                                    $conn->close();
+                                }
+                            }
+
+                            ?>
+						</div> 
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Services -->
+
+	<div class="services page_section">
+		
+		<div class="container">
+			<div class="row">
+				<div class="col">
+					<div class="section_title text-center">
+						<h1>Our Services</h1>
+					</div>
+				</div>
+			</div>
+
+			<div class="row services_row">
+
+				<div class="col-lg-4 service_item text-left d-flex flex-column align-items-start justify-content-start">
+					<div class="icon_container d-flex flex-column justify-content-end">
+						<img src="images/earth-globe.svg" alt="">
+					</div>
+					<h3>Online Courses</h3>
+					<p>In aliquam, augue a gravida rutrum, ante nisl fermentum nulla, vitae tempor nisl ligula vel nunc. Proin quis mi malesuada, finibus tortor fermentum.</p>
+				</div>
+
+				<div class="col-lg-4 service_item text-left d-flex flex-column align-items-start justify-content-start">
+					<div class="icon_container d-flex flex-column justify-content-end">
+						<img src="images/exam.svg" alt="">
+					</div>
+					<h3>Indoor Courses</h3>
+					<p>In aliquam, augue a gravida rutrum, ante nisl fermentum nulla, vitae tempor nisl ligula vel nunc. Proin quis mi malesuada, finibus tortor fermentum.</p>
+				</div>
+
+				<div class="col-lg-4 service_item text-left d-flex flex-column align-items-start justify-content-start">
+					<div class="icon_container d-flex flex-column justify-content-end">
+						<img src="images/books.svg" alt="">
+					</div>
+					<h3>Amazing Library</h3>
+					<p>In aliquam, augue a gravida rutrum, ante nisl fermentum nulla, vitae tempor nisl ligula vel nunc. Proin quis mi malesuada, finibus tortor fermentum.</p>
+				</div>
+
+				<div class="col-lg-4 service_item text-left d-flex flex-column align-items-start justify-content-start">
+					<div class="icon_container d-flex flex-column justify-content-end">
+						<img src="images/professor.svg" alt="">
+					</div>
+					<h3>Exceptional Professors</h3>
+					<p>In aliquam, augue a gravida rutrum, ante nisl fermentum nulla, vitae tempor nisl ligula vel nunc. Proin quis mi malesuada, finibus tortor fermentum.</p>
+				</div>
+
+				<div class="col-lg-4 service_item text-left d-flex flex-column align-items-start justify-content-start">
+					<div class="icon_container d-flex flex-column justify-content-end">
+						<img src="images/blackboard.svg" alt="">
+					</div>
+					<h3>Top Programs</h3>
+					<p>In aliquam, augue a gravida rutrum, ante nisl fermentum nulla, vitae tempor nisl ligula vel nunc. Proin quis mi malesuada, finibus tortor fermentum.</p>
+				</div>
+
+				<div class="col-lg-4 service_item text-left d-flex flex-column align-items-start justify-content-start">
+					<div class="icon_container d-flex flex-column justify-content-end">
+						<img src="images/mortarboard.svg" alt="">
+					</div>
+					<h3>Graduate Diploma</h3>
+					<p>In aliquam, augue a gravida rutrum, ante nisl fermentum nulla, vitae tempor nisl ligula vel nunc. Proin quis mi malesuada, finibus tortor fermentum.</p>
+				</div>
+
+			</div>
+		</div>
+	</div>
+>>>>>>> 06c31507f8dbae95d71a35a221f3c547baa30443:index.php
 
 	<!-- Testimonials -->
 
