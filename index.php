@@ -240,7 +240,7 @@
 							<div class="card-text">Adobe Guide, Layes, Smart Objects etc...</div>
 						</div>
 						<div class="price_box d-flex flex-row align-items-center">
-							<div class="course_author_image">
+								<div class="course_author_image">
 								<img src="images/author.jpg" alt="https://unsplash.com/@mehdizadeh">
 							</div>
 							<div class="course_author_name">Michael Smith, <span>Author</span></div>
@@ -280,13 +280,50 @@
 					<div class="search_section d-flex flex-column align-items-center justify-content-center">
 						<div class="search_background" style="background-image:url(images/search_background.jpg);"></div>
 						<div class="search_content text-center">
-							<h1 class="search_title">Search for your course</h1>
-							<form id="search_form" class="search_form" action="post">
-								<input id="search_form_name" class="input_field search_form_name" type="text" placeholder="Course Name" required="required" data-error="Course name is required.">
-								<input id="search_form_category" class="input_field search_form_category" type="text" placeholder="Category">
-								<input id="search_form_degree" class="input_field search_form_degree" type="text" placeholder="Degree">
-								<button id="search_submit_button" type="submit" class="search_submit_button trans_200" value="Submit">search course</button>
+							<h1 class="search_title">Login to CIIT Moodle</h1>
+							<form id="search_form" class="search_form" method="post" action="index.php">
+								<input id="search_form_name" name="form_lname" class="input_field search_form_name" type="text" placeholder="Login Name" required="required" data-error="Course name is required.">
+								<input id="search_form_category" name="form_lpass" class="input_field search_form_category" type="password" placeholder="Password">
+                                <button id="search_submit_button" name="form_lsubmit" type="submit" class="search_submit_button trans_200" value="Submit">Login</button>
 							</form>
+                            <?php
+                            if(isset($_POST['form_lsubmit'])){
+                                header('Location: /courses.php');
+                                if(isset($_POST['form_lname'])&& isset($_POST['form_lpass'])){
+                                    echo "<br> Hey:" . $_POST['form_lname'] ."<br>";
+                                    echo $_POST['form_lpass']."<br>";
+                                    //DBconnect
+                                    require("connect.php");
+
+                                    //Dynamic Query
+                                    $uname = $_POST['form_lname'];
+                                    $pass = $_POST['form_lpass'];
+                                    //$sql1 = 'SELECT u_name, u_pass FROM ciit_login';
+                                    $sql = "SELECT u_name, u_pass FROM ciit_login WHERE u_name ="."'$uname'"."and u_pass ="."'$pass'" ;
+                                    echo $sql ."<br>";
+                                    $result = $conn->query($sql);
+                                    if ($result->num_rows > 0) {
+                                        // output data of each row
+                                        /*
+                                        $row = $result->fetch_assoc();
+                                        echo "uname: " . $row["u_name"]. " - password: " . $row["u_pass"]. "<br>";
+                                        $user_name = $row['u_name'];
+                                        $user_pass = $row['u_pass'];
+                                        if($uname == $user_name && $pass == $user_pass){
+                                            header('Location: http:www.google.com');
+                                        }
+                                        */
+                                        header('Location: /courses.php');
+                                    } else {
+                                        echo "0 results";
+                                    }
+
+
+                                    $conn->close();
+                                }
+                            }
+
+                            ?>
 						</div> 
 					</div>
 
