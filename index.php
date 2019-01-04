@@ -253,7 +253,7 @@
 										<div class="testimonial_image mx-auto">
 											<img src="images/testimonials_user.jpg" alt="">
 										</div>
-										<div class="testimonial_name">Pranieth Chandrasekara</div>
+										<div class="testimonial_name">Prani Chandra</div>
 										<div class="testimonial_title">Graduate Student</div>
 									</div>
 								</div>
