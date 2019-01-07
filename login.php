@@ -120,16 +120,16 @@
                                     $result = $conn->query($sql);
                                     if ($result->num_rows > 0) {
                                         // output data of each row
-                                        /*
+                                        
                                         $row = $result->fetch_assoc();
                                         echo "uname: " . $row["u_name"]. " - password: " . $row["u_pass"]. "<br>";
                                         $user_name = $row['u_name'];
                                         $user_pass = $row['u_pass'];
-                                        if($uname == $user_name && $pass == $user_pass){
-                                            header('Location: http:www.google.com');
-                                        }
-                                        */
-                                        header('Location: courses.php');
+                                        // if($uname == $user_name && $pass == $user_pass){
+                                        //     header('Location: http:www.google.com');
+                                        // }
+                                        
+                                        // header('Location: courses.php');
                                     } else {
                                         echo "0 results";
                                     }
