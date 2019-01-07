@@ -130,9 +130,8 @@
 										$result = $conn->query($sql);
 										if ($result->num_rows > 0) {
 											while($row = $result->fetch_assoc()){
-												//echo "User First Name: " . $row["u_fname"]. " - User Last Name: " . $row["u_lname"]. " - Role: " . $row["u_role"]. "<br>";
 												if(((String)$row["u_role"] == 'lecturer') && (strtolower((String)$row["u_fname"]) == $search_n)){
-													echo "Lecturer Exist";
+													echo "User First Name: " . $row["u_fname"]. " - User Last Name: " . $row["u_lname"]. " - Role: " . $row["u_role"]. "<br>";
 												}
 											}
 										}
