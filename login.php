@@ -139,7 +139,7 @@
 										session_start();
 										$row = $result->fetch_assoc();
 										$_SESSION["user_name"] = $row["u_name"];
-                                        header('Location: courses.php');
+                                        header('Location: news.php');
                                     }
                                     else {
                                         echo "0 results";
