@@ -218,6 +218,17 @@
 									echo "claude <br>";
 									$nid = preg_replace("/[^a-zA-Z\s]/", "", $_POST['form_nid']);
 									$nmail =  preg_replace("/[^a-zA-Z\s@.]/", "", $_POST['form_nval']);
+									$message = $_POST['form_ncom'];
+									$
+									require_once('connect.php');
+									$sql = "INSERT INTO ciit_news_comments (u_id, u_email, u_comment, ad_date, ad_appr)
+									VALUES ('$nid', '$nmail', '$message', '<?php date("Y/m/d"); ?>', '<?php echo true; ?>')";
+
+									if ($conn->query($sql) === TRUE) {
+										echo "New record created successfully";
+									} else {
+										echo "Error: " . $sql . "<br>" . $conn->error;
+									}
 									echo "nid: " . $nid . "<br> email: " . $nmail;
 								}
 							?>
