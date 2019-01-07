@@ -117,11 +117,32 @@
 				<div class="row">
 					<div class="col text-center">
 						<div class="newsletter_form_container mx-auto">
-							<form action="post">
+							<form method="get" action=<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?> >
 								<div class="newsletter_form d-flex flex-md-row flex-column flex-xs-column align-items-center justify-content-center">
-									<input id="newsletter_email" class="newsletter_email" type="text" placeholder="Search Lecturer Name"  >
-									<button id="newsletter_submit" type="submit" class="newsletter_submit_btn trans_300" value="Submit">Search</button>
+										<input name="search_lec_name" id="newsletter_email" class="newsletter_email" type="text" placeholder="Search Lecturer Name"  >
+										<button name="search_lec_sub" id="newsletter_submit" type="submit" class="newsletter_submit_btn trans_300" value="Submit">Search</button>
 								</div>
+								<?php 
+									if(isset($_GET['search_lec_sub'])){
+										$search_n = strtolower($_GET['search_lec_name']);
+										require_once('connect.php');
+										$sql = "SELECT * FROM ciit_u_details";
+										$result = $conn->query($sql);
+										if ($result->num_rows > 0) {
+											while($row = $result->fetch_assoc()){
+												//echo "User First Name: " . $row["u_fname"]. " - User Last Name: " . $row["u_lname"]. " - Role: " . $row["u_role"]. "<br>";
+												if(((String)$row["u_role"] == 'lecturer') && (strtolower((String)$row["u_fname"]) == $search_n)){
+													echo "Lecturer Exist";
+												}
+											}
+										}
+										else {
+											echo "0 results";
+										}
+
+										$conn->close();
+									}
+								?>
 							</form>
 						</div>
 					</div>
