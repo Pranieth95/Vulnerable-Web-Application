@@ -31,19 +31,16 @@
 			<nav class="main_nav_container">
 				<div class="main_nav">
 					<ul class="main_nav_list">
-						<li class="main_nav_item"><a href="index.html">home</a></li>
-						<li class="main_nav_item"><a href="#">about us</a></li>
-						<li class="main_nav_item"><a href="courses.html">courses</a></li>
-						<li class="main_nav_item"><a href="elements.html">elements</a></li>
-						<li class="main_nav_item"><a href="news.html">news</a></li>
-						<li class="main_nav_item"><a href="contact.html">contact</a></li>
+					<li class="main_nav_item"><a href="news.php">home</a></li>
+						<li class="main_nav_item"><a href="courses.php">Modules</a></li>
+						<li class="main_nav_item"><a href="teachers.php">Lecturers</a></li>
 					</ul>
 				</div>
 			</nav>
 		</div>
 		<div class="header_side d-flex flex-row justify-content-center align-items-center">
-			<img src="images/phone-call.svg" alt="">
-			<span>+43 4566 7788 2457</span>
+		<img src="images/phone-call.svg" alt="">
+			<a href="index.php"><span class="label label-danger">Student Logout</span></a>
 		</div>
 
 		<!-- Hamburger -->
@@ -131,21 +128,32 @@
 										<a href="news_post.html">Why do you need a qualification?</a>
 									</div>
 									<div class="news_post_meta">
-										<span class="news_post_author"><a href="#">By Christian Smith</a></span>
+										<span class="news_post_author"><a href="#">By Prof Lakmal Thelijjagoda</a></span>
 										<span>|</span>
-										<span class="news_post_comments"><a href="#">3 Comments</a></span>
+										<span class="news_post_comments"><a href="#">2 Comments</a></span>
 									</div>
 								</div>
 							</div>
 							<div class="news_post_text">
-								<p>In aliquam, augue a gravida rutrum, ante nisl fermentum nulla, vitae tempor nisl ligula vel nunc. Proin quis mi malesuada, finibus tortor fermentum. Etiam eu purus nec eros varius luctus. Praesent finibus risus facilisis ultricies. Etiam eu purus nec eros varius luctus. Praesent finibus risus facilisis ultricies venenatis. Suspendisse fermentum sodales lacus, lacinia gravida elit dapibus sed. Cras in lectus elit. Maecenas tempus nunc vitae mi egestas venenatis. Aliquam rhoncus, purus in vehicula porttitor, lacus ante consequat purus, id elementum enim purus nec enim. In sed odio rhoncus, tristique ipsum id, pharetra neque. </p>
+								<p>Professional qualifications are becoming increasingly popular in a wide range of industry sectors - not least of all fundraising - because they not only help to provide employees with industry-specific skills but can also demonstrate a commitment to training and career development.
+What is more, in today's super competitive employment arena, professional qualifications can help you to stand out from the competition and give you an edge when applying for that new job or internal promotion.
+Research for the CIPD, the professional body for HR practitioners, shows that once you've gained a professional qualification it can have a really beneficial impact on your entire career as they can potentially add tens of thousands of pounds to an employee's lifetime earnings. </p>
 							</div>
 
 							<div class="news_post_quote">
-								<p class="news_post_quote_text"><span>E</span>tiam eu purus nec eros varius luctus. Praesent finibus risus facilisis ultricies venena tis. Suspendisse fermentum sodales lacus, lacinia gravida elit.</p>
+								<p class="news_post_quote_text"><span>E</span>ducation is the most powerful weapon which you can use to change the world.</p>
 							</div>
 
-							<p class="news_post_text" style="margin-top: 59px;">In aliquam, augue a gravida rutrum, ante nisl fermentum nulla, vitae tempor nisl ligula vel nunc. Proin quis mi malesuada, finibus tortor fermentum. Etiam eu purus nec eros varius luctus. Praesent finibus risus facilisis ultricies. Etiam eu purus nec eros varius luctus. Praesent finibus risus facilisis ultricies venenatis. Suspendisse fermentum sodales lacus, lacinia gravida elit dapibus sed. Cras in lectus elit. Maecenas tempus nunc vitae mi egestas venenatis. Aliquam rhoncus, purus in vehicula porttitor, lacus ante consequat purus, id elementum enim purus nec enim. In sed odio rhoncus, tristique ipsum id, pharetra neque. </p>
+							<p class="news_post_text" style="margin-top: 59px;">Our qualifcations can enable you to:
+
+Improve your earning potential
+Gain professional recognition
+Gain professional skills to improve performance
+Make the most of the benefits of membership
+
+
+
+We only offer the highest quality of teaching from experts in the field. Extensive research and input from academics and practitioners has ensured that our courses are well respected in the industry with 96% of our delegates consistently rating our courses good or very good. </p>
 						</div>
 
 					</div>
@@ -165,13 +173,13 @@
 									</div>
 									<div class="comment_content">
 										<div class="comment_meta">
-											<span class="comment_name"><a href="#">Mark Smith</a></span>
+											<span class="comment_name"><a href="#">Pranieth Chandrasekara</a></span>
 											<span class="comment_separator">|</span>
-											<span class="comment_date">Dec 18, 2017</span>
+											<span class="comment_date">Jan 06, 2019</span>
 											<span class="comment_separator">|</span>
 											<span class="comment_reply_link"><a href="#">Reply</a></span>
 										</div>
-										<p class="comment_text">Aliquam rhoncus, purus in vehicula porttitor, lacus ante consequat purus, id elementum enim purus nec enim. In sed odio rhoncus, tristique ipsum id, pharetra neque. </p>
+										<p class="comment_text">Very Interesting Article Sir! </p>
 									</div>
 								</div>
 							</li>
@@ -186,13 +194,13 @@
 									</div>
 									<div class="comment_content">
 										<div class="comment_meta">
-											<span class="comment_name"><a href="#">Mark Smith</a></span>
+											<span class="comment_name"><a href="#">Ryan Miriyagalla</a></span>
 											<span class="comment_separator">|</span>
-											<span class="comment_date">Dec 18, 2017</span>
+											<span class="comment_date">Jan 07, 2019</span>
 											<span class="comment_separator">|</span>
 											<span class="comment_reply_link"><a href="#">Reply</a></span>
 										</div>
-										<p class="comment_text">Aliquam rhoncus, purus in vehicula porttitor, lacus ante consequat purus, id elementum enim purus nec enim. In sed odio rhoncus, tristique ipsum id, pharetra neque. </p>
+										<p class="comment_text">Truely Awesome! </p>
 									</div>
 								</div>
 							</li>
@@ -211,7 +219,7 @@
 								<input name="form_nid" id="comment_form_name" class="input_field contact_form_name" type="text" placeholder="Name" required="required" data-error="Name is required.">
 								<input name="form_nval" id="comment_form_email" class="input_field contact_form_email" type="email" placeholder="E-mail" required="required" data-error="Valid email is required.">
 								<textarea name="form_ncom" id="comment_form_message" class="text_field contact_form_message" name="message" placeholder="Message" required="required" data-error="Please, write us a message."></textarea>
-								<button name="form_submit" id="comment_send_btn" type="submit" class="comment_send_btn trans_200" value="Submit">send message</button>
+								<button name="form_submit" id="comment_send_btn" type="submit" class="comment_send_btn trans_200" value="Submit">Post Comment</button>
 							</form>
 							<?php
 								if(isset($_POST['form_submit'])){
@@ -250,7 +258,7 @@
 								<h3>Archives</h3>
 							</div>
 							<ul class="sidebar_list">
-								<li class="sidebar_list_item"><a href="#">Design Courses</a></li>
+								<li class="sidebar_list_item"><a href="#">Cyber Security MSc.</a></li>
 								<li class="sidebar_list_item"><a href="#">All you need to know</a></li>
 								<li class="sidebar_list_item"><a href="#">Uncategorized</a></li>
 								<li class="sidebar_list_item"><a href="#">About Our Departments</a></li>
@@ -339,116 +347,17 @@
 			
 			<!-- Newsletter -->
 
-			<div class="newsletter">
-				<div class="row">
-					<div class="col">
-						<div class="section_title text-center">
-							<h1>Subscribe to newsletter</h1>
-						</div>
-					</div>
-				</div>
-
-				<div class="row">
-					<div class="col text-center">
-						<div class="newsletter_form_container mx-auto">
-							<form action="post">
-								<div class="newsletter_form d-flex flex-md-row flex-column flex-xs-column align-items-center justify-content-center">
-									<input id="newsletter_email" class="newsletter_email" type="email" placeholder="Email Address" required="required" data-error="Valid email is required.">
-									<button id="newsletter_submit" type="submit" class="newsletter_submit_btn trans_300" value="Submit">Subscribe</button>
-								</div>
-							</form>
-						</div>
-					</div>
-				</div>
-
-			</div>
-
+	
 			<!-- Footer Content -->
 
-			<div class="footer_content">
-				<div class="row">
 
-					<!-- Footer Column - About -->
-					<div class="col-lg-3 footer_col">
-
-						<!-- Logo -->
-						<div class="logo_container">
-							<div class="logo">
-								<img src="images/logo.png" alt="">
-								<span>course</span>
-							</div>
-						</div>
-
-						<p class="footer_about_text">In aliquam, augue a gravida rutrum, ante nisl fermentum nulla, vitae tempor nisl ligula vel nunc. Proin quis mi malesuada, finibus tortor fermentum, tempor lacus.</p>
-
-					</div>
-
-					<!-- Footer Column - Menu -->
-
-					<div class="col-lg-3 footer_col">
-						<div class="footer_column_title">Menu</div>
-						<div class="footer_column_content">
-							<ul>
-								<li class="footer_list_item"><a href="index.html">Home</a></li>
-								<li class="footer_list_item"><a href="#">About Us</a></li>
-								<li class="footer_list_item"><a href="courses.html">Courses</a></li>
-								<li class="footer_list_item"><a href="news.html">News</a></li>
-								<li class="footer_list_item"><a href="contact.html">Contact</a></li>
-							</ul>
-						</div>
-					</div>
-
-					<!-- Footer Column - Usefull Links -->
-
-					<div class="col-lg-3 footer_col">
-						<div class="footer_column_title">Usefull Links</div>
-						<div class="footer_column_content">
-							<ul>
-								<li class="footer_list_item"><a href="#">Testimonials</a></li>
-								<li class="footer_list_item"><a href="#">FAQ</a></li>
-								<li class="footer_list_item"><a href="#">Community</a></li>
-								<li class="footer_list_item"><a href="#">Campus Pictures</a></li>
-								<li class="footer_list_item"><a href="#">Tuitions</a></li>
-							</ul>
-						</div>
-					</div>
-
-					<!-- Footer Column - Contact -->
-
-					<div class="col-lg-3 footer_col">
-						<div class="footer_column_title">Contact</div>
-						<div class="footer_column_content">
-							<ul>
-								<li class="footer_contact_item">
-									<div class="footer_contact_icon">
-										<img src="images/placeholder.svg" alt="https://www.flaticon.com/authors/lucy-g">
-									</div>
-									Blvd Libertad, 34 m05200 Arévalo
-								</li>
-								<li class="footer_contact_item">
-									<div class="footer_contact_icon">
-										<img src="images/smartphone.svg" alt="https://www.flaticon.com/authors/lucy-g">
-									</div>
-									0034 37483 2445 322
-								</li>
-								<li class="footer_contact_item">
-									<div class="footer_contact_icon">
-										<img src="images/envelope.svg" alt="https://www.flaticon.com/authors/lucy-g">
-									</div>hello@company.com
-								</li>
-							</ul>
-						</div>
-					</div>
-
-				</div>
-			</div>
 
 			<!-- Footer Copyright -->
 
 			<div class="footer_bar d-flex flex-column flex-sm-row align-items-center">
 				<div class="footer_copyright">
-					<span><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+				<span><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+					Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | Intern Colloboration | Team CISO <i  aria-hidden="true"></i> @ <a href="https://www.pearson.com/asia/" target="_blank">Pearson</a>
 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></span>
 				</div>
 				<div class="footer_social ml-sm-auto">

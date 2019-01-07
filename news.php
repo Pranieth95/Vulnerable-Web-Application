@@ -146,7 +146,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 								</div>
 							</div>
 							<div class="news_post_text">
-								<p>In aliquam, augue a gravida rutrum, ante nisl fermentum nulla, vitae tempor nisl ligula vel nunc. Proin quis mi malesuada, finibus tortor fermentum. Etiam eu purus nec eros varius luctus. Praesent finibus risus facilisis ultricies.</p>
+								<p>Professional qualifications are becoming increasingly popular in a wide range of industry sectors - not least of all fundraising - because they not only help to provide employees with industry-specific skills but can also demonstrate  ..</p>
 							</div>
 							<div class="news_post_button text-center trans_200">
 								<a href="news_post.php">Read More</a>
@@ -167,20 +167,18 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 								</div>
 								<div class="news_post_title_container">
 									<div class="news_post_title">
-										<a href="news_post.php">Our new courses just for you?</a>
+										<a href="news_post.php">G.C.E. Advanced Level Result Sheets</a>
 									</div>
 									<div class="news_post_meta">
-										<span class="news_post_author"><a href="#">By Christian Smith</a></span>
-										<span>|</span>
-										<span class="news_post_comments"><a href="#">3 Comments</a></span>
+									
 									</div>
 								</div>
 							</div>
 							<div class="news_post_text">
-								<p>In aliquam, augue a gravida rutrum, ante nisl fermentum nulla, vitae tempor nisl ligula vel nunc. Proin quis mi malesuada, finibus tortor fermentum. Etiam eu purus nec eros varius luctus. Praesent finibus risus facilisis ultricies.</p>
+								<p>If you have not fulfilled the above entry Criteria You can Postpone the Degree or Transfer the Programme or else ask for a Refund. Please make  All Requests on or befor 7th February 2019.</p>
 							</div>
 							<div class="news_post_button text-center trans_200">
-								<a href="news_post.php">Read More</a>
+								<a href="#">Read More</a>
 							</div>
 						</div>
 
@@ -198,21 +196,21 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 								</div>
 								<div class="news_post_title_container">
 									<div class="news_post_title">
-										<a href="news_post.php">Why take our graduate program??</a>
+										<a href="news_post.php">CIIT Balloon Festival 2019</a>
 									</div>
 									<div class="news_post_meta">
-										<span class="news_post_author"><a href="#">By Christian Smith</a></span>
+										<span class="news_post_author"><a href="#">Organized By ELTU</a></span>
 										<span>|</span>
-										<span class="news_post_comments"><a href="#">3 Comments</a></span>
+										
 									</div>
 								</div>
 							</div>
 							<div class="news_post_text">
-								<p>In aliquam, augue a gravida rutrum, ante nisl fermentum nulla, vitae tempor nisl ligula vel nunc. Proin quis mi malesuada, finibus tortor fermentum. Etiam eu purus nec eros varius luctus. Praesent finibus risus facilisis ultricies.</p>
+								
 							</div>
-							<div class="news_post_button text-center trans_200">
+							<!--<div class="news_post_button text-center trans_200">
 								<a href="news_post.php">Read More</a>
-							</div>
+							</div>-->
 						</div>
 					</div>
 
@@ -239,7 +237,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 								<h3>Archives</h3>
 							</div>
 							<ul class="sidebar_list">
-								<li class="sidebar_list_item"><a href="#">Design Courses</a></li>
+								<li class="sidebar_list_item"><a href="#">Cyber Security for MSc.</a></li>
 								<li class="sidebar_list_item"><a href="#">All you need to know</a></li>
 								<li class="sidebar_list_item"><a href="#">Uncategorized</a></li>
 								<li class="sidebar_list_item"><a href="#">About Our Departments</a></li>
@@ -261,9 +259,9 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 									<div class="latest_post_image">
 										<img src="images/latest_1.jpg" alt="https://unsplash.com/@dsmacinnes">
 									</div>
-									<div class="latest_post_title"><a href="news_post.php">Why do you need a qualification?</a></div>
+									<div class="latest_post_title"><a href="#">Why do you need a qualification?</a></div>
 									<div class="latest_post_meta">
-										<span class="latest_post_author"><a href="#">By Christian Smith</a></span>
+										<span class="latest_post_author"><a href="#">By Professor Saman Wijesundara</a></span>
 										<span>|</span>
 										<span class="latest_post_comments"><a href="#">3 Comments</a></span>
 									</div>
@@ -274,11 +272,11 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 									<div class="latest_post_image">
 										<img src="images/latest_2.jpg" alt="https://unsplash.com/@erothermel">
 									</div>
-									<div class="latest_post_title"><a href="news_post.php">Why do you need a qualification?</a></div>
+									<div class="latest_post_title"><a href="#">How to Build yor Career With CIIT</a></div>
 									<div class="latest_post_meta">
-										<span class="latest_post_author"><a href="#">By Christian Smith</a></span>
+										<span class="latest_post_author"><a href="#">By Professor Denzil Abayakoon</a></span>
 										<span>|</span>
-										<span class="latest_post_comments"><a href="#">3 Comments</a></span>
+										<span class="latest_post_comments"><a href="#">1 Comments</a></span>
 									</div>
 								</div>
 
@@ -287,11 +285,11 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 									<div class="latest_post_image">
 										<img src="images/latest_3.jpg" alt="https://unsplash.com/@element5digital">
 									</div>
-									<div class="latest_post_title"><a href="news_post.php">Why do you need a qualification?</a></div>
+									<div class="latest_post_title"><a href="#">Why take Our Graduate Programmes?</a></div>
 									<div class="latest_post_meta">
-										<span class="latest_post_author"><a href="#">By Christian Smith</a></span>
+										<span class="latest_post_author"><a href="#">By Mr. Nuwan Perera</a></span>
 										<span>|</span>
-										<span class="latest_post_comments"><a href="#">3 Comments</a></span>
+										<span class="latest_post_comments"><a href="#">2 Comments</a></span>
 									</div>
 								</div>
 								
