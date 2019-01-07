@@ -135,11 +135,6 @@
                                         if($uname == $user_name && $pass == $user_pass){
                                             header('Location: http:www.google.com');
                                         }
-<<<<<<< HEAD
-                                        */
-                                        header('Location: news.php');
-                                    } else {
-=======
 										*/
 										session_start();
 										$row = $result->fetch_assoc();
@@ -147,7 +142,6 @@
                                         header('Location: courses.php');
                                     }
                                     else {
->>>>>>> 2353177ebb691d273a5541677c12cc2d0db08a27
                                         echo "0 results";
                                     }
 
