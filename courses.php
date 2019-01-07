@@ -23,7 +23,20 @@
 			<div class="logo_container">
 				<div class="logo">
 					<img src="images/logo.png" alt="">
+<<<<<<< HEAD
 					<span>CIIT Moodle</span>
+=======
+					<span>WELCOME 
+								<?php 
+										session_start();
+										if(session_status() == PHP_SESSION_ACTIVE){
+											echo $_SESSION["user_name"];
+										}else{
+											echo "Claude";
+										}
+								?>
+					</span>
+>>>>>>> 2353177ebb691d273a5541677c12cc2d0db08a27
 				</div>
 			</div>
 
