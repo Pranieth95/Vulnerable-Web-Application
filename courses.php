@@ -23,7 +23,7 @@
 			<div class="logo_container">
 				<div class="logo">
 					<img src="images/logo.png" alt="">
-					<span>course</span>
+					<span>CIIT Moodle</span>
 				</div>
 			</div>
 
@@ -32,7 +32,8 @@
 				<div class="main_nav">
 					<ul class="main_nav_list">
 						<li class="main_nav_item"><a href="news.php">home</a></li>
-						<li class="main_nav_item"><a href="courses.php">courses</a></li>
+						<li class="main_nav_item"><a href="courses.php">Modules</a></li>
+						<li class="main_nav_item"><a href="teachers.php">Lecturers</a></li>
 					
 					</ul>
 				</div>
