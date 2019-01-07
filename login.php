@@ -127,19 +127,11 @@
 									}*/
 									if ($result->num_rows > 0) {
                                         // output data of each row
-                                        
+                                        /*
                                         $row = $result->fetch_assoc();
                                         echo "uname: " . $row["u_name"]. " - password: " . $row["u_pass"]. "<br>";
                                         $user_name = $row['u_name'];
                                         $user_pass = $row['u_pass'];
-<<<<<<< HEAD
-                                        // if($uname == $user_name && $pass == $user_pass){
-                                        //     header('Location: http:www.google.com');
-                                        // }
-                                        
-                                        // header('Location: courses.php');
-                                    } else {
-=======
                                         if($uname == $user_name && $pass == $user_pass){
                                             header('Location: http:www.google.com');
                                         }
@@ -150,15 +142,11 @@
                                         header('Location: courses.php');
                                     }
                                     else {
->>>>>>> 2353177ebb691d273a5541677c12cc2d0db08a27
                                         echo "0 results";
                                     }
-
-
                                     $conn->close();
                                 }
                             }
-
                             ?>
 						</div>
 					</div>
