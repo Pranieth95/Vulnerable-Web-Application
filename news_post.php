@@ -207,12 +207,20 @@
 						<div class="leave_comment_title">Leave a comment</div>
 
 						<div class="leave_comment_form_container">
-							<form action="post">
-								<input id="comment_form_name" class="input_field contact_form_name" type="text" placeholder="Name" required="required" data-error="Name is required.">
-								<input id="comment_form_email" class="input_field contact_form_email" type="email" placeholder="E-mail" required="required" data-error="Valid email is required.">
-								<textarea id="comment_form_message" class="text_field contact_form_message" name="message" placeholder="Message" required="required" data-error="Please, write us a message."></textarea>
-								<button id="comment_send_btn" type="submit" class="comment_send_btn trans_200" value="Submit">send message</button>
+							<form  method="post" action=<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?> >
+								<input name="form_nid" id="comment_form_name" class="input_field contact_form_name" type="text" placeholder="Name" required="required" data-error="Name is required.">
+								<input name="form_nval" id="comment_form_email" class="input_field contact_form_email" type="email" placeholder="E-mail" required="required" data-error="Valid email is required.">
+								<textarea name="form_ncom" id="comment_form_message" class="text_field contact_form_message" name="message" placeholder="Message" required="required" data-error="Please, write us a message."></textarea>
+								<button name="form_submit" id="comment_send_btn" type="submit" class="comment_send_btn trans_200" value="Submit">send message</button>
 							</form>
+							<?php
+								if(isset($_POST['form_submit'])){
+									echo "claude";
+								}
+							
+							
+							?>
+
 						</div>
 					</div>
 

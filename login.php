@@ -106,19 +106,26 @@
                             if(isset($_POST['form_lsubmit'])){
                                 //header('Location: courses.php');
                                 if(isset($_POST['form_lname'])&& isset($_POST['form_lpass'])){
-                                    echo "<br> Hey:" . $_POST['form_lname'] ."<br>";
-                                    echo $_POST['form_lpass']."<br>";
+                                    //echo "<br> Hey:" . $_POST['form_lname'] ."<br>";
+                                    //echo $_POST['form_lpass']."<br>";
                                     //DBconnect
                                     require("connect.php");
-
                                     //Dynamic Query
                                     $uname = $_POST['form_lname'];
                                     $pass = $_POST['form_lpass'];
                                     //$sql1 = 'SELECT u_name, u_pass FROM ciit_login';
                                     $sql = "SELECT u_name, u_pass FROM ciit_login WHERE u_name ="."'$uname'"."and u_pass ="."'$pass'" ;
-                                    echo $sql ."<br>";
-                                    $result = $conn->query($sql);
-                                    if ($result->num_rows > 0) {
+                                    //echo $sql ."<br>";
+									$result = $conn->query($sql);
+									/*if($result = $conn->query($sql)){
+										while($obj = $result->fetch_object()){
+											//print($obj->u_name);
+											session_start();
+											$_SESSION["user_name"] = $obj->u_name;
+											header('Location: courses.php');
+										}
+									}*/
+									if ($result->num_rows > 0) {
                                         // output data of each row
                                         /*
                                         $row = $result->fetch_assoc();
@@ -128,9 +135,13 @@
                                         if($uname == $user_name && $pass == $user_pass){
                                             header('Location: http:www.google.com');
                                         }
-                                        */
+										*/
+										session_start();
+										$row = $result->fetch_assoc();
+										$_SESSION["user_name"] = $row["u_name"];
                                         header('Location: courses.php');
-                                    } else {
+                                    }
+                                    else {
                                         echo "0 results";
                                     }
 

@@ -23,7 +23,16 @@
 			<div class="logo_container">
 				<div class="logo">
 					<img src="images/logo.png" alt="">
-					<span>course</span>
+					<span>WELCOME 
+								<?php 
+										session_start();
+										if(session_status() == PHP_SESSION_ACTIVE){
+											echo $_SESSION["user_name"];
+										}else{
+											echo "Claude";
+										}
+								?>
+					</span>
 				</div>
 			</div>
 
