@@ -215,10 +215,11 @@
 							</form>
 							<?php
 								if(isset($_POST['form_submit'])){
-									echo "claude";
+									echo "claude <br>";
+									$nid = preg_replace("/[^a-zA-Z\s]/", "", $_POST['form_nid']);
+									$nmail =  preg_replace("/[^a-zA-Z\s@.]/", "", $_POST['form_nval']);
+									echo "nid: " . $nid . "<br> email: " . $nmail;
 								}
-							
-							
 							?>
 
 						</div>
