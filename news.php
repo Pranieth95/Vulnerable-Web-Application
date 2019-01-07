@@ -31,19 +31,16 @@
 			<nav class="main_nav_container">
 				<div class="main_nav">
 					<ul class="main_nav_list">
-						<li class="main_nav_item"><a href="index.html">home</a></li>
-						<li class="main_nav_item"><a href="#">about us</a></li>
-						<li class="main_nav_item"><a href="courses.html">courses</a></li>
-						<li class="main_nav_item"><a href="elements.html">elements</a></li>
-						<li class="main_nav_item"><a href="#">news</a></li>
-						<li class="main_nav_item"><a href="contact.html">contact</a></li>
+						<li class="main_nav_item"><a href="news.php">home</a></li>
+						<li class="main_nav_item"><a href="courses.php">courses</a></li>
+					
 					</ul>
 				</div>
 			</nav>
 		</div>
 		<div class="header_side d-flex flex-row justify-content-center align-items-center">
 			<img src="images/phone-call.svg" alt="">
-			<span>+43 4566 7788 2457</span>
+			<a href="index.php"><span class="label label-danger">Student Logout</span></a>
 		</div>
 
 		<!-- Hamburger -->
