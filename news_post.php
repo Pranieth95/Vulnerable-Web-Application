@@ -23,7 +23,16 @@
 			<div class="logo_container">
 				<div class="logo">
 					<img src="images/logo.png" alt="">
-					<span>course</span>
+					<span>WELCOME 
+								<?php 
+										session_start();
+										if(session_status() == PHP_SESSION_ACTIVE){
+											echo $_SESSION["user_name"];
+										}else{
+											echo "Claude";
+										}
+								?>
+					</span>
 				</div>
 			</div>
 
@@ -164,46 +173,69 @@ We only offer the highest quality of teaching from experts in the field. Extensi
 						<ul class="comments_list">
 							
 							<!-- Comment -->
-							<li class="comment">
-								<div class="comment_container d-flex flex-row">
-									<div>
-										<div class="comment_image">
-											<img src="images/comment_1.jpg" alt="">
-										</div>
-									</div>
-									<div class="comment_content">
-										<div class="comment_meta">
-											<span class="comment_name"><a href="#">Pranieth Chandrasekara</a></span>
-											<span class="comment_separator">|</span>
-											<span class="comment_date">Jan 06, 2019</span>
-											<span class="comment_separator">|</span>
-											<span class="comment_reply_link"><a href="#">Reply</a></span>
-										</div>
-										<p class="comment_text">Very Interesting Article Sir! </p>
-									</div>
-								</div>
-							</li>
+							<?php 
+								require_once('connect.php');
+								$sql = "SELECT * FROM ciit_news_comments";
+								$result = $conn->query($sql);
+								$row_count= 0;
+								if ($result->num_rows > 0) {
+									while($row = $result->fetch_assoc()){
+											//echo "User First Name: " . $row["u_id"]. " - User Last Name: " . $row["u_email"]. " - Role: " . $row["u_comment"]. "<br>";
+											echo '
+											<li class="comment">
+												<div class="comment_container d-flex flex-row">
+													<div>
+														<div class="comment_image">
+															<img src="images/comment_d1.png" alt="">
+														</div>
+													</div>
+													<div class="comment_content">
+														<div class="comment_meta">
+															<span class="comment_name"><a href="#">'.$row["u_name"].'</a></span>
+															<span class="comment_separator">|</span>
+															<span class="comment_date">'.$row["ad_date"].'</span>
+															<span class="comment_separator">|</span>
+															<span class="comment_reply_link"><a href="?uname='.$row["u_name"].'&udate='.$row["ad_date"].'">Delete</a></span>
+														</div>
+														<p class="comment_text">'.$row["u_comment"].'</p>
+													</div>
+												</div>
+											</li>';
+											$row_count = $row_count +1;
+									}
+								}
+								else {
+									echo '<span class="comment_separator">No Comments</span>';
+								}
 
-							<!-- Comment -->
-							<li class="comment">
-								<div class="comment_container d-flex flex-row">
-									<div>
-										<div class="comment_image">
-											<img src="images/comment_2.jpg" alt="">
-										</div>
-									</div>
-									<div class="comment_content">
-										<div class="comment_meta">
-											<span class="comment_name"><a href="#">Ryan Miriyagalla</a></span>
-											<span class="comment_separator">|</span>
-											<span class="comment_date">Jan 07, 2019</span>
-											<span class="comment_separator">|</span>
-											<span class="comment_reply_link"><a href="#">Reply</a></span>
-										</div>
-										<p class="comment_text">Truely Awesome! </p>
-									</div>
-								</div>
-							</li>
+								if(isset($_GET['uname'])&& isset($_GET['udate'])){
+									deleteUserComment($_GET['uname'], $_GET['udate']);
+								}
+
+								function deleteUserComment($nameCom, $dateCom){
+									$servername = "localhost";
+									$username = "root";
+									$password = "";
+									$dbname = "ciit_db";
+
+									// Create connection
+									$conn = new mysqli($servername, $username, $password,$dbname);
+
+									// Check connection
+									if ($conn->connect_error) {
+										die("Connection failed: " . $conn->connect_error);
+									}
+									$sqlDel = "DELETE FROM ciit_news_comments WHERE u_name="."'$nameCom'"."and ad_date ="."'$dateCom'";
+									if (mysqli_query($conn, $sqlDel)) {
+										echo "Record deleted successfully";
+										//header("Refresh:0");
+									} else {
+										echo "Error deleting record: " . mysqli_error($conn);
+									}
+								}
+								
+							?>
+							
 
 						</ul>
 
@@ -216,29 +248,48 @@ We only offer the highest quality of teaching from experts in the field. Extensi
 
 						<div class="leave_comment_form_container">
 							<form  method="post" action=<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?> >
-								<input name="form_nid" id="comment_form_name" class="input_field contact_form_name" type="text" placeholder="Name" required="required" data-error="Name is required.">
-								<input name="form_nval" id="comment_form_email" class="input_field contact_form_email" type="email" placeholder="E-mail" required="required" data-error="Valid email is required.">
 								<textarea name="form_ncom" id="comment_form_message" class="text_field contact_form_message" name="message" placeholder="Message" required="required" data-error="Please, write us a message."></textarea>
 								<button name="form_submit" id="comment_send_btn" type="submit" class="comment_send_btn trans_200" value="Submit">Post Comment</button>
 							</form>
 							<?php
 								if(isset($_POST['form_submit'])){
-									echo "claude <br>";
-									$nid = preg_replace("/[^a-zA-Z\s]/", "", $_POST['form_nid']);
-									$nmail =  preg_replace("/[^a-zA-Z\s@.]/", "", $_POST['form_nval']);
 									$message = $_POST['form_ncom'];
 									$appr = true;
-									$date_v = date("y/m/d");
+									$date_v = date("y-m-d h:i:sa");
 									require_once('connect.php');
-									$sql = "INSERT INTO ciit_news_comments (u_id, u_email, u_comment, ad_date, ad_appr)
-									VALUES ('$nid', '$nmail', '$message', '$date_v', '$appr')";
+									//get details from the user details table
+									$sql1 = "SELECT * FROM ciit_u_details";
+									$result1 = $conn->query($sql1);
+									if ($result1->num_rows > 0) {
+										$us_name = '';
+										$us_mail = '';
+										while($row1 = $result1->fetch_assoc()){
+											if(strtolower((String)$row1["u_id"]) == strtolower($_SESSION["user_name"])){
+												$us_name = $row1["u_fname"]. " " . $row1["u_lname"];
+												$us_mail = $row1["u_email"];
+											}
+										}
+									}
+									else {
+										echo "0 Results";
+									}
+									$nid = $_SESSION["user_name"];
+									//insert the comment
+									$sql = "INSERT INTO ciit_news_comments (u_id,u_name ,u_email, u_comment, ad_date, ad_appr)
+									VALUES ('$nid','$us_name','$us_mail', '$message', '$date_v', '$appr')";
 
 									if ($conn->query($sql) === TRUE) {
-										echo "New record created successfully";
+										//echo "Successfully Commented";
+										/*if (headers_sent()) {
+											die("Redirect failed.");
+										}
+										else{
+											exit(header("Location: news_post.php"));
+										}*/
 									} else {
 										echo "Error: " . $sql . "<br>" . $conn->error;
 									}
-									echo "nid: " . $nid . "<br> email: " . $nmail;
+									$conn->close();
 								}
 							?>
 
