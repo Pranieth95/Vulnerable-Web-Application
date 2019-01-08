@@ -25,7 +25,7 @@
 					<img src="images/logo.png" alt="">
 					<span>WELCOME 
 								<?php 
-										session_start();
+										//session_start();
 										if(session_status() == PHP_SESSION_ACTIVE){
 											echo $_SESSION["user_name"];
 										}else{
