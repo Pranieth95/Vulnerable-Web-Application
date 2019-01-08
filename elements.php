@@ -35,6 +35,7 @@
 						<li class="main_nav_item"><a href="courses.php">Modules</a></li>
 						<li class="main_nav_item"><a href="teachers.php">Lecturers</a></li>
 						<li class="main_nav_item"><a href="elements.php">Dashboard</a></li>
+						<li class="main_nav_item"><a href="shop.php">Ebooks</a></li>
 					</ul>
 				</div>
 			</nav>
@@ -107,7 +108,7 @@
 				<div class="row elements_loaders_container">
 					<div class="col-lg-3 loader_col">
 						<!-- Loader -->
-						<div class="loader" data-perc="0.75"></div>
+						<div class="loader" data-perc="0.99"></div>
 						<div class="loader_text text-center">Exploitability </div>
 						<div class="loader_sub text-center">Easy :99%</div>
 						<div class="loader_sub text-center">Average :50%</div>
@@ -115,7 +116,7 @@
 					</div>
 					<div class="col-lg-3 loader_col">
 						<!-- Loader -->
-						<div class="loader" data-perc="0.83"></div>
+						<div class="loader" data-perc="0.5"></div>
 						<div class="loader_text text-center">Weakness Prevalence</div>
 						<div class="loader_sub text-center">Widespread :99%</div>
 						<div class="loader_sub text-center">Common :50%</div>
@@ -124,7 +125,7 @@
 					</div>
 					<div class="col-lg-3 loader_col">
 						<!-- Loader -->
-						<div class="loader" data-perc="0.25"></div>
+						<div class="loader" data-perc="0.99"></div>
 						<div class="loader_text text-center">Weakness Detectability</div>
 						<div class="loader_sub text-center">Easy :99%</div>
 						<div class="loader_sub text-center">Average :50%</div>
@@ -132,7 +133,7 @@
 					</div>
 					<div class="col-lg-3 loader_col">
 						<!-- Loader -->
-						<div class="loader" data-perc="0.95"></div>
+						<div class="loader" data-perc="0.99"></div>
 						<div class="loader_text text-center">Technical Impacts</div>
 						<div class="loader_sub text-center">Severe :99%</div>
 						<div class="loader_sub text-center">Moderate :50%</div>

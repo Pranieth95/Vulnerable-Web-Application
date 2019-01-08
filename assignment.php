@@ -23,7 +23,14 @@
 			<div class="logo_container">
 				<div class="logo">
 					<img src="images/logo.png" alt="">
-					<span>CIIT</span>
+					<span><?php 
+										session_start();
+										if(session_status() == PHP_SESSION_ACTIVE){
+											echo $_SESSION["user_name"];
+										}else{
+											echo "Claude";
+										}
+								?></span>
 				</div>
 			</div>
 
@@ -34,6 +41,8 @@
 					<li class="main_nav_item"><a href="news.php">home</a></li>
 						<li class="main_nav_item"><a href="courses.php">Modules</a></li>
 						<li class="main_nav_item"><a href="teachers.php">Lecturers</a></li>
+						<li class="main_nav_item"><a href="elements.php">Dashboard</a></li>
+						<li class="main_nav_item"><a href="shop.php">Ebooks</a></li>
 					</ul>
 				</div>
 			</nav>

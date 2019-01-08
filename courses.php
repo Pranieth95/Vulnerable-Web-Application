@@ -23,7 +23,7 @@
 			<div class="logo_container">
 				<div class="logo">
 					<img src="images/logo.png" alt="">
-					<span>WELCOME 
+					<span>
 								<?php 
 										//session_start();
 										if(session_status() == PHP_SESSION_ACTIVE){
@@ -44,6 +44,7 @@
 						<li class="main_nav_item"><a href="courses.php">Modules</a></li>
 						<li class="main_nav_item"><a href="teachers.php">Lecturers</a></li>
 						<li class="main_nav_item"><a href="elements.php">Dashboard</a></li>
+						<li class="main_nav_item"><a href="shop.php">Ebooks</a></li>
 					
 					</ul>
 				</div>
