@@ -222,7 +222,7 @@ if(isset($_GET["action"]))
 			<div class="table-responsive">
 				<table class="table table-bordered">
 					<tr>
-						<th width="40%">Item Name</th>
+						<th width="40%">Ebook Name</th>
 						<th width="10%">Quantity</th>
 						<th width="20%">Price</th>
 						<th width="15%">Total</th>
@@ -264,17 +264,7 @@ if(isset($_GET["action"]))
 </html>
 
 <?php
-//If you have use Older PHP Version, Please Uncomment this function for removing error 
 
-/*function array_column($array, $column_name)
-{
-	$output = array();
-	foreach($array as $keys => $values)
-	{
-		$output[] = $values[$column_name];
-	}
-	return $output;
-}*/
 ?>
 
 
