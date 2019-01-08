@@ -23,24 +23,15 @@
 			<div class="logo_container">
 				<div class="logo">
 					<img src="images/logo.png" alt="">
-<<<<<<< HEAD
 					<span><?php 
-=======
-					<span>WELCOME 
-								<?php 
->>>>>>> df8965c809cdb1216cab34415cae0168ae6acf6a
 										session_start();
-										if(session_status() == PHP_SESSION_ACTIVE){
+										if(session_status() === PHP_SESSION_ACTIVE){
 											echo $_SESSION["user_name"];
 										}else{
 											echo "Claude";
 										}
-<<<<<<< HEAD
-								?></span>
-=======
 								?>
 					</span>
->>>>>>> df8965c809cdb1216cab34415cae0168ae6acf6a
 				</div>
 			</div>
 
