@@ -43,6 +43,7 @@
 					<li class="main_nav_item"><a href="news.php">home</a></li>
 						<li class="main_nav_item"><a href="courses.php">Modules</a></li>
 						<li class="main_nav_item"><a href="teachers.php">Lecturers</a></li>
+						<li class="main_nav_item"><a href="elements.php">Dashboard</a></li>
 					</ul>
 				</div>
 			</nav>
