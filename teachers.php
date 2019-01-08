@@ -43,8 +43,11 @@
 					<li class="main_nav_item"><a href="news.php">home</a></li>
 						<li class="main_nav_item"><a href="courses.php">Modules</a></li>
 						<li class="main_nav_item"><a href="teachers.php">Lecturers</a></li>
+<<<<<<< HEAD
 						<li class="main_nav_item"><a href="elements.php">Dashboard</a></li>
 						<li class="main_nav_item"><a href="shop.php">Ebooks</a></li>
+=======
+>>>>>>> df8965c809cdb1216cab34415cae0168ae6acf6a
 					</ul>
 				</div>
 			</nav>
@@ -124,27 +127,7 @@
 										<input name="search_lec_name" id="newsletter_email" class="newsletter_email" type="text" placeholder="Search Lecturer Name"  >
 										<button name="search_lec_sub" id="newsletter_submit" type="submit" class="newsletter_submit_btn trans_300" value="Submit">Search</button>
 								</div>
-								<?php 
-									if(isset($_GET['search_lec_sub'])){
-										$search_n = strtolower($_GET['search_lec_name']);
-										require_once('connect.php');
-										$sql = "SELECT * FROM ciit_u_details";
-										$result = $conn->query($sql);
-										if ($result->num_rows > 0) {
-											while($row = $result->fetch_assoc()){
-												//echo "User First Name: " . $row["u_fname"]. " - User Last Name: " . $row["u_lname"]. " - Role: " . $row["u_role"]. "<br>";
-												if(((String)$row["u_role"] == 'lecturer') && (strtolower((String)$row["u_fname"]) == $search_n)){
-													echo "Lecturer Exist";
-												}
-											}
-										}
-										else {
-											echo "0 results";
-										}
-
-										$conn->close();
-									}
-								?>
+								
 							</form>
 						</div>
 					</div>
@@ -158,9 +141,51 @@
 	<div class="teachers page_section">
 		<div class="container">
 			<div class="row">
-				
-				<!-- Teacher -->
-				<div class="col-lg-4 teacher">
+			<?php 
+				if(isset($_GET['search_lec_sub'])){
+					$search_n = strtolower($_GET['search_lec_name']);
+					require_once('connect.php');
+					$sql = "SELECT * FROM ciit_u_details";
+					$result = $conn->query($sql);
+					if ($result->num_rows > 0) {
+						while($row = $result->fetch_assoc()){
+							if(((String)$row["u_role"] == 'lecturer')){
+								if((strtolower((String)$row["u_fname"]) == $search_n) || (strtolower((String)$row["u_lname"]) == $search_n)){
+									echo '
+									<div class="col-lg-4 teacher">
+										<div class="card">
+											<div class="card_img">
+												<div class="card_plus trans_200 text-center"><a href="#">+</a></div>
+												<img class="card-img-top trans_200" src="images/teacher_8.jpg" alt="https://unsplash.com/@jcpeacock">
+											</div>
+											<div class="card-body text-center">
+												<div class="card-title"><a href="#">'.$row["u_fname"]. " " .$row["u_lname"].'</a></div>
+												<div class="card-text">'.strtoupper($row["u_role"]).'</div>
+												<div class="teacher_social">
+													<ul class="menu_social">
+														<li class="menu_social_item"><a href="#"><i class="fab fa-pinterest"></i></a></li>
+														<li class="menu_social_item"><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+														<li class="menu_social_item"><a href="#"><i class="fab fa-instagram"></i></a></li>
+														<li class="menu_social_item"><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+														<li class="menu_social_item"><a href="#"><i class="fab fa-twitter"></i></a></li>
+													</ul>
+												</div>
+											</div>
+										</div>
+									</div>
+									';
+								}
+							}
+						}
+					}
+					else {
+						echo "0 results";
+					}
+
+					$conn->close();
+				}else{
+					echo '
+					<div class="col-lg-4 teacher">
 					<div class="card">
 						<div class="card_img">
 							<div class="card_plus trans_200 text-center"><a href="#">+</a></div>
@@ -296,6 +321,11 @@
 						</div>
 					</div>
 				</div>
+					';
+				}
+			?>
+				<!-- Teacher -->
+				
 
 			</div>
 		</div>
@@ -323,7 +353,7 @@
 					<div class="milestone text-center">
 						<div class="milestone_icon"><img src="images/milestone_2.svg" alt="https://www.flaticon.com/authors/zlatko-najdenovski"></div>
 						<div class="milestone_counter" data-end-value="120">0</div>
-						<div class="milestone_text">Panel of Lecturers</div>
+						<div class="milestone_text">Certified Teachers</div>
 					</div>
 				</div>
 
