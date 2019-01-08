@@ -162,7 +162,7 @@
 					<div class="card">
 						<img class="card-img-top" src="images/course_3.jpg" alt="https://unsplash.com/@dsmacinnes">
 						<div class="card-body text-center">
-							<div class="card-title"><a href="courses.html">Cyber Security</a></div>
+							<div class="card-title"><a href="assignment.php">Cyber Security</a></div>
 							<div class="card-text">Adobe Guide, Layes, Smart Objects etc...</div>
 						</div>
 						<div class="price_box d-flex flex-row align-items-center">
