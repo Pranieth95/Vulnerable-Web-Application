@@ -113,6 +113,7 @@
                                     $sql = "SELECT u_name, u_pass FROM ciit_login WHERE u_name ="."'$uname'"."and u_pass ="."'$pass'" ;
 									$result = $conn->query($sql);
 									if ($result->num_rows > 0) {
+										$row = $result->fetch_assoc();
 										session_start();
 										$_SESSION["user_name"] = $row["u_name"];
 										$cookie_n = "_usrLogged";
@@ -120,9 +121,9 @@
 										$newstr = $cookie_n."".$str;
 										$cookie_val = hash('sha256',base64_encode(trim($newstr)));
 										$_SESSION["user_name"] = $row["u_name"];
+										$_SESSION["user_cookie"] = $cookie_val;
 										//setting up the cookie
 										setcookie($cookie_n, $cookie_val, time() + (86400 * 2), "/", "",false,true);
-										$row = $result->fetch_assoc();
                                         header('Location: news.php');
                                     }
                                     else {

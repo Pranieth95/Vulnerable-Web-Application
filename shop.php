@@ -26,11 +26,16 @@
 					<span>
 								<?php 
 										session_start();
-										if(session_status() == PHP_SESSION_ACTIVE){
-											echo $_SESSION["user_name"];
+										if((isset($_COOKIE['_usrLogged']))&& (strtolower(trim($_COOKIE['_usrLogged'])) == trim($_SESSION["user_cookie"]))){
+											if(session_status() == PHP_SESSION_ACTIVE){
+												echo $_SESSION["user_name"];
+											}else{
+												echo "GUEST";
+											}
 										}else{
-											echo "name";
+											echo "GUEST";
 										}
+										
 								?>
 					</span>
 				</div>
