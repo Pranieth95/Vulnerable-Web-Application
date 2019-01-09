@@ -206,7 +206,7 @@
 							?>
 							<div class="alert alert-dismissible alert-danger" align='center'>
 								<button type="button" class="close" data-dismiss="alert">&times;</button>
-								<strong>Oh snap!</strong> No Results for the Search ..! 
+								<strong>Oh snap!</strong> No Results for Your Search .. ! 
 							</div>
 							<?php
 						}
