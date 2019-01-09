@@ -43,11 +43,6 @@
 					<li class="main_nav_item"><a href="news.php">home</a></li>
 						<li class="main_nav_item"><a href="courses.php">Modules</a></li>
 						<li class="main_nav_item"><a href="teachers.php">Lecturers</a></li>
-<<<<<<< HEAD
-						<li class="main_nav_item"><a href="elements.php">Dashboard</a></li>
-						<li class="main_nav_item"><a href="shop.php">Ebooks</a></li>
-=======
->>>>>>> df8965c809cdb1216cab34415cae0168ae6acf6a
 					</ul>
 				</div>
 			</nav>
