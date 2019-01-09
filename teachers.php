@@ -143,6 +143,7 @@
 					$sql = "SELECT * FROM ciit_u_details";
 					$result = $conn->query($sql);
 					if ($result->num_rows > 0) {
+						$count =1;
 						while($row = $result->fetch_assoc()){
 							if(((String)$row["u_role"] == 'lecturer')){
 								if((strtolower((String)$row["u_fname"]) == $search_n) || (strtolower((String)$row["u_lname"]) == $search_n)){
@@ -151,7 +152,7 @@
 										<div class="card">
 											<div class="card_img">
 												<div class="card_plus trans_200 text-center"><a href="#">+</a></div>
-												<img class="card-img-top trans_200" src="images/teacher_8.jpg" alt="https://unsplash.com/@jcpeacock">
+												<img class="card-img-top trans_200" src="images/teacher_'.$count.'.jpg" alt="https://unsplash.com/@jcpeacock">
 											</div>
 											<div class="card-body text-center">
 												<div class="card-title"><a href="#">'.$row["u_fname"]. " " .$row["u_lname"].'</a></div>
@@ -169,8 +170,12 @@
 										</div>
 									</div>
 									';
+								} else {
+									
 								}
+
 							}
+							$count=$count+1;
 						}
 					}
 					else {
@@ -179,7 +184,7 @@
 
 					$conn->close();
 				}else{
-					echo '
+					?>
 					<div class="col-lg-4 teacher">
 					<div class="card">
 						<div class="card_img">
@@ -316,7 +321,8 @@
 						</div>
 					</div>
 				</div>
-					';
+				<?php
+					
 				}
 			?>
 				<!-- Teacher -->

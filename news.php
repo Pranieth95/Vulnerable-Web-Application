@@ -25,10 +25,11 @@
 					<img src="images/logo.png" alt="">
 					<span>
 								<?php 
+										session_start();
 										if(session_status() == PHP_SESSION_ACTIVE){
 											echo $_SESSION["user_name"];
 										}else{
-											echo "Claude";
+											echo "Welcome";
 										}
 								?>
 					</span>
