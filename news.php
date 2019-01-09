@@ -57,7 +57,7 @@
 		<div class="header_side d-flex flex-row justify-content-center align-items-center">
 			<img src="images/phone-call.svg" alt="">
 			<form id="search_form" class="search_form" method="post" action="news.php">
-				<span class="label label-danger"><button id="contact_send_btn" name="form_logout" type="submit" class="label label-danger" value="Submit">Student Logout</button></span>
+				<span class="label label-danger"><button id="contact_send_btn" name="form_logout" type="submit" class="btn btn-info" value="Submit">Student Logout</button></span>
 			</form>
 			<?php
 				//unset($_SESSION['PHPSESSID']);

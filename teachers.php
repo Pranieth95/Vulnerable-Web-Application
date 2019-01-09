@@ -33,11 +33,7 @@
 												echo "GUEST";
 											}
 										}else{
-<<<<<<< HEAD
-											echo "no session";
-=======
 											echo "GUEST";
->>>>>>> 3696f312f5a9f63986fa7cefe1a6923607a920c4
 										}
 										
 								?>
@@ -169,6 +165,7 @@
 					require_once('connect.php');
 					$sql = "SELECT * FROM ciit_u_details";
 					$result = $conn->query($sql);
+					$resultcount = 0;
 					if ($result->num_rows > 0) {
 						$count =1;
 						while($row = $result->fetch_assoc()){
@@ -197,12 +194,21 @@
 										</div>
 									</div>
 									';
+									$resultcount = $resultcount + 1;
 								} else {
 									
 								}
 
 							}
 							$count=$count+1;
+						}
+						if($resultcount == 0){
+							?>
+							<div class="alert alert-dismissible alert-danger" align='center'>
+								<button type="button" class="close" data-dismiss="alert">&times;</button>
+								<strong>Oh snap!</strong> No Results for the Search ..! 
+							</div>
+							<?php
 						}
 					}
 					else {
