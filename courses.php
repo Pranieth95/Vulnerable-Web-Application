@@ -26,8 +26,8 @@
 					<span>
 								<?php 
 										session_start();
-										if((isset($_COOKIE['_usrLogged']))&& (strtolower(trim($_COOKIE['_usrLogged'])) == trim($_SESSION["user_cookie"]))){
-											if(session_status() == PHP_SESSION_ACTIVE){
+										if((isset($_COOKIE['_usrLogged']))&& (session_status() == PHP_SESSION_ACTIVE)){
+											if((isset($_SESSION["user_cookie"]))&&(strtolower(trim($_COOKIE['_usrLogged'])) == trim($_SESSION["user_cookie"]))){
 												echo $_SESSION["user_name"];
 											}else{
 												echo "GUEST";
@@ -57,7 +57,23 @@
 		</div>
 		<div class="header_side d-flex flex-row justify-content-center align-items-center">
 			<img src="images/phone-call.svg" alt="">
-			<a href="index.php"><span class="label label-danger">Student Logout</span></a>
+			<form id="search_form" class="search_form" method="post" action="news.php">
+				<span class="label label-danger"><button id="contact_send_btn" name="form_logout" type="submit" class="label label-danger" value="Submit">Student Logout</button></span>
+			</form>
+			<?php
+				//unset($_SESSION['PHPSESSID']);
+				if ($_SERVER['REQUEST_METHOD'] === 'POST'){
+					if(isset($_POST['form_logout'])){
+						unset($_COOKIE["_usrLogged"]);
+						setcookie("_usrLogged", $_SESSION["user_cookie"], time() - (86400 * 2), "/", "",false,true);
+						session_unset();
+						session_destroy();
+						header('Location: index.php');
+						exit();
+					}
+				}
+				
+			?>
 		</div>
 
 		<!-- Hamburger -->
