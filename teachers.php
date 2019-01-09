@@ -203,12 +203,7 @@
 							$count=$count+1;
 						}
 						if($resultcount == 0){
-							?>
-							<div class="alert alert-dismissible alert-danger" align='center'>
-								<button type="button" class="close" data-dismiss="alert">&times;</button>
-								<strong>Oh snap!</strong> No Results for the Search ..! 
-							</div>
-							<?php
+							echo 'No search results for: '.$search_n ;
 						}
 					}
 					
