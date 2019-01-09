@@ -202,6 +202,7 @@
 							}
 							$count=$count+1;
 						}
+<<<<<<< HEAD
 						if($resultcount == 0){
 							?>
 							<div class="alert alert-dismissible alert-danger" align='center'>
@@ -210,7 +211,11 @@
 							</div>
 							<?php
 						}
+=======
+						
+>>>>>>> e9689b06ee0b8ebf768f37d2310b8d5ec19de549
 					}
+					
 					else {
 						echo "0 results";
 					}
@@ -222,11 +227,11 @@
 					<div class="card">
 						<div class="card_img">
 							<div class="card_plus trans_200 text-center"><a href="#">+</a></div>
-							<img class="card-img-top trans_200" src="images/teacher_1.jpg" alt="https://unsplash.com/@michaeldam">
+							<img class="card-img-top trans_200" src="images/teacher_3.jpg" alt="https://unsplash.com/@michaeldam">
 						</div>
 						<div class="card-body text-center">
-							<div class="card-title"><a href="#">Maria Smith</a></div>
-							<div class="card-text">Graphic Designer</div>
+							<div class="card-title"><a href="#">Supun Udara</a></div>
+							<div class="card-text">Lecturer</div>
 							<div class="teacher_social">
 								<ul class="menu_social">
 									<li class="menu_social_item"><a href="#"><i class="fab fa-pinterest"></i></a></li>
@@ -245,11 +250,11 @@
 					<div class="card">
 						<div class="card_img">
 							<div class="card_plus trans_200 text-center"><a href="#">+</a></div>
-							<img class="card-img-top trans_200" src="images/teacher_2.jpg" alt="https://unsplash.com/@jcpeacock">
+							<img class="card-img-top trans_200" src="images/teacher_4.jpg" alt="https://unsplash.com/@jcpeacock">
 						</div>
 						<div class="card-body text-center">
-							<div class="card-title"><a href="#">Christian Blue</a></div>
-							<div class="card-text">Graphic Designer</div>
+							<div class="card-title"><a href="#">Shakir Khan</a></div>
+							<div class="card-text">Lecturer</div>
 							<div class="teacher_social">
 								<ul class="menu_social">
 									<li class="menu_social_item"><a href="#"><i class="fab fa-pinterest"></i></a></li>
@@ -268,11 +273,11 @@
 					<div class="card">
 						<div class="card_img">
 							<div class="card_plus trans_200 text-center"><a href="#">+</a></div>
-							<img class="card-img-top trans_200" src="images/teacher_3.jpg" alt="https://unsplash.com/photos/n8jeOSxCRfQ">
+							<img class="card-img-top trans_200" src="images/teacher_6.jpg" alt="https://unsplash.com/photos/n8jeOSxCRfQ">
 						</div>
 						<div class="card-body text-center">
-							<div class="card-title"><a href="#">James Brown</a></div>
-							<div class="card-text">Graphic Designer</div>
+							<div class="card-title"><a href="#">Thushara Deshapriya</a></div>
+							<div class="card-text">Lecturer</div>
 							<div class="teacher_social">
 								<ul class="menu_social">
 									<li class="menu_social_item"><a href="#"><i class="fab fa-pinterest"></i></a></li>
@@ -291,11 +296,11 @@
 					<div class="card">
 						<div class="card_img">
 							<div class="card_plus trans_200 text-center"><a href="#">+</a></div>
-							<img class="card-img-top trans_200" src="images/teacher_4.jpg" alt="https://unsplash.com/@seteales">
+							<img class="card-img-top trans_200" src="images/teacher_1.jpg" alt="https://unsplash.com/@seteales">
 						</div>
 						<div class="card-body text-center">
 							<div class="card-title"><a href="#">Julie Denver</a></div>
-							<div class="card-text">Graphic Designer</div>
+							<div class="card-text">Lecturer</div>
 							<div class="teacher_social">
 								<ul class="menu_social">
 									<li class="menu_social_item"><a href="#"><i class="fab fa-pinterest"></i></a></li>
@@ -314,11 +319,11 @@
 					<div class="card">
 						<div class="card_img">
 							<div class="card_plus trans_200 text-center"><a href="#">+</a></div>
-							<img class="card-img-top trans_200" src="images/teacher_5.jpg" alt="https://unsplash.com/@jaredsluyter">
+							<img class="card-img-top trans_200" src="images/teacher_2.jpg" alt="https://unsplash.com/@jaredsluyter">
 						</div>
 						<div class="card-body text-center">
 							<div class="card-title"><a href="#">Julie Denver</a></div>
-							<div class="card-text">Graphic Designer</div>
+							<div class="card-text">Lecturer</div>
 							<div class="teacher_social">
 								<ul class="menu_social">
 									<li class="menu_social_item"><a href="#"><i class="fab fa-pinterest"></i></a></li>
@@ -337,11 +342,11 @@
 					<div class="card">
 						<div class="card_img">
 							<div class="card_plus trans_200 text-center"><a href="#">+</a></div>
-							<img class="card-img-top trans_200" src="images/teacher_6.jpg" alt="https://unsplash.com/@mehdizadeh">
+							<img class="card-img-top trans_200" src="images/teacher_5.jpg" alt="https://unsplash.com/@mehdizadeh">
 						</div>
 						<div class="card-body text-center">
 							<div class="card-title"><a href="#">Julie Denver</a></div>
-							<div class="card-text">Graphic Designer</div>
+							<div class="card-text">Lecturer</div>
 							<div class="teacher_social">
 								<ul class="menu_social">
 									<li class="menu_social_item"><a href="#"><i class="fab fa-pinterest"></i></a></li>
