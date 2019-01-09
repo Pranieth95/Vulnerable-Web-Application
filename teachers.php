@@ -29,7 +29,7 @@
 										if(session_status() == PHP_SESSION_ACTIVE){
 											echo $_SESSION["user_name"];
 										}else{
-											echo "Claude";
+											echo "no session";
 										}
 								?>
 					</span>
@@ -40,9 +40,11 @@
 			<nav class="main_nav_container">
 				<div class="main_nav">
 					<ul class="main_nav_list">
-					<li class="main_nav_item"><a href="news.php">home</a></li>
+						<li class="main_nav_item"><a href="news.php">home</a></li>
 						<li class="main_nav_item"><a href="courses.php">Modules</a></li>
 						<li class="main_nav_item"><a href="teachers.php">Lecturers</a></li>
+						<li class="main_nav_item"><a href="elements.php">Dashboard</a></li>
+						<li class="main_nav_item"><a href="shop.php">Ebooks</a></li>
 					</ul>
 				</div>
 			</nav>
