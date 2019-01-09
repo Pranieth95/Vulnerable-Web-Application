@@ -30,7 +30,11 @@
 
 </style>
 
-
+<script type="text/javascript">
+			function showMessage(){
+				alert("Try log in as a Guest and access the home page");
+			}
+		</script>
 </head>
 <body>
 
@@ -253,17 +257,17 @@
 
 							<div class="accordion_container">
 									<div class="button button_line_2 text-center trans_200"><a href="https://www.owasp.org/index.php/Top_10-2017_A1-Injection">Read More</a></div>
-								   <div class="button button_line_1 text-center trans_200"><a href="#">Try it</a></div>
+								   <div class="button button_line_1 text-center trans_200"><a href="news_post.php">Try it</a></div>
 							</div>
 
 							<div class="accordion_container">
 							<div class="button button_line_2 text-center trans_200"><a href="https://www.owasp.org/index.php/Top_10-2017_A2-Broken_Authentication">Read More</a></div>
-								   <div class="button button_line_1 text-center trans_200"><a href="#">Try it</a></div>
+							<input type="button" id="btnShowMsg" class="button button_line_1 text-center trans_200" value="Try it" onClick='showMessage()'/>
 							</div>
 
 							<div class="accordion_container">
 							<div class="button button_line_2 text-center trans_200"><a href="https://www.owasp.org/index.php/Top_10-2017_A3-Sensitive_Data_Exposure">Read More</a></div>
-								   <div class="button button_line_1 text-center trans_200"><a href="#">Try it</a></div>
+								   <div class="button button_line_1 text-center trans_200"><a href="login.php">Try it</a></div>
 							</div>
 
 							<div class="accordion_container">
@@ -273,12 +277,12 @@
 
 							<div class="accordion_container">
 							<div class="button button_line_2 text-center trans_200"><a href="https://www.owasp.org/index.php/Top_10-2017_A5-Broken_Access_Control">Read More</a></div>
-								   <div class="button button_line_1 text-center trans_200"><a href="#">RTry it</a></div>
+								   <div class="button button_line_1 text-center trans_200"><a href="#">Try it</a></div>
 							</div>
 
 							<div class="accordion_container">
 							<div class="button button_line_2 text-center trans_200"><a href="https://www.owasp.org/index.php/Top_10-2017_A7-Cross-Site_Scripting_(XSS)">Read More</a></div>
-								   <div class="button button_line_1 text-center trans_200"><a href="#">Try it</a></div>
+								   <div class="button button_line_1 text-center trans_200"><a href="shop.php">Try it</a></div>
 							</div>
 							
 
