@@ -203,12 +203,16 @@
 							$count=$count+1;
 						}
 						if($resultcount == 0){
+<<<<<<< HEAD
 							?>
 							<div class="alert alert-dismissible alert-danger" align='center'>
 								<button type="button" class="close" data-dismiss="alert">&times;</button>
 								<strong>Oh snap!</strong> No Results for Your Search .. ! 
 							</div>
 							<?php
+=======
+							echo 'No search results for: '.$search_n ;
+>>>>>>> bf837f373731b7c3e64dff35bc440325e4a6b57a
 						}
 					}
 					
