@@ -33,7 +33,11 @@
 												echo "GUEST";
 											}
 										}else{
+<<<<<<< HEAD
+											echo "no session";
+=======
 											echo "GUEST";
+>>>>>>> 3696f312f5a9f63986fa7cefe1a6923607a920c4
 										}
 										
 								?>
