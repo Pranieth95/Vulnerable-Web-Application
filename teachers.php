@@ -202,7 +202,6 @@
 							}
 							$count=$count+1;
 						}
-<<<<<<< HEAD
 						if($resultcount == 0){
 							?>
 							<div class="alert alert-dismissible alert-danger" align='center'>
@@ -211,9 +210,6 @@
 							</div>
 							<?php
 						}
-=======
-						
->>>>>>> e9689b06ee0b8ebf768f37d2310b8d5ec19de549
 					}
 					
 					else {
