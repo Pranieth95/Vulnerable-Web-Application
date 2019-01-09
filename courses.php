@@ -25,12 +25,17 @@
 					<img src="images/logo.png" alt="">
 					<span>
 								<?php 
-										//session_start();
-										if(session_status() == PHP_SESSION_ACTIVE){
-											echo $_SESSION["user_name"];
+										session_start();
+										if((isset($_COOKIE['_usrLogged']))&& (strtolower(trim($_COOKIE['_usrLogged'])) == trim($_SESSION["user_cookie"]))){
+											if(session_status() == PHP_SESSION_ACTIVE){
+												echo $_SESSION["user_name"];
+											}else{
+												echo "GUEST";
+											}
 										}else{
-											echo "Claude";
+											echo "GUEST";
 										}
+										
 								?>
 					</span>
 				</div>
