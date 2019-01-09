@@ -98,7 +98,7 @@
 
 						<div class="contact_form_container">
 							<form id="search_form" class="search_form" method="post" action="login.php">
-								<input id="search_form_name" name="form_lname" class="input_field search_form_name" type="text" placeholder="Login Name" required="required" data-error="Course name is required.">
+								<input id="search_form_name" name="form_lname" class="input_field search_form_name" type="text" placeholder="ITxxxxxxxxxx" required="required" data-error="Course name is required.">
 								<input id="search_form_category" name="form_lpass" class="input_field search_form_category" type="password" placeholder="Password">
                                 <button id="contact_send_btn" name="form_lsubmit" type="submit" class="contact_send_btn trans_200" value="Submit">Login</button>
 							</form>
@@ -127,7 +127,7 @@
                                         header('Location: news.php');
                                     }
                                     else {
-                                        echo "0 results";
+                                        echo "Student ID doesn't exist"; 
                                     }
 
 
