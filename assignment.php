@@ -10,6 +10,27 @@
 <link href="plugins/fontawesome-free-5.0.1/css/fontawesome-all.css" rel="stylesheet" type="text/css">
 <link rel="stylesheet" type="text/css" href="styles/news_post_styles.css">
 <link rel="stylesheet" type="text/css" href="styles/news_post_responsive.css">
+
+<style>
+.buttonx {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.button2x {background-color: #ffb606;} 
+
+</style>
+
+
+
 </head>
 <body>
 
@@ -49,7 +70,23 @@
 		</div>
 		<div class="header_side d-flex flex-row justify-content-center align-items-center">
 		<img src="images/phone-call.svg" alt="">
-			<a href="index.php"><span class="label label-danger">Student Logout</span></a>
+		<form id="search_form" class="search_form" method="post" action="news.php">
+				<span class="label label-danger"><button id="contact_send_btn" name="form_logout" type="submit" class="buttonx button2x" value="Submit">Student Logout</button></span>
+			</form>
+			<?php
+				//unset($_SESSION['PHPSESSID']);
+				if ($_SERVER['REQUEST_METHOD'] === 'POST'){
+					if(isset($_POST['form_logout'])){
+						unset($_COOKIE["_usrLogged"]);
+						setcookie("_usrLogged", $_SESSION["user_cookie"], time() - (86400 * 2), "/", "",false,true);
+						session_unset();
+						session_destroy();
+						header('Location: index.php');
+						exit();
+					}
+				}
+				
+			?>
 		</div>
 
 		<!-- Hamburger -->

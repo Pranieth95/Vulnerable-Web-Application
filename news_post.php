@@ -10,6 +10,24 @@
 <link href="plugins/fontawesome-free-5.0.1/css/fontawesome-all.css" rel="stylesheet" type="text/css">
 <link rel="stylesheet" type="text/css" href="styles/news_post_styles.css">
 <link rel="stylesheet" type="text/css" href="styles/news_post_responsive.css">
+
+<style>
+.button {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.button2 {background-color: #ffb606;} 
+
+</style>
 </head>
 <body>
 
@@ -57,7 +75,7 @@
 		<div class="header_side d-flex flex-row justify-content-center align-items-center">
 			<img src="images/phone-call.svg" alt="">
 			<form id="search_form" class="search_form" method="post" action="news.php">
-				<span class="label label-danger"><button id="contact_send_btn" name="form_logout" type="submit" class="label label-danger" value="Submit">Student Logout</button></span>
+				<span class="label label-danger"><button id="contact_send_btn" name="form_logout" type="submit" class="button button2" value="Submit">Student Logout</button></span>
 			</form>
 			<?php
 				//unset($_SESSION['PHPSESSID']);
