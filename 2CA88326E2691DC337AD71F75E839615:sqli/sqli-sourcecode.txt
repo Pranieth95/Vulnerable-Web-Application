@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Course - Contact</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="description" content="Course Project">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="styles/bootstrap4/bootstrap.min.css">
+<link href="plugins/fontawesome-free-5.0.1/css/fontawesome-all.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="styles/contact_styles.css">
+<link rel="stylesheet" type="text/css" href="styles/contact_responsive.css">
+</head>
+<body>
+
+<div class="super_container">
+	<header class="header d-flex flex-row">
+		<div class="header_content d-flex flex-row align-items-center">
+
+			<div class="logo_container">
+				<div class="logo">
+					<img src="images/logo.png" alt="">
+					<span>Ceylon Informatics Information Technology</span>
+				</div>
+			</div>
+			<nav class="main_nav_container">
+				<div class="main_nav">
+					<ul class="main_nav_list">
+						
+					</ul>
+				</div>
+			</nav>
+		</div>
+		<div class="header_side d-flex flex-row justify-content-center align-items-center">
+			<img src="images/phone-call.svg" alt="">
+			<a href="index.php"><span class="label label-danger">Back to Site</span></a>
+		</div>
+
+		<div class="hamburger_container">
+			<i class="fas fa-bars trans_200"></i>
+		</div>
+
+	</header>
+	
+	<div class="menu_container menu_mm">
+
+		<div class="menu_close_container">
+			<div class="menu_close"></div>
+		</div>
+
+		<div class="menu_inner menu_mm">
+			<div class="menu menu_mm">
+		
+
+				<!-- Menu Social -->
+				
+				<div class="menu_social_container menu_mm">
+		
+				</div>
+
+				<div class="menu_copyright menu_mm">Colorlib All rights reserved</div>
+			</div>
+
+		</div>
+
+	</div>
+
+	<div class="home">
+		<div class="home_background_container prlx_parent">
+			<div class="home_background prlx" style="background-image:url(images/contact_background.jpg)"></div>
+		</div>
+		<div class="home_content">
+			<h1>Sign in</h1>
+		</div>
+	</div>
+
+	<div class="contact">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-8">
+					
+					<!-- Contact Form -->
+					<div class="contact_form">
+						<div class="contact_title">Get in touch</div>
+
+						<div class="contact_form_container">
+							<form id="search_form" class="search_form" method="post" action="login.php">
+								<input id="search_form_name" name="form_lname" class="input_field search_form_name" type="text" placeholder="ITxxxxxxxxxx" required="required" data-error="Course name is required.">
+								<input id="search_form_category" name="form_lpass" class="input_field search_form_category" type="password" placeholder="Password">
+                                <button id="contact_send_btn" name="form_lsubmit" type="submit" class="contact_send_btn trans_200" value="Submit">Login</button>
+							</form>
+							<?php
+                            if(isset($_POST['form_lsubmit'])){
+                                //header('Location: courses.php');
+                                if(isset($_POST['form_lname'])&& isset($_POST['form_lpass'])){
+                                    $uname = $_POST['form_lname'];
+									$pass = $_POST['form_lpass'];
+                                    $sql = "SELECT u_name, u_pass FROM ciit_login WHERE u_name ="."'$uname'"."and u_pass ="."'$pass'" ;
+									$result = $conn->query($sql);
+									//echo $sql;
+									if ($result->num_rows > 0) {
+                                        #Advanced
+                                    }
+                                    else {
+                                        echo "Invalid Credentials"; 
+                                    }
+                                }
+                            }
+
+                            ?>
+						</div>
+					</div>
+						
+				</div>
+				
+				<div class="col-lg-4">
+					<div class="about">
+						<div class="about_title">Note to the User</div>
+						<p class="about_text">Hello User, this login page may contain some vulnerabilities in it. You can find them by trial and error or any method you wish. Submit the flag inorder to advance to the next challenge from below.</p>
+
+						<div class="contact_info">
+							<ul>
+								<li class="contact_info_item">
+									<div class="contact_info_icon">
+										<img src="images/exam.svg" alt="https://www.flaticon.com/authors/lucy-g">
+									</div>
+									<a target="_blank" href="2CA88326E2691DC337AD71F75E839615:sqli/sqli-image-server-side.jpg" style="color:#ffb606" >Click to View the Source Code </a>
+									</li>
+								<li class="contact_info_item">
+									<div class="contact_info_icon">
+										<img src="images/smartphone.svg" alt="https://www.flaticon.com/authors/lucy-g">
+									</div>
+									0094 3729 5416
+								</li>
+								<li class="contact_info_item">
+									<div class="contact_info_icon">
+										<img src="images/envelope.svg" alt="https://www.flaticon.com/authors/lucy-g">
+									</div>hello@university.com
+								</li>
+							</ul>
+						</div>
+
+					</div>
+				</div>
+
+			</div>
+
+			
+
+		</div>
+	</div>
+</body>
+</html>

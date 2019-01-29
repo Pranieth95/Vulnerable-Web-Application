@@ -1,3 +1,7 @@
+<?php
+//session_start();
+ob_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -94,7 +98,7 @@
 					
 					<!-- Contact Form -->
 					<div class="contact_form">
-						<div class="contact_title">Get in touch</div>
+						<div class="contact_title">Get in Touch</div>
 
 						<div class="contact_form_container">
 							<form id="search_form" class="search_form" method="post" action="login.php">
@@ -106,15 +110,19 @@
                             if(isset($_POST['form_lsubmit'])){
                                 //header('Location: courses.php');
                                 if(isset($_POST['form_lname'])&& isset($_POST['form_lpass'])){
+									session_start();
                                     require("connect.php");
-                                    //Dynamic Query
                                     $uname = $_POST['form_lname'];
-                                    $pass = $_POST['form_lpass'];
+									$pass = $_POST['form_lpass'];
+									$stripped_uname = str_replace(' ','',$uname);
+									$stripped_pswd = str_replace(' ','',$pass);
+									$_SESSION["usertoken_1"]=null;
+									//Dynamic Query
                                     $sql = "SELECT u_name, u_pass FROM ciit_login WHERE u_name ="."'$uname'"."and u_pass ="."'$pass'" ;
 									$result = $conn->query($sql);
+									echo "ClaudeKanchana: ". $result;
 									if ($result->num_rows > 0) {
 										$row = $result->fetch_assoc();
-										session_start();
 										$_SESSION["user_name"] = $row["u_name"];
 										$cookie_n = "_usrLogged";
 										$str = $uname.":".$pass;
@@ -124,13 +132,29 @@
 										$_SESSION["user_cookie"] = $cookie_val;
 										//setting up the cookie
 										setcookie($cookie_n, $cookie_val, time() + (86400 * 2), "/", "",false,true);
-                                        header('Location: news.php');
+										$_SESSION["authenticated"] = true;
                                     }
                                     else {
-                                        echo "Student ID doesn't exist"; 
-                                    }
-
-
+										echo "Invalid Credentials";
+									}
+									if($_SESSION["authenticated"] == true){
+										$_SESSION["usertoken_1"] = hash('sha256',base64_encode(date("Y-m-d h:i:sa") . " user : ".$uname));
+										echo '
+										<div class="alert alert-dismissible alert-success">
+											<button type="button" class="close" data-dismiss="alert">&times;</button>
+											<strong>Well done!</strong> You successfully found the Vulnerability .
+										</div>
+										';
+										echo '
+										<span 	class="badge badge-pill badge-info" 
+												style="
+													display: block;
+													margin-left: auto;
+													margin-right: auto"
+										>'.$_SESSION["usertoken_1"].
+										'</span>
+										';
+									}
                                     $conn->close();
                                 }
                             }
@@ -140,31 +164,21 @@
 					</div>
 						
 				</div>
-
+				
 				<div class="col-lg-4">
 					<div class="about">
-						<div class="about_title">Student System</div>
-						<p class="about_text">An Investment in Knowledge Pays the Best Interest. Welcome to the University of Ceylon Informatics Information Technology!</p>
+						<div class="about_title">Note to the User</div>
+						<p class="about_text">Hello User, this login page may contain some vulnerabilities in it. You can find them by trial and error or any method you wish. Submit the flag inorder to advance to the next challenge from below.</p>
 
 						<div class="contact_info">
 							<ul>
 								<li class="contact_info_item">
 									<div class="contact_info_icon">
-										<img src="images/placeholder.svg" alt="https://www.flaticon.com/authors/lucy-g">
+										<img src="images/exam.svg" alt="https://www.flaticon.com/authors/lucy-g">
 									</div>
-									Kandy Road, Malabe, Sri Lanka
-								</li>
-								<li class="contact_info_item">
-									<div class="contact_info_icon">
-										<img src="images/smartphone.svg" alt="https://www.flaticon.com/authors/lucy-g">
-									</div>
-									0094 3729 5416
-								</li>
-								<li class="contact_info_item">
-									<div class="contact_info_icon">
-										<img src="images/envelope.svg" alt="https://www.flaticon.com/authors/lucy-g">
-									</div>hello@university.com
-								</li>
+									<a target="_blank" href="2CA88326E2691DC337AD71F75E839615:sqli/sqli-sourcecode.txt" style="color:#ffb606" >Click to View the Source Code </a>
+									</li>
+								
 							</ul>
 						</div>
 
@@ -186,7 +200,31 @@
 			<!-- Newsletter -->
 
 			<div class="newsletter">
-			
+				<div class="row">
+					<div class="col text-center">
+						<div class="newsletter_form_container mx-auto">
+							<form method="post" action=<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?> >
+								<div class="newsletter_form d-flex flex-md-row flex-column flex-xs-column align-items-center justify-content-center">
+										<input name="sub_token_1val" id="newsletter_email" class="newsletter_email" type="text" placeholder="Enter the Token Value to Log In."  >
+										<button name="sub_token_1" id="newsletter_submit" type="submit" class="newsletter_submit_btn trans_300" value="Submit">Log In</button>
+								</div>
+								<?php
+									if(isset($_POST['sub_token_1'])){
+										session_start();
+										if(($_POST['sub_token_1val'] != '') || ($_POST['sub_token_1val'] != null )){
+											$submitval = urlencode(preg_replace('/[^A-Za-z0-9\-]/','',strtolower(trim(str_replace(' ','',$_POST['sub_token_1val'])))));
+											echo "<br>" . $submitval . " <br> token: <br>" .  $_SESSION["usertoken_1"];
+											if($submitval == trim(urlencode($_SESSION["usertoken_1"]))){
+												header("location: news.php");
+											}
+										}
+									}
+								
+								?>
+							</form>
+						</div>
+					</div>
+				</div>
 
 				
 

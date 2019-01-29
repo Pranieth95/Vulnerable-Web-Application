@@ -13,6 +13,7 @@
 <link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.2.1/animate.css">
 <link rel="stylesheet" type="text/css" href="styles/main_styles.css">
 <link rel="stylesheet" type="text/css" href="styles/responsive.css">
+<link rel="stylesheet" type="text/css" href="styles/popup-div.css">
 </head>
 <body>
 
@@ -28,23 +29,26 @@
 					<img src="images/logo.png" alt="">
 					<span>Ceylon Informatics Information Technology</span>
 				</div>
-			</div>
-
-		
-			
+			</div>	
 		</div>
 		<div class="header_side d-flex flex-row justify-content-center align-items-center">
 			<img src="images/phone-call.svg" alt="">
-			<a href="login.php"><span class="label label-danger">Member Login</span></a>
+			<a href="login.php"><span class="label label-danger" >Member Login</span></a>
 		</div>
-
-		<!-- Hamburger -->
 		<div class="hamburger_container">
 			<i class="fas fa-bars trans_200"></i>
 		</div>
+		<!-- Pop Over -->
+		<div class="popover__wrapper">
+			<a href="#">
+				<h2 class="popover__title">HINTS</h2>
+			</a>
+			<div class="popover__content">
+				<span class="popover__message" style="color:#ffffff">Login Page may contain Vulnerabilities</span>
 
+			</div>
+		</div>
 	</header>
-	
 	<!-- Menu -->
 	<div class="menu_container menu_mm">
 
