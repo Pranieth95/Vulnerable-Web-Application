@@ -98,7 +98,7 @@ ob_start();
 					
 					<!-- Contact Form -->
 					<div class="contact_form">
-						<div class="contact_title">Get in Touch</div>
+						<div class="contact_title">Get in touch</div>
 
 						<div class="contact_form_container">
 							<form id="search_form" class="search_form" method="post" action="login.php">
@@ -120,7 +120,7 @@ ob_start();
 									//Dynamic Query
                                     $sql = "SELECT u_name, u_pass FROM ciit_login WHERE u_name ="."'$uname'"."and u_pass ="."'$pass'" ;
 									$result = $conn->query($sql);
-									echo "ClaudeKanchana: ". $result;
+									//echo $sql;
 									if ($result->num_rows > 0) {
 										$row = $result->fetch_assoc();
 										$_SESSION["user_name"] = $row["u_name"];

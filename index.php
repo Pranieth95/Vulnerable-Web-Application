@@ -14,12 +14,69 @@
 <link rel="stylesheet" type="text/css" href="styles/main_styles.css">
 <link rel="stylesheet" type="text/css" href="styles/responsive.css">
 <link rel="stylesheet" type="text/css" href="styles/popup-div.css">
+<link rel="stylesheet" type="text/css" href="styles/popup-msg.css">
+<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+<script src="styles/jquery.bpopup.min.js"></script>
 </head>
 <body>
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
+  Launch demo modal
+</button>
 
+<!-- Modal -->
+<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header" style="background:#ffb606;color:white;border-bottom:1px solid #ffb606">
+        <h2 class="modal-title" id="exampleModalLongTitle">Welcome to Ceylon Information Informatics</h2>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" style="background:#1a1a1a;color:white;">
+	  	<p class="text-secondary">This application is designed by Pearson CISO in the hope of giving any developer about the basic vulnerabilities which can be 
+		  present when they’re developing an application. Secure coding principles can be followed in order to reduce the risk of having 
+		  vulnerabilities in a system and this application helps the developers to identify the secure coding principles on their own and 
+		  how to develop a secure application. 
+		</p>
+
+		<p>
+		This application consists of different challenges where you will be scored according to the completion of these challenges. 
+		Starting from this page, you will be directed into specific pages where you will face the challenge in finding the vulnerability 
+		implemented on those particular pages. 
+		</p>
+
+		<div class="card text-white mb-3" style="max-width: 40rem;background:#ffb606">
+			<div class="card-body">
+				
+				<h4>> You will have to find the vulnerabilities and need to submit the correct flag to get scored. </h4>
+				<h4>> You can always skip the challenges to the next one but you will not get scored if you do not complete the challenge</h4>
+				<h4>> You can access the source code by the given link and can use as a reference</h4>
+				<h4>> You can view your score at the score dashboard once all the challenges are completed</h4>
+			</div>
+		</div>
+		
+		
+		<p>
+		Please be advised that the score you obtain will not measure the knowledge of any individual.
+		This version is only for personal use only.
+		</p>
+
+		<p>
+		Always Learning
+		</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" style="background:#1a1a1a">Read and Understood</button>
+      </div>
+    </div>
+  </div>
+</div>
 <div class="super_container">
 
 	<!-- Header -->
+
 
 	<header class="header d-flex flex-row">
 		<div class="header_content d-flex flex-row align-items-center">
@@ -38,6 +95,7 @@
 		<div class="hamburger_container">
 			<i class="fas fa-bars trans_200"></i>
 		</div>
+		
 		<!-- Pop Over -->
 		<div class="popover__wrapper">
 			<a href="#">
@@ -45,11 +103,12 @@
 			</a>
 			<div class="popover__content">
 				<span class="popover__message" style="color:#ffffff">Login Page may contain Vulnerabilities</span>
-
+				
 			</div>
 		</div>
 	</header>
 	<!-- Menu -->
+	
 	<div class="menu_container menu_mm">
 
 		<!-- Menu Close Button -->
@@ -86,7 +145,7 @@
 		<!-- Hero Slider -->
 		<div class="hero_slider_container">
 			<div class="hero_slider owl-carousel">
-				
+
 				<!-- Hero Slide -->
 				<div class="hero_slide">
 					<div class="hero_slide_background" style="background-image:url(images/slider_background.jpg)"></div>
