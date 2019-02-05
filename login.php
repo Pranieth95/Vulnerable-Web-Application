@@ -14,9 +14,113 @@ ob_start();
 <link href="plugins/fontawesome-free-5.0.1/css/fontawesome-all.css" rel="stylesheet" type="text/css">
 <link rel="stylesheet" type="text/css" href="styles/contact_styles.css">
 <link rel="stylesheet" type="text/css" href="styles/contact_responsive.css">
+<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+<script src="styles/jquery.bpopup.min.js"></script>
 </head>
 <body>
+<script type="text/javascript">
+	$(window).on('load',function(){
+		var myCookie = getCookie("_usrPlayName");
+		if(myCookie == null){
+			$('#exampleModal').modal({
+			  backdrop: 'static',
+			  keyboard: false
+			}) ;
+			$('#exampleModal').modal('show');
 
+		}
+    });
+
+	
+
+	function getCookie(name) {
+		var dc = document.cookie;
+		var prefix = name + "=";
+		var begin = dc.indexOf("; " + prefix);
+		if (begin == -1) {
+			begin = dc.indexOf(prefix);
+			if (begin != 0) return null;
+		}
+		else
+		{
+			begin += 2;
+			var end = document.cookie.indexOf(";", begin);
+			if (end == -1) {
+			end = dc.length;
+			}
+		}
+		// because unescape has been deprecated, replaced with decodeURI
+		//return unescape(dc.substring(begin + prefix.length, end));
+		return decodeURI(dc.substring(begin + prefix.length, end));
+	} 
+</script>
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header" style="background:#ffb606;color:white;border-bottom:1px solid #ffb606">
+        <h2 class="modal-title" id="exampleModalLabel">What's Your Game Name</h2>
+      </div>
+      <form method="post" action="login.php"> 
+	      <div class="modal-body" style="background:#1a1a1a;color:white;">
+	      	<p class="text-secondary">In order to proceed with the challenges tell us your name. 
+			</p>
+	      	
+		        <div class="newsletter_form d-flex flex-md-row flex-column flex-xs-column align-items-center justify-content-center">
+						<input id="usr_nvalue"name="user_play_name" id="newsletter_email" class="newsletter_email" type="text" placeholder="Name goes here"  >
+				</div>
+			
+	      </div>
+	      <div class="modal-footer">
+	      	<button id="usrPlayButton" name="usrPlayB" type="submit" class="btn btn-primary"  style="background:#ffb606; border-color:#ffb606" value="Submit">Save changes</button>
+	        <script type="text/javascript">
+				$("#usrPlayButton").on("click", function () {
+					var userGame = $('#usr_nvalue').val().replace(/[^A-Za-z0-9\-]/gi, '');
+					var date = new Date();
+					date.setTime(date.getTime() + (7*24*60*60*1000));
+					var expires = "; expires=" + date.toUTCString();
+					document.cookie = "_usrPlayName ="+ (btoa(userGame + ":" + date) || btoa("noName:" + date ) )+ expires + "; path=/";
+				});
+			</script>
+	      </div>
+    </form>
+    </div>
+  </div>
+</div>
+<?php
+	if(isset($_POST['usrPlayB'])){
+		session_start();
+		require_once('connect.php');
+		if($_POST['user_play_name'] == ''){
+			$userGameVal = "user".(String)date(Ymd_hisa);
+		}else{
+			$userGameVal = urlencode(preg_replace('/[^A-Za-z0-9\-]/','',strtolower(trim(str_replace(' ','',$_POST['user_play_name'])))));
+		}
+		$stmt = $conn->prepare("INSERT INTO `challengerDetails` (userName, timeEnter) VALUES (?, ?)");
+		$stmt->bind_param("ss",$userName, $regDate);
+		$userName = $userGameVal;
+		$regDate = (String)date("Y-m-d h:i:sa");
+		$stmt->execute();
+		$stmt->close();
+	}
+?>
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content">
+			<div class="modal-header" style="background:#ffb606;color:white;border-bottom:1px solid #ffb606">
+				<h2 class="modal-title" id="exampleModalLongTitle">Login Forms</h2>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body" style="background:#1a1a1a;color:white;">
+				Login forms may contain a classic vulnerability that may lead to get the access to the system by login in due to a database vulnerability.
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn-sm btn-secondary" data-dismiss="modal" style="background:#1a1a1a">Close</button>
+			</div>
+			</div>
+		</div>
+</div>
 <div class="super_container">
 
 	<!-- Header -->
@@ -44,7 +148,11 @@ ob_start();
 			<img src="images/phone-call.svg" alt="">
 			<a href="index.php"><span class="label label-danger">Back to Site</span></a>
 		</div>
-
+		<!-- Button trigger modal -->
+		<button id="usrHintVul" type="button" class="btn btn-outline-dark btn-sm" data-toggle="modal" data-target="#exampleModalCenter">
+		HINTS
+		</button>
+		
 		<!-- Hamburger -->
 		<div class="hamburger_container">
 			<i class="fas fa-bars trans_200"></i>
@@ -54,24 +162,16 @@ ob_start();
 	
 	<!-- Menu -->
 	<div class="menu_container menu_mm">
-
 		<!-- Menu Close Button -->
 		<div class="menu_close_container">
 			<div class="menu_close"></div>
 		</div>
-
 		<!-- Menu Items -->
 		<div class="menu_inner menu_mm">
 			<div class="menu menu_mm">
-		
-
 				<!-- Menu Social -->
-				
 				<div class="menu_social_container menu_mm">
-		
 				</div>
-
-				<div class="menu_copyright menu_mm">Colorlib All rights reserved</div>
 			</div>
 
 		</div>
@@ -135,7 +235,14 @@ ob_start();
 										$_SESSION["authenticated"] = true;
                                     }
                                     else {
-										echo "Invalid Credentials";
+										echo '
+										<span 	class="badge badge-pill badge-danger" 
+												style="
+													display: block;
+													margin-left: auto;
+													margin-right: auto"
+										>Invalid Credentials</span>
+										';
 									}
 									if($_SESSION["authenticated"] == true){
 										$_SESSION["usertoken_1"] = hash('sha256',base64_encode(date("Y-m-d h:i:sa") . " user : ".$uname));
@@ -198,14 +305,17 @@ ob_start();
 		<div class="container">
 			
 			<!-- Newsletter -->
-
 			<div class="newsletter">
 				<div class="row">
 					<div class="col text-center">
+						<div id="claude">
+							<h1 id="demo"></h1>
+							<div id="divCounter"></div>
+						</div>
 						<div class="newsletter_form_container mx-auto">
 							<form method="post" action=<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?> >
 								<div class="newsletter_form d-flex flex-md-row flex-column flex-xs-column align-items-center justify-content-center">
-										<input name="sub_token_1val" id="newsletter_email" class="newsletter_email" type="text" placeholder="Enter the Token Value to Log In."  >
+										<input name="sub_token_1val" id="newsletter_email" class="newsletter_email" type="text" placeholder="Enter the Token Value to Log In."  required="required" data-error="Flag is required.">
 										<button name="sub_token_1" id="newsletter_submit" type="submit" class="newsletter_submit_btn trans_300" value="Submit">Log In</button>
 								</div>
 								<?php
@@ -213,21 +323,22 @@ ob_start();
 										session_start();
 										if(($_POST['sub_token_1val'] != '') || ($_POST['sub_token_1val'] != null )){
 											$submitval = urlencode(preg_replace('/[^A-Za-z0-9\-]/','',strtolower(trim(str_replace(' ','',$_POST['sub_token_1val'])))));
-											echo "<br>" . $submitval . " <br> token: <br>" .  $_SESSION["usertoken_1"];
+											//echo "<br>" . $submitval . " <br> token: <br>" .  $_SESSION["usertoken_1"];
 											if($submitval == trim(urlencode($_SESSION["usertoken_1"]))){
 												header("location: news.php");
+											}else{
+												echo '<span class="badge badge-danger">Wrong Flag</span> <br/>';
 											}
 										}
 									}
 								
 								?>
+								<br/>
+								<button name="skipLevel" id="newsletter_submit" type="submit" class="newsletter_submit_btn trans_300" value="Submit" style="background:#17a2b8;">Skip to Next Level</button>
 							</form>
 						</div>
 					</div>
 				</div>
-
-				
-
 			</div>
 
 			<!-- Footer Content -->
@@ -264,11 +375,13 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script>  All 
 <script src="plugins/greensock/TimelineMax.min.js"></script>
 <script src="plugins/scrollmagic/ScrollMagic.min.js"></script>
 <script src="plugins/greensock/animation.gsap.min.js"></script>
+<script src="js/custom.min.hts.js"></script>
 <script src="plugins/greensock/ScrollToPlugin.min.js"></script>
 <script src="plugins/scrollTo/jquery.scrollTo.min.js"></script>
 <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyCIwF204lFZg1y4kPSIhKaHEXMLYxxuMhA"></script>
 <script src="plugins/easing/easing.js"></script>
 <script src="js/contact_custom.js"></script>
+<script src="js/countdown_timer.js"></script>
 
 </body>
 </html>

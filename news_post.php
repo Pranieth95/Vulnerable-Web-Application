@@ -256,7 +256,7 @@ We only offer the highest quality of teaching from experts in the field. Extensi
 								function deleteUserComment($nameCom, $dateCom){
 									$servername = "localhost";
 									$username = "root";
-									$password = "";
+									$password = "toor";
 									$dbname = "ciit_db";
 
 									// Create connection
