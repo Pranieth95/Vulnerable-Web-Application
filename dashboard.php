@@ -3,7 +3,7 @@
 <html>
 <head>
 
-  <title>Pick a Vulnerability to Learn About</title>
+
 
   <link rel="shortcut icon" type="image/x-icon" href="https://d1o5lmfp4gliop.cloudfront.net/assets/favicon-271ae300988b62ece3b4cf66c01c3e7009bfb65839edd064f199b990d3f89c4f.ico" />
 
@@ -16,14 +16,6 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-
-
-  
-
-
-
-
-  
   <script>
     var _rollbarConfig = {
       accessToken: "7292cc33ae3843d4bc12aa01e4d82436",
@@ -41,53 +33,17 @@
 
 
     <script>
-      window.email = 'smartchep98@gmail.com';
+      window.email = '98@gmail.com';
     </script>
 
 </head>
-<body class="white-header knobbled logged-in users home unknown chrome modern windows webkit non-ie">
+<body style="color:White;">
 
   <div class="content">
 
 
       <div class="header">
-  <nav class="navbar navbar-toggleable-md">
 
-    <button class="navbar-toggler navbar-toggler-right"
-            type="button"
-            data-toggle="collapse"
-            data-target="#collapsing-menu">
-      <i class="fa fa-bars"></i>
-    </button>
-
-    <span class="navbar-brand logo">
-      <a href="/">
-        <div class="title">CIIT</div>
-      </a>
-    </span>
-
-    <div class="navbar-collapse collapse" id="collapsing-menu">
-
-      <div class="navbar-nav mr-auto">
-      </div>
-
-      <ul class="navbar-nav">
-
-
-
-
-          <li class="active nav-item nav-lessons"><a class="nav-link" href="/lessons">Lessons</a></li>
-          <li class="nav-item nav-profile"><a class="nav-link" href="/profile">Profile</a></li>
-
-          <li class="nav-item">
-            <a class="nav-link" rel="nofollow" data-method="delete" href="/logout">Logout</a>
-          </li>
-
-
-      </ul>
-    </div>
-
-  </nav>
 </div>
 
 
