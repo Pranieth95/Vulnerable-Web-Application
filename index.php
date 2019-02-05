@@ -20,22 +20,53 @@
 </head>
 <body>
 <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
-  Launch demo modal
-</button>
+
+<script type="text/javascript">
+	$(window).on('load',function(){
+		var myCookie = getCookie("_usrAgr");
+		if(myCookie == null){
+			$('#exampleModalLong').modal('show');
+		}
+		var myCookie2 = getCookie("_usrPlayName");
+		if(myCookie2 == null){
+			localStorage.setItem("counter", 0);
+		}
+    });
+
+	function getCookie(name) {
+		var dc = document.cookie;
+		var prefix = name + "=";
+		var begin = dc.indexOf("; " + prefix);
+		if (begin == -1) {
+			begin = dc.indexOf(prefix);
+			if (begin != 0) return null;
+		}
+		else
+		{
+			begin += 2;
+			var end = document.cookie.indexOf(";", begin);
+			if (end == -1) {
+			end = dc.length;
+			}
+		}
+		// because unescape has been deprecated, replaced with decodeURI
+		//return unescape(dc.substring(begin + prefix.length, end));
+		return decodeURI(dc.substring(begin + prefix.length, end));
+	} 
+</script>
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header" style="background:#ffb606;color:white;border-bottom:1px solid #ffb606">
-        <h2 class="modal-title" id="exampleModalLongTitle">Welcome to Ceylon Information Informatics</h2>
+        <h2 class="modal-title" id="exampleModalLongTitle" style="text-align: center">Welcome to <BR>CEYLON INFORMATICS INFORMATION TECHNOLOGY</h2>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body" style="background:#1a1a1a;color:white;">
-	  	<p class="text-secondary">This application is designed by Pearson CISO in the hope of giving any developer about the basic vulnerabilities which can be 
+	  	<p class="text-secondary">This application is designed by <b>Pearson CISO</b> in the hope of giving any developer about the basic vulnerabilities which can be 
 		  present when they’re developing an application. Secure coding principles can be followed in order to reduce the risk of having 
 		  vulnerabilities in a system and this application helps the developers to identify the secure coding principles on their own and 
 		  how to develop a secure application. 
@@ -49,26 +80,35 @@
 
 		<div class="card text-white mb-3" style="max-width: 40rem;background:#ffb606">
 			<div class="card-body">
-				
+				<br>
 				<h4>> You will have to find the vulnerabilities and need to submit the correct flag to get scored. </h4>
 				<h4>> You can always skip the challenges to the next one but you will not get scored if you do not complete the challenge</h4>
 				<h4>> You can access the source code by the given link and can use as a reference</h4>
 				<h4>> You can view your score at the score dashboard once all the challenges are completed</h4>
+				<br>
 			</div>
 		</div>
 		
 		
 		<p>
 		Please be advised that the score you obtain will not measure the knowledge of any individual.
-		This version is only for personal use only.
+		<br><i>This version is only for personal use only. </i>
 		</p>
 
 		<p>
-		Always Learning
+		Always Learning | &copy;<script>document.write(new Date().getFullYear());</script>  Intern Colloboration 
 		</p>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal" style="background:#1a1a1a">Read and Understood</button>
+        <button id="agrButton" type="button"  class="btn btn-secondary" data-dismiss="modal" style="background:#1a1a1a">Read and Understood</button>
+		<script type="text/javascript">
+			$("#agrButton").on("click", function () {
+				var date = new Date();
+				date.setTime(date.getTime() + (7*24*60*60*1000));
+				var expires = "; expires=" + date.toUTCString();
+				document.cookie = "_usrAgr = yes" + expires + "; path=/";
+			});
+		</script>
       </div>
     </div>
   </div>
@@ -103,7 +143,6 @@
 			</a>
 			<div class="popover__content">
 				<span class="popover__message" style="color:#ffffff">Login Page may contain Vulnerabilities</span>
-				
 			</div>
 		</div>
 	</header>
