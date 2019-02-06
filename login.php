@@ -76,9 +76,10 @@ ob_start();
 				$("#usrPlayButton").on("click", function () {
 					var userGame = $('#usr_nvalue').val().replace(/[^A-Za-z0-9\-]/gi, '');
 					var date = new Date();
+					var curDate = new Date();
 					date.setTime(date.getTime() + (7*24*60*60*1000));
 					var expires = "; expires=" + date.toUTCString();
-					document.cookie = "_usrPlayName ="+ (btoa(userGame + ":" + date) || btoa("noName:" + date ) )+ expires + "; path=/";
+					document.cookie = "_usrPlayName ="+ (btoa(userGame + ":" + curDate) || btoa("noName:" + curDate ) )+ expires + "; path=/";
 				});
 			</script>
 	      </div>
