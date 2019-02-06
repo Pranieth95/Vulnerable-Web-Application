@@ -2,15 +2,15 @@ $('#claude').on('click','#revealHintUsr',function(e){
 	e.preventDefault();
 	$('#usrButtonHint').hide();
 	var userDetails = getCookie("_usrPlayName");
-	//alert(userDetails);
+	alert("Claude:"+ userDetails);
 	localStorage.setItem("UserHintSQLi", userDetails);
-    //loadHint1_Value();
+    loadHint1_Value();
 });
 							            
 function loadHint1_Value() {
   var urlSend = "42E6AE8EA03B/show_valueUsr.php";
   var value = localStorage.UserHintSQLi;
-  var param = "store="+value;
+  var param = "UsrReveal="+value;
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
