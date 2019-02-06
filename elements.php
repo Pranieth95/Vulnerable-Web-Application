@@ -894,13 +894,7 @@
 
               </div>
             </a>
-            <a id="quiz-progress"  class="col">
-              <div class="section-icon glyphicons glyphicons-question-sign"></div>
-              <div class="section-label">Quiz</div>
-              <div class="section-description">
-                Test your knowledge of <span class="vulnerability-name"></span>
-              </div>
-            </a>
+           
           </div>
         </div>
       </div>
@@ -948,7 +942,7 @@
     prevention["sql_injection"]   = "Learn how to protect against SQL Injection";
     descriptions["sql_injection"] = "If you are vulnerable to SQL Injection, attackers can run arbitrary commands against your database.";
     public["sql_injection"]       = true;
-    urls["sql_injection"]         = { "exercise"   : "/exercises/sql-injection",
+    urls["sql_injection"]         = { "exercise"   : "login.php",
                                     "prevention" : "/prevention/sql-injection",
                                     "quiz"       : "/quiz/sql-injection"}
 
@@ -957,7 +951,7 @@
     prevention["xss_stored"]   = "Learn how to protect against XSS";
     descriptions["xss_stored"] = "If your site allows users to add content, you need to be sure that attackers cannot inject malicious JavaScript. One method of doing this is called cross-site scripting (XSS).";
     public["xss_stored"]       = true;
-    urls["xss_stored"]         = { "exercise"   : "/exercises/xss-stored",
+    urls["xss_stored"]         = { "exercise"   : "news_post.php",
                                     "prevention" : "/prevention/xss-stored",
                                     "quiz"       : "/quiz/xss-stored"}
 
@@ -1002,7 +996,7 @@
     prevention["xss_reflected"]   = "Learn how to protect against XSS";
     descriptions["xss_reflected"] = "When building a website, you need to be sure you do not accidentally create a channel that allows malicious JavaScript to be bounced off your server - a &quot;reflected&quot; cross-site scripting attack.";
     public["xss_reflected"]       = false;
-    urls["xss_reflected"]         = { "exercise"   : "/exercises/xss-reflected",
+    urls["xss_reflected"]         = { "exercise"   : "teachers.php",
                                     "prevention" : "/prevention/xss-reflected",
                                     "quiz"       : "/quiz/xss-reflected"}
 
