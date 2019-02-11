@@ -237,7 +237,7 @@
   </div>
 
 </div>
-
+<!--
         <div id="command_execution"
      class="exercise-link active">
 
@@ -264,7 +264,8 @@
   </div>
 
 </div>
-
+-->
+<!--
         <div id="click_jacking"
      class="exercise-link active">
 
@@ -291,7 +292,8 @@
   </div>
 
 </div>
-
+-->
+<!--
         <div id="csrf"
      class="exercise-link active">
 
@@ -318,7 +320,8 @@
   </div>
 
 </div>
-
+-->
+<!--
         <div id="directory_traversal"
      class="exercise-link active">
 
@@ -345,6 +348,7 @@
   </div>
 
 </div>
+-->
 
         <div id="xss_reflected"
      class="exercise-link active">
@@ -373,6 +377,7 @@
 
 </div>
 
+       <!--
         <div id="xss_dom"
      class="exercise-link active">
 
@@ -399,7 +404,8 @@
   </div>
 
 </div>
-
+-->
+<!--
         <div id="file_upload"
      class="exercise-link active">
 
@@ -426,6 +432,7 @@
   </div>
 
 </div>
+-->
 
         <div id="broken_access_control"
      class="exercise-link active">
@@ -454,6 +461,7 @@
 
 </div>
 
+<!--
         <div id="open_redirects"
      class="exercise-link active">
 
@@ -480,6 +488,7 @@
   </div>
 
 </div>
+-->
 
         <div id="unencrypted_communication"
      class="exercise-link active">
@@ -508,6 +517,7 @@
 
 </div>
 
+<!--
         <div id="user_enumeration"
      class="exercise-link active">
 
@@ -534,6 +544,7 @@
   </div>
 
 </div>
+-->
 
         <div id="information_leakage"
      class="exercise-link active">
@@ -562,6 +573,7 @@
 
 </div>
 
+<!--
         <div id="password_mismanagement"
      class="exercise-link active">
 
@@ -588,7 +600,8 @@
   </div>
 
 </div>
-
+-->
+  
         <div id="privilege_escalation"
      class="exercise-link active">
 
@@ -615,6 +628,64 @@
   </div>
 
 </div>
+
+       
+        
+        <div id="weak_session"
+     class="exercise-link active">
+
+  <div class="exercise-label">
+    Weak Session IDs
+  </div>
+
+  <div class="spacer">
+
+
+      <div class="img animated-icon animation-trigger"
+           data-color="white"
+           data-icon="https://d1o5lmfp4gliop.cloudfront.net/images/exercises/weak-session/icon.gif"
+           data-animating="false"
+           data-animated-icon="https://d1o5lmfp4gliop.cloudfront.net/images/exercises/weak-session/icon-animated.gif"
+           data-animated-icon-next="https://d1o5lmfp4gliop.cloudfront.net/images/exercises/weak-session/icon-animated.gif"
+           data-loop="false"></div>
+
+      <script>
+        $('<img />', { src: 'https://d1o5lmfp4gliop.cloudfront.net/images/exercises/weak-session/icon-animated.gif' });
+      </script>
+
+
+  </div>
+
+</div>
+
+ 
+        <div id="xml_bombs"
+     class="exercise-link active">
+
+  <div class="exercise-label">
+    XML Bombs
+  </div>
+
+  <div class="spacer">
+
+
+      <div class="img animated-icon animation-trigger"
+           data-color="white"
+           data-icon="https://d1o5lmfp4gliop.cloudfront.net/images/exercises/xml-bombs/icon.gif"
+           data-animating="false"
+           data-animated-icon="https://d1o5lmfp4gliop.cloudfront.net/images/exercises/xml-bombs/icon-animated.gif"
+           data-animated-icon-next="https://d1o5lmfp4gliop.cloudfront.net/images/exercises/xml-bombs/icon-animated.gif"
+           data-loop="false"></div>
+
+      <script>
+        $('<img />', { src: 'https://d1o5lmfp4gliop.cloudfront.net/images/exercises/xml-bombs/icon-animated.gif' });
+      </script>
+
+
+  </div>
+
+</div>
+
 
         <div id="session_fixation"
      class="exercise-link active">
@@ -643,60 +714,8 @@
 
 </div>
 
-        <div id="weak_session"
-     class="exercise-link active">
 
-  <div class="exercise-label">
-    Weak Session IDs
-  </div>
-
-  <div class="spacer">
-
-
-      <div class="img animated-icon animation-trigger"
-           data-color="white"
-           data-icon="https://d1o5lmfp4gliop.cloudfront.net/images/exercises/weak-session/icon.gif"
-           data-animating="false"
-           data-animated-icon="https://d1o5lmfp4gliop.cloudfront.net/images/exercises/weak-session/icon-animated.gif"
-           data-animated-icon-next="https://d1o5lmfp4gliop.cloudfront.net/images/exercises/weak-session/icon-animated.gif"
-           data-loop="false"></div>
-
-      <script>
-        $('<img />', { src: 'https://d1o5lmfp4gliop.cloudfront.net/images/exercises/weak-session/icon-animated.gif' });
-      </script>
-
-
-  </div>
-
-</div>
-
-        <div id="xml_bombs"
-     class="exercise-link active">
-
-  <div class="exercise-label">
-    XML Bombs
-  </div>
-
-  <div class="spacer">
-
-
-      <div class="img animated-icon animation-trigger"
-           data-color="white"
-           data-icon="https://d1o5lmfp4gliop.cloudfront.net/images/exercises/xml-bombs/icon.gif"
-           data-animating="false"
-           data-animated-icon="https://d1o5lmfp4gliop.cloudfront.net/images/exercises/xml-bombs/icon-animated.gif"
-           data-animated-icon-next="https://d1o5lmfp4gliop.cloudfront.net/images/exercises/xml-bombs/icon-animated.gif"
-           data-loop="false"></div>
-
-      <script>
-        $('<img />', { src: 'https://d1o5lmfp4gliop.cloudfront.net/images/exercises/xml-bombs/icon-animated.gif' });
-      </script>
-
-
-  </div>
-
-</div>
-
+  <!--
         <div id="xml_external_entities"
      class="exercise-link active">
 
@@ -723,7 +742,8 @@
   </div>
 
 </div>
-
+-->
+ 
         <div id="denial_of_service_attacks"
      class="exercise-link active">
 
@@ -750,6 +770,7 @@
   </div>
 
 </div>
+
 
         <div id="email_spoofing"
      class="exercise-link active">
@@ -778,6 +799,7 @@
 
 </div>
 
+
         <div id="malvertising"
      class="exercise-link active">
 
@@ -805,6 +827,7 @@
 
 </div>
 
+ 
         <div id="lax_security_settings"
      class="exercise-link active">
 
@@ -832,6 +855,7 @@
 
 </div>
 
+ 
         <div id="toxic_dependencies"
      class="exercise-link active">
 
@@ -1023,7 +1047,7 @@
     prevention["broken_access_control"]   = "Learn how to correctly Implement Access Control";
     descriptions["broken_access_control"] = "All resources on your site need to have access control implemented, even if they aren&#39;t intended to be discoverable by a user. Relying on security through obscurity will lead to problems.";
     public["broken_access_control"]       = false;
-    urls["broken_access_control"]         = { "exercise"   : "/exercises/broken-access-control",
+    urls["broken_access_control"]         = { "exercise"   : "news.php",
                                     "prevention" : "/prevention/broken-access-control",
                                     "quiz"       : "/quiz/broken-access-control"}
 
@@ -1059,7 +1083,7 @@
     prevention["information_leakage"]   = "Learn how to stop leaking information";
     descriptions["information_leakage"] = "Revealing system information helps an attacker learn about your site, and gives them an idea how it might be attacked.";
     public["information_leakage"]       = false;
-    urls["information_leakage"]         = { "exercise"   : "/exercises/information-leakage",
+    urls["information_leakage"]         = { "exercise"   : ".git",
                                     "prevention" : "/prevention/information-leakage",
                                     "quiz"       : "/quiz/information-leakage"}
 
@@ -1196,7 +1220,7 @@
 
 	<!-- Footer -->
 
-	<footer class="footer">
+  <footer class="footer">
 		<div class="container">
 			
 			<!-- Footer Copyright -->
@@ -1219,7 +1243,7 @@
 
 		</div>
 	</footer>
-
+	
 
 
 <script src="js/jquery-3.2.1.min.js"></script>
