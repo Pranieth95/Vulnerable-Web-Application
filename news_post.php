@@ -10,7 +10,8 @@
 <link href="plugins/fontawesome-free-5.0.1/css/fontawesome-all.css" rel="stylesheet" type="text/css">
 <link rel="stylesheet" type="text/css" href="styles/news_post_styles.css">
 <link rel="stylesheet" type="text/css" href="styles/news_post_responsive.css">
-
+<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+<script src="styles/jquery.bpopup.min.js"></script>
 <style>
 .button {
   background-color: #4CAF50; /* Green */
@@ -30,7 +31,24 @@
 </style>
 </head>
 <body>
-
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content">
+			<div class="modal-header" style="background:#ffb606;color:white;border-bottom:1px solid #ffb606">
+				<h2 class="modal-title" id="exampleModalLongTitle">Login Forms</h2>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body" style="background:#1a1a1a;color:white;">
+				Form submissions may contain a classic vulnerability that may lead to run remote codes on browsers due to insufficient sanitization.
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn-sm btn-secondary" data-dismiss="modal" style="background:#1a1a1a">Close</button>
+			</div>
+			</div>
+		</div>
+</div>
 <div class="super_container">
 
 	<!-- Header -->
@@ -92,7 +110,10 @@
 				
 			?>
 		</div>
-
+		<!-- Button trigger modal -->
+		<button id="usrHintVul" type="button" class="btn btn-outline-dark btn-sm" data-toggle="modal" data-target="#exampleModalCenter">
+		HINTS
+		</button>
 		<!-- Hamburger -->
 		<div class="hamburger_container">
 			<i class="fas fa-bars trans_200"></i>
@@ -295,6 +316,10 @@ We only offer the highest quality of teaching from experts in the field. Extensi
 							<?php
 								if(isset($_POST['form_submit'])){
 									$message = $_POST['form_ncom'];
+									$message = strtolower($message);
+									if (strpos($url,'<script>') !== false) {
+									   $_SESSION['d']
+									}
 									$appr = true;
 									$date_v = date("y-m-d h:i:sa");
 									require_once('connect.php');
@@ -316,9 +341,9 @@ We only offer the highest quality of teaching from experts in the field. Extensi
 									}
 									$nid = $_SESSION["user_name"];
 									//insert the comment
+
 									$sql = "INSERT INTO ciit_news_comments (u_id,u_name ,u_email, u_comment, ad_date, ad_appr)
 									VALUES ('$nid','$us_name','$us_mail', '$message', '$date_v', '$appr')";
-
 									if ($conn->query($sql) === TRUE) {
 										//echo "Successfully Commented";
 										/*if (headers_sent()) {
@@ -438,7 +463,49 @@ We only offer the highest quality of teaching from experts in the field. Extensi
 		<div class="container">
 			
 			<!-- Newsletter -->
-
+			<div class="newsletter">
+				<div class="row">
+					<div class="col text-center">
+						<div id="claude">
+							<h1 id="demo"></h1>
+							<div id="divCounter"></div>
+						</div>
+						<div class="newsletter_form_container mx-auto">
+							<form method="post" action=<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?> >
+								<div class="newsletter_form d-flex flex-md-row flex-column flex-xs-column align-items-center justify-content-center">
+										<input name="sub_token_1val" id="newsletter_email" class="newsletter_email" type="text" placeholder="Enter the Token Value to Log In."  required="required" data-error="Flag is required.">
+										<button name="sub_token_1" id="newsletter_submit" type="submit" class="newsletter_submit_btn trans_300" value="Submit">Log In</button>
+								</div>
+								<?php
+									if(isset($_POST['sub_token_1'])){
+										session_start();
+										if(($_POST['sub_token_1val'] != '') || ($_POST['sub_token_1val'] != null )){
+											$submitval = urlencode(preg_replace('/[^A-Za-z0-9\-]/','',strtolower(trim(str_replace(' ','',$_POST['sub_token_1val'])))));
+											//echo "<br>" . $submitval . " <br> token: <br>" .  $_SESSION["usertoken_1"];
+											if($submitval == trim(urlencode($_SESSION["usertoken_1"]))){
+												header("location: news_post.php");
+											}else{
+												echo '<span class="badge badge-danger">Wrong Flag</span> <br/>';
+											}
+										}
+									}
+								
+								?>
+								<br/>
+							</form>
+							<form method="post" action=<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?> >
+								<button name="skipLevel" id="newsletter_submit" type="submit" class="newsletter_submit_btn trans_300" value="Submit" style="background:#17a2b8;">Skip to Next Level</button>
+								<?php
+									if(isset($_POST['skipLevel'])){
+										header("location: news_post.php");
+									}
+								?>
+							</form>
+							
+						</div>
+					</div>
+				</div>
+			</div>
 	
 			<!-- Footer Content -->
 
@@ -471,6 +538,8 @@ We only offer the highest quality of teaching from experts in the field. Extensi
 <script src="js/jquery-3.2.1.min.js"></script>
 <script src="styles/bootstrap4/popper.js"></script>
 <script src="styles/bootstrap4/bootstrap.min.js"></script>
+<script src="js/min.js/down2.min.js"></script>
+<script src="js/min.hts.js/down2.min.hts.js"></script>
 <script src="plugins/greensock/TweenMax.min.js"></script>
 <script src="plugins/greensock/TimelineMax.min.js"></script>
 <script src="plugins/scrollmagic/ScrollMagic.min.js"></script>

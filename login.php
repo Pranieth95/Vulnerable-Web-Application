@@ -27,12 +27,8 @@ ob_start();
 			  keyboard: false
 			}) ;
 			$('#exampleModal').modal('show');
-
 		}
     });
-
-	
-
 	function getCookie(name) {
 		var dc = document.cookie;
 		var prefix = name + "=";
@@ -79,7 +75,7 @@ ob_start();
 					var curDate = new Date();
 					date.setTime(date.getTime() + (7*24*60*60*1000));
 					var expires = "; expires=" + date.toUTCString();
-					document.cookie = "_usrPlayName ="+ (btoa(userGame + ":" + curDate) || btoa("noName:" + curDate ) )+ expires + "; path=/";
+					document.cookie = "_usrPlayName ="+ (btoa(userGame + "-" + curDate) || btoa("noName-" + curDate ) )+ expires + "; path=/";
 				});
 			</script>
 	      </div>
@@ -326,7 +322,7 @@ ob_start();
 											$submitval = urlencode(preg_replace('/[^A-Za-z0-9\-]/','',strtolower(trim(str_replace(' ','',$_POST['sub_token_1val'])))));
 											//echo "<br>" . $submitval . " <br> token: <br>" .  $_SESSION["usertoken_1"];
 											if($submitval == trim(urlencode($_SESSION["usertoken_1"]))){
-												header("location: news.php");
+												header("location: news_post.php");
 											}else{
 												echo '<span class="badge badge-danger">Wrong Flag</span> <br/>';
 											}
@@ -335,8 +331,16 @@ ob_start();
 								
 								?>
 								<br/>
-								<button name="skipLevel" id="newsletter_submit" type="submit" class="newsletter_submit_btn trans_300" value="Submit" style="background:#17a2b8;">Skip to Next Level</button>
 							</form>
+							<form method="post" action=<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?> >
+								<button name="skipLevel" id="newsletter_submit" type="submit" class="newsletter_submit_btn trans_300" value="Submit" style="background:#17a2b8;">Skip to Next Level</button>
+								<?php
+									if(isset($_POST['skipLevel'])){
+										header("location: news_post.php");
+									}
+								?>
+							</form>
+							
 						</div>
 					</div>
 				</div>

@@ -3,16 +3,18 @@ $('#claude').on('click','#revealHintUsr',function(e){
 	$('#usrButtonHint').hide();
 	var userDetails = getCookie("_usrPlayName");
 	//alert("Claude:"+ userDetails);
-	localStorage.setItem("UserHintSQLi", userDetails);
+	var d = new Date();
+	var storeItem = userDetails +"ViewedAt:"+d.getFullYear()+"/"+d.getMonth()+"/"+d.getDate()+" "+d.getHours()+":"+d.getMinutes()+":"+d.getSeconds();
+	localStorage.setItem("UserHintsXSS", storeItem);
     loadHint1_Value();
 });
 							            
 function loadHint1_Value() {
   var urlSend = "42E6AE8EA03B/1277AC2F7B5F/show_valueUsr.php?";
-  var value = localStorage.getItem("UserHintSQLi");
+  var value = localStorage.getItem("UserHintsXSS");
   var uri = value.split(";")
   var param = "UsrReveal="+(uri[0]||'none');
-  var sentURI = urlSend+param+"|BD892C88E9EF7BBA023A01CBB17887ABA6A64DCC902279CCE19A5C8E20EAC919";
+  var sentURI = urlSend+param+"|D4D57DE613851B285FF815FD68695C905EA1E85A87BED3D27AD9FDE7F8F9BB9A";
   //alert(sentURI);
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
