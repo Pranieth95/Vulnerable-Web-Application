@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Feb 06, 2019 at 10:19 AM
+-- Generation Time: Feb 11, 2019 at 11:13 AM
 -- Server version: 5.7.25-0ubuntu0.16.04.2
 -- PHP Version: 7.0.32-0ubuntu0.16.04.1
 
@@ -31,16 +31,24 @@ CREATE TABLE `challengerDetails` (
   `userName` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
   `timeEnter` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `timeLeave` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `score` double DEFAULT NULL
+  `score` double DEFAULT NULL,
+  `Hint1` varchar(10) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `Hint2` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `Hint3` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `Hint4` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `Hint5` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `Hint6` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `Hint7` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `Hint8` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `Hint9` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `challengerDetails`
 --
 
-INSERT INTO `challengerDetails` (`userId`, `userName`, `timeEnter`, `timeLeave`, `score`) VALUES
-(10026, 'dclaude', '2019-02-05 05:19:09pm', NULL, NULL),
-(10027, 'claude', '2019-02-06 10:06:47am', NULL, NULL);
+INSERT INTO `challengerDetails` (`userId`, `userName`, `timeEnter`, `timeLeave`, `score`, `Hint1`, `Hint2`, `Hint3`, `Hint4`, `Hint5`, `Hint6`, `Hint7`, `Hint8`, `Hint9`) VALUES
+(10045, 'damitha', '2019-02-11 11:12:46am', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 --
 -- Indexes for dumped tables
@@ -60,7 +68,7 @@ ALTER TABLE `challengerDetails`
 -- AUTO_INCREMENT for table `challengerDetails`
 --
 ALTER TABLE `challengerDetails`
-  MODIFY `userId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10028;
+  MODIFY `userId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10046;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
