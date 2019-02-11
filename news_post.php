@@ -1,3 +1,7 @@
+<?php
+ob_start();
+echo "claude";
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -318,7 +322,7 @@ We only offer the highest quality of teaching from experts in the field. Extensi
 									$message = $_POST['form_ncom'];
 									$message = strtolower($message);
 									if (strpos($url,'<script>') !== false) {
-									   $_SESSION['d']
+									   $_SESSION['']
 									}
 									$appr = true;
 									$date_v = date("y-m-d h:i:sa");
