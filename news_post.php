@@ -1,6 +1,5 @@
 <?php
 ob_start();
-echo "claude";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -321,9 +320,7 @@ We only offer the highest quality of teaching from experts in the field. Extensi
 								if(isset($_POST['form_submit'])){
 									$message = $_POST['form_ncom'];
 									$message = strtolower($message);
-									if (strpos($url,'<script>') !== false) {
-									   $_SESSION['']
-									}
+									
 									$appr = true;
 									$date_v = date("y-m-d h:i:sa");
 									require_once('connect.php');
