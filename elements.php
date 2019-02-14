@@ -967,7 +967,7 @@
     descriptions["sql_injection"] = "If you are vulnerable to SQL Injection, attackers can run arbitrary commands against your database.";
     public["sql_injection"]       = true;
     urls["sql_injection"]         = { "exercise"   : "login.php",
-                                    "prevention" : "/prevention/sql-injection",
+                                    "prevention" : "sql.php",
                                     "quiz"       : "/quiz/sql-injection"}
 
 
@@ -1220,29 +1220,7 @@
 
 	<!-- Footer -->
 
-  <footer class="footer">
-		<div class="container">
-			
-			<!-- Footer Copyright -->
-			<div class="footer_bar d-flex flex-column flex-sm-row align-items-center">
-				<div class="footer_copyright">
-				<span><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-					Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | Intern Colloboration | Team CISO <i  aria-hidden="true"></i> @ <a href="https://www.pearson.com/asia/" target="_blank">Pearson</a>
-<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></span>
-				</div>
-				<div class="footer_social ml-sm-auto">
-					<ul class="menu_social">
-						<li class="menu_social_item"><a href="#"><i class="fab fa-pinterest"></i></a></li>
-						<li class="menu_social_item"><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-						<li class="menu_social_item"><a href="#"><i class="fab fa-instagram"></i></a></li>
-						<li class="menu_social_item"><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-						<li class="menu_social_item"><a href="#"><i class="fab fa-twitter"></i></a></li>
-					</ul>
-				</div>
-			</div>
-
-		</div>
-	</footer>
+  
 	
 
 
