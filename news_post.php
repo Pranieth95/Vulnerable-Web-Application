@@ -281,7 +281,7 @@ We only offer the highest quality of teaching from experts in the field. Extensi
 								function deleteUserComment($nameCom, $dateCom){
 									$servername = "localhost";
 									$username = "root";
-									$password = "toor";
+									$password = "";
 									$dbname = "ciit_db";
 
 									// Create connection
@@ -321,6 +321,10 @@ We only offer the highest quality of teaching from experts in the field. Extensi
 								if(isset($_POST['form_submit'])){
 									$message = $_POST['form_ncom'];
 									$message = strtolower($message);
+<<<<<<< HEAD
+=======
+								
+>>>>>>> 2cd10acb8d93b8d48e598c77731d48ad38021c5f
 									$appr = true;
 									$date_v = date("y-m-d h:i:sa");
 									require_once('connect.php');
