@@ -1,13 +1,8 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: UClauDa
- * Date: 1/4/2019
- * Time: 12:05 PM
- */
+
 $servername = "localhost";
 $username = "root";
-$password = "toor";
+$password = "";
 $dbname = "ciit_db";
 
 // Create connection
