@@ -13,6 +13,8 @@ ob_start();
 <link href="plugins/fontawesome-free-5.0.1/css/fontawesome-all.css" rel="stylesheet" type="text/css">
 <link rel="stylesheet" type="text/css" href="styles/news_post_styles.css">
 <link rel="stylesheet" type="text/css" href="styles/news_post_responsive.css">
+<link rel="stylesheet" type="text/css" href="styles/contact_styles.css">
+<link rel="stylesheet" type="text/css" href="styles/contact_responsive.css">
 <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
 <script src="styles/jquery.bpopup.min.js"></script>
 <style>
@@ -319,7 +321,10 @@ We only offer the highest quality of teaching from experts in the field. Extensi
 								if(isset($_POST['form_submit'])){
 									$message = $_POST['form_ncom'];
 									$message = strtolower($message);
+<<<<<<< HEAD
+=======
 								
+>>>>>>> 2cd10acb8d93b8d48e598c77731d48ad38021c5f
 									$appr = true;
 									$date_v = date("y-m-d h:i:sa");
 									require_once('connect.php');
@@ -360,8 +365,119 @@ We only offer the highest quality of teaching from experts in the field. Extensi
 							?>
 
 						</div>
-					</div>
+						<br/><br/><br/><br/><br/>
+						<center>
+							<form  method="post" action=<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?> >
+									<button name="show_form" id="comment_send_btn" type="button" class="comment_send_btn trans_200" data-toggle="modal" data-target="#ClaudeModalCenter" style="width:35%;background:#17a2b8;height:40px">
+										Acquire Flag Value
+									</button>
+							</form>
+							
+						</center>
+						<div class="modal fade" id="ClaudeModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+							<div class="modal-dialog modal-dialog-centered" role="document">
+									<div class="modal-content">
+										<form method="post" action=<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?> >
+											<div class="modal-header" style="background:#ffb606;color:white;border-bottom:1px solid #ffb606">
+												<h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+												<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+												<span aria-hidden="true">&times;</span>
+												</button>
+											</div>
+											<div class="modal-body" style="background:#1a1a1a;color:white;">
+													<div class="form-group row">
+														<label for="colFormLabelSm" class="col-sm-6 col-form-label col-form-label-sm">Data Table Name:</label>
+														<div class="col-sm-5">
+															<input name="t_value" type="text" class="form-control form-control-sm" id="colFormLabelSm" >
+														</div>
+													</div>
+													<div class="form-group row">
+														<label for="colFormLabelSm" class="col-sm-6 col-form-label col-form-label-sm">No of Columns in the Table:</label>
+														<div class="col-sm-5">
+															<input name="t_size" type="text" class="form-control form-control-sm" id="colFormLabelSm" >
+														</div>
+													</div>
+													<div class="form-group row">
+														<label for="colFormLabelSm" class="col-sm-6 col-form-label col-form-label-sm">Vulnerability Name</label>
+														<div class="col-sm-5">
+															<input name="vuln_name" type="text" class="form-control form-control-sm" id="colFormLabelSm" >
+														</div>
+													</div>
+													<div class="form-group row">
+														<label for="colFormLabelSm" class="col-sm-6 col-form-label col-form-label-sm">Column Names (seperated by a comma:)</label>
+														<div class="col-sm-5">
+															<input name="t_cols" type="text" class="form-control form-control-sm" id="colFormLabelSm" placeholder="separate with a ,">
+														</div>
+													</div>								
+											</div>
+											<div class="modal-footer">
+												<button id="revel_Flag" name="showFlagDC" type="submit" value="Submit" class="btn btn-primary btn-sm" style="background:#ffb606; border-color:#ffb606">Reveal Flag</button>
+												<button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal" style="background:#1a1a1a">Close</button>
+											</div>
+										</form>	
 
+									</div>
+							</div>
+						</div>
+						<?php
+							if(isset($_POST['showFlagDC'])){
+								if(($_POST['t_value'] == null)|| ($_POST['t_size'] == null) || ($_POST['vuln_name'] == null) || ($_POST['t_cols'] == null) || ($_POST['t_value'] == '')|| ($_POST['t_size'] == '') || ($_POST['vuln_name'] == '') || ($_POST['t_cols'] == '') ){
+									echo '<center><span class="badge badge-danger">Please fill the fields correctly inorder to obtain the Flag</span></center>';
+								}else{
+									$tableV = htmlspecialchars(htmlentities($_POST['t_value']));
+									$tableS = htmlspecialchars(htmlentities($_POST['t_size']));
+									$vulN = htmlspecialchars(htmlentities($_POST['vuln_name']));
+									$tableC = htmlspecialchars(htmlentities($_POST['t_cols']));
+
+									$tableV = urlencode(preg_replace('/[^A-Za-z0-9\-]/','',strtolower(trim(str_replace(' ','',$tableV)))));
+									$tableS = urlencode(preg_replace('/[^A-Za-z0-9\-]/','',strtolower(trim(str_replace(' ','',$tableS)))));
+									$vulN = urlencode(preg_replace('/[^A-Za-z0-9\-]/','',strtolower(trim(str_replace(' ','',$vulN)))));
+									$tableC = preg_replace('/[^A-Za-z0-9_,\-]/','',strtolower(trim(str_replace(' ','',$tableC))));
+									echo $tableC;
+									$colSize = sizeof(explode(",",$tableC));
+									echo "<br>".$colSize;
+									if(($tableV === 'ciit_news_comments') && (checkSize($tableS)) && (checkVulname($vulN)) && (checkCols($tableC))){
+
+									}
+
+								}
+
+
+							}
+
+							function checkVulname($nameVul){
+								$nameVul = strtolower($nameVul);
+								if(strpos($nameVul, 'xss') !== false){
+									if(strpos($nameVul, 'stored') !== false){
+										return true;
+									}else{return false;}
+								}else{
+									if(strpos($nameVul, 'storedcrosssitescripting') !== false){
+										return true;
+									}else{return false;}
+								}
+							}
+
+							function checkCols($tCols){
+								$flx = flase;
+								$tCols = strtolower($tCols);
+								$colSize = sizeof(explode(",",$tCols));
+								if($colSize === 6){
+									if((strpos($nameVul, 'u_id') !== false) && (strpos($nameVul, 'u_name') !== false) && (strpos($nameVul, 'u_email') !== false) && (strpos($nameVul, 'ad_date') !== false) && (strpos($nameVul, 'ad_appr') !== false)){
+										$flx = true;
+									}
+								}
+								return $flx;
+
+							}
+
+							function checkSize($tSizetable){
+								if(is_numeric($tSizetable) && $tSizetable === 6){
+									return true;
+								}else{ return false;}
+							}
+						?>
+					</div>
 				</div>
 
 				<!-- Sidebar Column -->
@@ -450,6 +566,24 @@ We only offer the highest quality of teaching from experts in the field. Extensi
 								<div class="tag"><a href="#">Graduate</a></div>
 							</div>
 						</div>
+						<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+						<div class="about">
+							<div class="about_title">Note to the User</div>
+							<p class="about_text">Hello User, this news posting page may contain some vulnerabilities in it. You can find them by trial and error or any method you wish. Submit the flag inorder to advance to the next challenge from below.</p>
+							<div class="contact_info">
+								<ul>
+									<li class="contact_info_item">
+										<div class="contact_info_icon">
+											<img src="images/exam.svg" alt="https://www.flaticon.com/authors/lucy-g">
+										</div>
+										<a target="_blank" href="2CA88326E269/sqli-sourcecode.txt" style="color:#ffb606" >Click to View the Source Code </a>
+										</li>
+									
+								</ul>
+							</div>
+
+						</div>
+						
 
 					</div>
 				</div>
@@ -497,7 +631,7 @@ We only offer the highest quality of teaching from experts in the field. Extensi
 								<button name="skipLevel" id="newsletter_submit" type="submit" class="newsletter_submit_btn trans_300" value="Submit" style="background:#17a2b8;">Skip to Next Level</button>
 								<?php
 									if(isset($_POST['skipLevel'])){
-										header("location: news_post.php");
+										header("location: teachers.php");
 									}
 								?>
 							</form>
