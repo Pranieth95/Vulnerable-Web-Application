@@ -489,7 +489,7 @@
 
 </div>
 -->
-
+<!--
         <div id="unencrypted_communication"
      class="exercise-link active">
 
@@ -516,7 +516,7 @@
   </div>
 
 </div>
-
+      -->  
 <!--
         <div id="user_enumeration"
      class="exercise-link active">
