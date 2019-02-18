@@ -976,7 +976,7 @@
     descriptions["xss_stored"] = "If your site allows users to add content, you need to be sure that attackers cannot inject malicious JavaScript. One method of doing this is called cross-site scripting (XSS).";
     public["xss_stored"]       = true;
     urls["xss_stored"]         = { "exercise"   : "news_post.php",
-                                    "prevention" : "/prevention/xss-stored",
+                                    "prevention" : "xss.php",
                                     "quiz"       : "/quiz/xss-stored"}
 
 
