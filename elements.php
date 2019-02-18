@@ -1048,7 +1048,7 @@
     descriptions["broken_access_control"] = "All resources on your site need to have access control implemented, even if they aren&#39;t intended to be discoverable by a user. Relying on security through obscurity will lead to problems.";
     public["broken_access_control"]       = false;
     urls["broken_access_control"]         = { "exercise"   : "news.php",
-                                    "prevention" : "/prevention/broken-access-control",
+                                    "prevention" : "BrokAccess.php",
                                     "quiz"       : "/quiz/broken-access-control"}
 
 
