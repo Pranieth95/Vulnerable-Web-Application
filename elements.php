@@ -489,7 +489,7 @@
 
 </div>
 -->
-
+<!--
         <div id="unencrypted_communication"
      class="exercise-link active">
 
@@ -516,7 +516,7 @@
   </div>
 
 </div>
-
+      -->  
 <!--
         <div id="user_enumeration"
      class="exercise-link active">
@@ -743,7 +743,7 @@
 
 </div>
 -->
- 
+ <!--
         <div id="denial_of_service_attacks"
      class="exercise-link active">
 
@@ -770,8 +770,8 @@
   </div>
 
 </div>
-
-
+--> 
+<!--
         <div id="email_spoofing"
      class="exercise-link active">
 
@@ -798,8 +798,8 @@
   </div>
 
 </div>
-
-
+--> 
+<!--
         <div id="malvertising"
      class="exercise-link active">
 
@@ -826,7 +826,7 @@
   </div>
 
 </div>
-
+-->
  
         <div id="lax_security_settings"
      class="exercise-link active">
@@ -1084,7 +1084,7 @@
     descriptions["information_leakage"] = "Revealing system information helps an attacker learn about your site, and gives them an idea how it might be attacked.";
     public["information_leakage"]       = false;
     urls["information_leakage"]         = { "exercise"   : ".git",
-                                    "prevention" : "/prevention/information-leakage",
+                                    "prevention" : "infoLeakage.php",
                                     "quiz"       : "/quiz/information-leakage"}
 
 
