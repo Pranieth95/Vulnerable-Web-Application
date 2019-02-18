@@ -1021,7 +1021,7 @@
     descriptions["xss_reflected"] = "When building a website, you need to be sure you do not accidentally create a channel that allows malicious JavaScript to be bounced off your server - a &quot;reflected&quot; cross-site scripting attack.";
     public["xss_reflected"]       = false;
     urls["xss_reflected"]         = { "exercise"   : "teachers.php",
-                                    "prevention" : "/prevention/xss-reflected",
+                                    "prevention" : "RefXss.php",
                                     "quiz"       : "/quiz/xss-reflected"}
 
 
