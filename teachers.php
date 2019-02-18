@@ -10,6 +10,12 @@
 <link href="plugins/fontawesome-free-5.0.1/css/fontawesome-all.css" rel="stylesheet" type="text/css">
 <link rel="stylesheet" type="text/css" href="styles/teachers_styles.css">
 <link rel="stylesheet" type="text/css" href="styles/teachers_responsive.css">
+<link rel="stylesheet" type="text/css" href="styles/news_post_styles.css">
+<link rel="stylesheet" type="text/css" href="styles/news_post_responsive.css">
+<link rel="stylesheet" type="text/css" href="styles/contact_styles.css">
+<link rel="stylesheet" type="text/css" href="styles/contact_responsive.css">
+<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+<script src="styles/jquery.bpopup.min.js"></script>
 
 <style>
 .button {
@@ -224,9 +230,10 @@
 							echo 'No search results for: '.$search_n ;
 						}
 					}
-					
 					else {
 						echo "0 results";
+
+					
 					}
 
 					$conn->close();
@@ -435,9 +442,189 @@
 
 	<footer class="footer">
 		<div class="container">
-			
-			<!-- Newsletter -->
 
+			<!-- Flag Reveal -->
+			<center>
+				<form  method="post" action=<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?> >
+						<button name="show_form" id="comment_send_btn" type="button" class="comment_send_btn trans_200" data-toggle="modal" data-target="#ClaudeModalCenter" style="width:35%;background:#17a2b8;height:40px">
+							Acquire Flag Value
+						</button>
+				</form>
+				
+			</center>
+			<div class="modal fade" id="ClaudeModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+				<div class="modal-dialog modal-dialog-centered" role="document">
+						<div class="modal-content">
+							<form method="post" action=<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?> >
+								<div class="modal-header" style="background:#ffb606;color:white;border-bottom:1px solid #ffb606">
+									<h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+									<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+									</button>
+								</div>
+								<div class="modal-body" style="background:#1a1a1a;color:white;">
+										<div class="form-group row">
+											<label for="colFormLabelSm" class="col-sm-6 col-form-label col-form-label-sm">Data Table Name:</label>
+											<div class="col-sm-5">
+												<input name="t_value" type="text" class="form-control form-control-sm" id="colFormLabelSm" >
+											</div>
+										</div>
+										<div class="form-group row">
+											<label for="colFormLabelSm" class="col-sm-6 col-form-label col-form-label-sm">No of Columns in the Table:</label>
+											<div class="col-sm-5">
+												<input name="t_size" type="text" class="form-control form-control-sm" id="colFormLabelSm" >
+											</div>
+										</div>
+										<div class="form-group row">
+											<label for="colFormLabelSm" class="col-sm-6 col-form-label col-form-label-sm">Vulnerability Name</label>
+											<div class="col-sm-5">
+												<input name="vuln_name" type="text" class="form-control form-control-sm" id="colFormLabelSm" >
+											</div>
+										</div>
+										<div class="form-group row">
+											<label for="colFormLabelSm" class="col-sm-6 col-form-label col-form-label-sm">Column Names (seperated by a comma:)</label>
+											<div class="col-sm-5">
+												<input name="t_cols" type="text" class="form-control form-control-sm" id="colFormLabelSm" placeholder="separate with a ,">
+											</div>
+										</div>								
+								</div>
+								<div class="modal-footer">
+									<button id="revel_Flag" name="showFlagDC" type="submit" value="Submit" class="btn btn-primary btn-sm" style="background:#ffb606; border-color:#ffb606">Reveal Flag</button>
+									<button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal" style="background:#1a1a1a">Close</button>
+								</div>
+							</form>	
+
+						</div>
+				</div>
+			</div>
+			<?php
+				if(isset($_POST['showFlagDC'])){
+					if(($_POST['t_value'] == null)|| ($_POST['t_size'] == null) || ($_POST['vuln_name'] == null) || ($_POST['t_cols'] == null) || ($_POST['t_value'] == '')|| ($_POST['t_size'] == '') || ($_POST['vuln_name'] == '') || ($_POST['t_cols'] == '') ){
+						echo '<center><span class="badge badge-danger">Please fill the fields correctly inorder to obtain the Flag</span></center>';
+					}else{
+						$tableV = htmlspecialchars(htmlentities($_POST['t_value']));
+						$tableS = htmlspecialchars(htmlentities($_POST['t_size']));
+						$vulN = htmlspecialchars(htmlentities($_POST['vuln_name']));
+						$tableC = htmlspecialchars(htmlentities($_POST['t_cols']));
+
+						$tableV = urlencode(preg_replace('/[^A-Za-z0-9_\-]/','',strtolower(trim(str_replace(' ','',$tableV)))));
+						$tableS = urlencode(preg_replace('/[^A-Za-z0-9\-]/','',strtolower(trim(str_replace(' ','',$tableS)))));
+						$vulN = urlencode(preg_replace('/[^A-Za-z0-9\-]/','',strtolower(trim(str_replace(' ','',$vulN)))));
+						$tableC = preg_replace('/[^A-Za-z0-9_,\-]/','',strtolower(trim(str_replace(' ','',$tableC))));
+						if(($tableV == 'ciit_news_comments') && (checkSize($tableS)) && (checkVulname($vulN)) && (checkCols($tableC))){
+							$_SESSION["usertoken_2"] = hash('sha256',base64_encode(date("Y-m-d h:i:sa") . " storedXSS : ".$tableV.$tableC.$tableS.$vulN));
+							echo '<br> <br>
+							<div class="alert alert-dismissible alert-success">
+								<button type="button" class="close" data-dismiss="alert">&times;</button>
+								<strong>Well done!</strong> You successfully found the Vulnerability .
+							</div>
+							';
+							echo '
+							<span 	class="badge badge-pill badge-info" 
+									style="
+										display: block;
+										margin-left: auto;
+										margin-right: auto"
+							>'.$_SESSION["usertoken_2"].
+							'</span>
+							';
+						}else{
+							echo '<br> 
+							<span 	class="badge badge-pill badge-danger" 
+									style="
+										display: block;
+										margin-left: auto;
+										margin-right: auto"
+							>Please Try Again With Correct Input Values</span>
+							';
+						}
+
+					}
+
+
+				}
+
+				function checkVulname($nameVul){
+					$nameVul = strtolower($nameVul);
+					if(strpos($nameVul, 'xss') !== false){
+						if(strpos($nameVul, 'stored') !== false){
+							return true;
+						}else{return false;}
+					}else{
+						if(strpos($nameVul, 'storedcrosssitescripting') !== false){
+							return true;
+						}else{return false;}
+					}
+				}
+
+				function checkCols($tCols){
+					$flx = false;
+					$value= 6;
+					$tCols = strtolower($tCols);
+					$colSize = sizeof(explode(",",$tCols));
+					if($colSize === $value){
+						if((strpos($tCols, 'u_id') !== false) && (strpos($tCols, 'u_name') !== false) && (strpos($tCols, 'u_email') !== false) && (strpos($tCols, 'ad_date') !== false) && (strpos($tCols, 'ad_appr') !== false)){
+							$flx = true;
+						}
+					}
+					return $flx;
+
+				}
+
+				function checkSize($tSizetable){
+					$val = 6;
+					if(is_numeric($tSizetable) && ($tSizetable == $val)){
+						return true;
+					}else{ 
+						return false;
+					}
+				}
+			?>
+
+			<!-- Newsletter -->
+			<div class="newsletter">
+				<div class="row">
+					<div class="col text-center">
+
+						<div id="claude">
+							<h1 id="demo"></h1>
+							<div id="divCounter"></div>
+						</div>
+						<div class="newsletter_form_container mx-auto">
+							<form method="post" action=<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?> >
+								<div class="newsletter_form d-flex flex-md-row flex-column flex-xs-column align-items-center justify-content-center">
+										<input name="sub_token_1val" id="newsletter_email" class="newsletter_email" type="text" placeholder="Enter the Token Value to Log In."  required="required" data-error="Flag is required.">
+										<button name="sub_token_1" id="newsletter_submit" type="submit" class="newsletter_submit_btn trans_300" value="Submit">Log In</button>
+								</div>
+								<?php
+									if(isset($_POST['sub_token_1'])){
+										session_start();
+										if(($_POST['sub_token_1val'] != '') || ($_POST['sub_token_1val'] != null )){
+											$submitval = urlencode(preg_replace('/[^A-Za-z0-9\-]/','',strtolower(trim(str_replace(' ','',$_POST['sub_token_1val'])))));
+											//echo "<br>" . $submitval . " <br> token: <br>" .  $_SESSION["usertoken_1"];
+											if($submitval == trim(urlencode($_SESSION["usertoken_2"]))){
+												header("location: teachers.php");
+											}else{
+												echo '<span class="badge badge-danger">Wrong Flag</span> <br/>';
+											}
+										}
+									}
+								?>
+								<br/>
+							</form>
+							<form method="post" action=<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?> >
+								<button name="skipLevel" id="newsletter_submit" type="submit" class="newsletter_submit_btn trans_300" value="Submit" style="background:#17a2b8;">Skip to Next Level</button>
+								<?php
+									if(isset($_POST['skipLevel'])){
+										header("location: teachers.php");
+									}
+								?>
+							</form>
+							
+						</div>
+					</div>
+				</div>
+			</div>
 			
 
 			<!-- Footer Content -->

@@ -321,10 +321,7 @@ We only offer the highest quality of teaching from experts in the field. Extensi
 								if(isset($_POST['form_submit'])){
 									$message = $_POST['form_ncom'];
 									$message = strtolower($message);
-<<<<<<< HEAD
-=======
 								
->>>>>>> 2cd10acb8d93b8d48e598c77731d48ad38021c5f
 									$appr = true;
 									$date_v = date("y-m-d h:i:sa");
 									require_once('connect.php');
@@ -365,7 +362,7 @@ We only offer the highest quality of teaching from experts in the field. Extensi
 							?>
 
 						</div>
-						<br/><br/><br/><br/><br/>
+						<br/><br/><br/>
 						<center>
 							<form  method="post" action=<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?> >
 									<button name="show_form" id="comment_send_btn" type="button" class="comment_send_btn trans_200" data-toggle="modal" data-target="#ClaudeModalCenter" style="width:35%;background:#17a2b8;height:40px">
@@ -429,15 +426,36 @@ We only offer the highest quality of teaching from experts in the field. Extensi
 									$vulN = htmlspecialchars(htmlentities($_POST['vuln_name']));
 									$tableC = htmlspecialchars(htmlentities($_POST['t_cols']));
 
-									$tableV = urlencode(preg_replace('/[^A-Za-z0-9\-]/','',strtolower(trim(str_replace(' ','',$tableV)))));
+									$tableV = urlencode(preg_replace('/[^A-Za-z0-9_\-]/','',strtolower(trim(str_replace(' ','',$tableV)))));
 									$tableS = urlencode(preg_replace('/[^A-Za-z0-9\-]/','',strtolower(trim(str_replace(' ','',$tableS)))));
 									$vulN = urlencode(preg_replace('/[^A-Za-z0-9\-]/','',strtolower(trim(str_replace(' ','',$vulN)))));
 									$tableC = preg_replace('/[^A-Za-z0-9_,\-]/','',strtolower(trim(str_replace(' ','',$tableC))));
-									echo $tableC;
-									$colSize = sizeof(explode(",",$tableC));
-									echo "<br>".$colSize;
-									if(($tableV === 'ciit_news_comments') && (checkSize($tableS)) && (checkVulname($vulN)) && (checkCols($tableC))){
-
+									if(($tableV == 'ciit_news_comments') && (checkSize($tableS)) && (checkVulname($vulN)) && (checkCols($tableC))){
+										$_SESSION["usertoken_2"] = hash('sha256',base64_encode(date("Y-m-d h:i:sa") . " storedXSS : ".$tableV.$tableC.$tableS.$vulN));
+										echo '<br> <br>
+										<div class="alert alert-dismissible alert-success">
+											<button type="button" class="close" data-dismiss="alert">&times;</button>
+											<strong>Well done!</strong> You successfully found the Vulnerability .
+										</div>
+										';
+										echo '
+										<span 	class="badge badge-pill badge-info" 
+												style="
+													display: block;
+													margin-left: auto;
+													margin-right: auto"
+										>'.$_SESSION["usertoken_2"].
+										'</span>
+										';
+									}else{
+										echo '<br> 
+										<span 	class="badge badge-pill badge-danger" 
+												style="
+													display: block;
+													margin-left: auto;
+													margin-right: auto"
+										>Please Try Again With Correct Input Values</span>
+										';
 									}
 
 								}
@@ -459,11 +477,12 @@ We only offer the highest quality of teaching from experts in the field. Extensi
 							}
 
 							function checkCols($tCols){
-								$flx = flase;
+								$flx = false;
+								$value= 6;
 								$tCols = strtolower($tCols);
 								$colSize = sizeof(explode(",",$tCols));
-								if($colSize === 6){
-									if((strpos($nameVul, 'u_id') !== false) && (strpos($nameVul, 'u_name') !== false) && (strpos($nameVul, 'u_email') !== false) && (strpos($nameVul, 'ad_date') !== false) && (strpos($nameVul, 'ad_appr') !== false)){
+								if($colSize === $value){
+									if((strpos($tCols, 'u_id') !== false) && (strpos($tCols, 'u_name') !== false) && (strpos($tCols, 'u_email') !== false) && (strpos($tCols, 'ad_date') !== false) && (strpos($tCols, 'ad_appr') !== false)){
 										$flx = true;
 									}
 								}
@@ -472,9 +491,12 @@ We only offer the highest quality of teaching from experts in the field. Extensi
 							}
 
 							function checkSize($tSizetable){
-								if(is_numeric($tSizetable) && $tSizetable === 6){
+								$val = 6;
+								if(is_numeric($tSizetable) && ($tSizetable == $val)){
 									return true;
-								}else{ return false;}
+								}else{ 
+									return false;
+								}
 							}
 						?>
 					</div>
@@ -616,14 +638,13 @@ We only offer the highest quality of teaching from experts in the field. Extensi
 										if(($_POST['sub_token_1val'] != '') || ($_POST['sub_token_1val'] != null )){
 											$submitval = urlencode(preg_replace('/[^A-Za-z0-9\-]/','',strtolower(trim(str_replace(' ','',$_POST['sub_token_1val'])))));
 											//echo "<br>" . $submitval . " <br> token: <br>" .  $_SESSION["usertoken_1"];
-											if($submitval == trim(urlencode($_SESSION["usertoken_1"]))){
-												header("location: news_post.php");
+											if($submitval == trim(urlencode($_SESSION["usertoken_2"]))){
+												header("location: teachers.php");
 											}else{
 												echo '<span class="badge badge-danger">Wrong Flag</span> <br/>';
 											}
 										}
 									}
-								
 								?>
 								<br/>
 							</form>
