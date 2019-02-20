@@ -971,7 +971,7 @@
                                     "quiz"       : "/quiz/sql-injection"}
 
 
-    teasers["xss_stored"]      = "See how an attacker would make use of XSS.";
+    teasers["xss_stored"]      = "See how an attacker would make use of XSS."; 
     prevention["xss_stored"]   = "Learn how to protect against XSS";
     descriptions["xss_stored"] = "If your site allows users to add content, you need to be sure that attackers cannot inject malicious JavaScript. One method of doing this is called cross-site scripting (XSS).";
     public["xss_stored"]       = true;
