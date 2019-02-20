@@ -1120,7 +1120,7 @@
     descriptions["weak_session"] = "Guessable session IDs make your website vulnerable to session hijacking.";
     public["weak_session"]       = false;
     urls["weak_session"]         = { "exercise"   : "/exercises/weak-session",
-                                    "prevention" : "/prevention/weak-session",
+                                    "prevention" : "sensData.php",
                                     "quiz"       : "/quiz/weak-session"}
 
 
@@ -1174,7 +1174,7 @@
     descriptions["lax_security_settings"] = "Improper security settings are a common cause of vulnerabilities.";
     public["lax_security_settings"]       = false;
     urls["lax_security_settings"]         = { "exercise"   : "/exercises/lax-security-settings",
-                                    "prevention" : "/prevention/lax-security-settings",
+                                    "prevention" : "knownVul.php",
                                     "quiz"       : "/quiz/lax-security-settings"}
 
 

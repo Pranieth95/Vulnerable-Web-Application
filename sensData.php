@@ -193,23 +193,33 @@
 <div class="container">
   <div class="row prevention-tips has-sponsor">
     <div class="row title modest">
-      Protecting Against Using components with known vulnerabilities
+      Protecting Against Sensitive Data Exposure
     </div>
 
     
-<p><strong>Known vulnerabilities</strong>  are vulnerabilities that were discovered in open source components and published in the NVD, security advisories or issue trackers.</a>.
-From the moment of publication , a vulnerability can be exploited by hackers who find the documentation. According to OWASP, the problem of using components with known vulnerabilities is highly prevalent.  Moreover, use of open source components is so widespread that many development leaders don't even know what they have. </p>
+<p><strong>Sensitive Data Exposure</strong> </a>-
+The first thing is to determine the protection needs of data in transit and at rest. For example, passwords, credit card numbers, health records, personal information and business secrets require extra protection, particularly if that data falls under privacy laws.</p>
 
-<p class="well"><strong>The possible impact of open source vulnerabilities ranges from minor to some of the largest breaches known. For example, The infamous  Equifax breach, was caused by using an Apache Struts version which had a known vulnerability since March 2017.</strong></p>
+<p class="well"><strong>As the name suggests, sensitive data exposure occurs when an application or program, like a smartphone app or a browser, does not adequately protect information such as passwords, payment info, or health data. With this information, cybercriminals can make fraudulent purchases, access a victim’s personal accounts, or even personal blackmail.</strong></p>
 
 
 
-<p><strong>How to Prevent?</strong> </p>
-<p>1.Remove unused dependencies, unnecessary features, components, files, and documentation.</p>
-<p>2.Continuously inventory the versions of both client-side and server-side components (e.g. frameworks, libraries) and their dependencies using tools like versions, DependencyCheck, retire.js, etc. Continuously monitor sources like CVE and NVD for vulnerabilities in the components. Use software composition analysis tools to automate the process. Subscribe to email alerts for security vulnerabilities related to components you use.</p>
-<p>3.Only obtain components from official sources over secure links. Prefer signed packages to reduce the chance of including a modified, malicious component. </p>
-<p>4.Monitor for libraries and components that are unmaintained or do not create security patches for older versions. If patching is not possible, consider deploying a virtual patch to monitor, detect, or protect against the discovered issue.</p>
-<p>Every organization must ensure that there is an ongoing plan for monitoring, triaging, and applying updates or configuration changes for the lifetime of the application or portfolio.</p>
+    
+<p><strong>What’s the worst thing that could happen when you suffer a Sensitive Data Exposure?</strong></p>
+
+
+
+<ul>
+<li><strong>Sensitive data exposure can be financially devastating to a website. One data breach costs an average of $3.8 million due to direct costs, such as the cost of investigating the breach, and indirect costs, like reputation damage. While big-name businesses can usually weather a data breach, smaller websites and businesses often can’t afford the fallout.</strong></li>
+
+</ul>
+
+<p><strong>How to prevent Sensitive Data Exposure </strong> </p>
+<p>1.Install an SSL certificate - on your site, if you haven’t already, to protect data as it transfers from your site to your server. Popular browsers and search engines are flagging sites without SSL as “insecure,” so it’s a measure worth taking to put your visitors’ minds at ease. HTTPS is also one of Google’s ranking signals, so you may see improved search engine visibility as well.</p>
+<p>2.Never store or transmit data in clear text - Always encrypt the data using strong algorithms, and ensure your website application uses hashing for stored passwords.</p>
+<p>3.Keep a backup of the stored data separate from your website’s server - In the event that your server is breached, any data stored on your site will be at risk. Storing the backup separately ensures that if one copy of the data is compromised, the other isn’t, so that you can easily restore your site from a clean and secure copy.  </p>
+<p>4.Use strong, unique passwords - for your applications and change them regularly.</p>
+<p>5.Prevent browsers from saving sensitive data - Ensure that the browser headers do not cache and save login credentials or other information.Websites, businesses, and victims have a lot to lose from sensitive data exposure. </p>
 
 
  
