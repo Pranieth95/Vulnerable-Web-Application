@@ -550,7 +550,7 @@
      class="exercise-link active">
 
   <div class="exercise-label">
-    Information Leakage
+    Security Misconfiguration
   </div>
 
   <div class="spacer">
@@ -606,7 +606,7 @@
      class="exercise-link active">
 
   <div class="exercise-label">
-    Privilege Escalation
+    Broken Authentication
   </div>
 
   <div class="spacer">
@@ -635,7 +635,7 @@
      class="exercise-link active">
 
   <div class="exercise-label">
-    Weak Session IDs
+    Sensitive Data exposure
   </div>
 
   <div class="spacer">
@@ -686,7 +686,7 @@
 
 </div>
 
-
+<!--
         <div id="session_fixation"
      class="exercise-link active">
 
@@ -713,7 +713,7 @@
   </div>
 
 </div>
-
+-->
 
   <!--
         <div id="xml_external_entities"
@@ -832,7 +832,7 @@
      class="exercise-link active">
 
   <div class="exercise-label">
-    Lax Security Settings
+    Known Vulnerabilities
   </div>
 
   <div class="spacer">
@@ -860,7 +860,7 @@
      class="exercise-link active">
 
   <div class="exercise-label">
-    Toxic Dependencies
+    Insufficient Monitoring
   </div>
 
   <div class="spacer">
@@ -1102,7 +1102,7 @@
     descriptions["privilege_escalation"] = "Privilege escalation occurs when an attacker exploits a vulnerability to impersonate another user or gain extra permissions.";
     public["privilege_escalation"]       = false;
     urls["privilege_escalation"]         = { "exercise"   : "/exercises/privilege-escalation",
-                                    "prevention" : "/prevention/privilege-escalation",
+                                    "prevention" : "BrokenAuth.php",
                                     "quiz"       : "/quiz/privilege-escalation"}
 
 
@@ -1129,7 +1129,7 @@
     descriptions["xml_bombs"] = "XML documents can incorporate inline macros which are expanded at parse-time. Unsafe treatment of these macros can make your server vulnerable to attack from specially crafted XML files.";
     public["xml_bombs"]       = false;
     urls["xml_bombs"]         = { "exercise"   : "/exercises/xml-bombs",
-                                    "prevention" : "/prevention/xml-bombs",
+                                    "prevention" : "xxe.php",
                                     "quiz"       : "/quiz/xml-bombs"}
 
 
