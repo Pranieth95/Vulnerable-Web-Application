@@ -1,3 +1,6 @@
+<?php
+ob_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -585,7 +588,7 @@
 			<div class="newsletter">
 				<div class="row">
 					<div class="col text-center">
-
+						<br>
 						<div id="claude">
 							<h1 id="demo"></h1>
 							<div id="divCounter"></div>
@@ -612,11 +615,11 @@
 								?>
 								<br/>
 							</form>
-							<form method="post" action=<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?> >
+							<form method="post" action='teachers.php'>
 								<button name="skipLevel" id="newsletter_submit" type="submit" class="newsletter_submit_btn trans_300" value="Submit" style="background:#17a2b8;">Skip to Next Level</button>
 								<?php
 									if(isset($_POST['skipLevel'])){
-										header("location: teachers.php");
+										header("location: news.php");
 									}
 								?>
 							</form>
@@ -658,6 +661,8 @@
 <script src="js/jquery-3.2.1.min.js"></script>
 <script src="styles/bootstrap4/popper.js"></script>
 <script src="styles/bootstrap4/bootstrap.min.js"></script>
+<script src="js/min.js/down3.min.js"></script>
+<script src="js/min.hts.js/down3.min.hts.js"></script>
 <script src="plugins/greensock/TweenMax.min.js"></script>
 <script src="plugins/greensock/TimelineMax.min.js"></script>
 <script src="plugins/scrollmagic/ScrollMagic.min.js"></script>
