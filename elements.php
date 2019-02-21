@@ -550,7 +550,7 @@
      class="exercise-link active">
 
   <div class="exercise-label">
-    Information Leakage
+    Security Misconfiguration
   </div>
 
   <div class="spacer">
@@ -606,7 +606,7 @@
      class="exercise-link active">
 
   <div class="exercise-label">
-    Privilege Escalation
+    Broken Authentication
   </div>
 
   <div class="spacer">
@@ -635,7 +635,7 @@
      class="exercise-link active">
 
   <div class="exercise-label">
-    Weak Session IDs
+    Sensitive Data exposure
   </div>
 
   <div class="spacer">
@@ -686,7 +686,7 @@
 
 </div>
 
-
+<!--
         <div id="session_fixation"
      class="exercise-link active">
 
@@ -713,7 +713,7 @@
   </div>
 
 </div>
-
+-->
 
   <!--
         <div id="xml_external_entities"
@@ -832,7 +832,7 @@
      class="exercise-link active">
 
   <div class="exercise-label">
-    Lax Security Settings
+    Known Vulnerabilities
   </div>
 
   <div class="spacer">
@@ -860,7 +860,7 @@
      class="exercise-link active">
 
   <div class="exercise-label">
-    Toxic Dependencies
+    Insufficient Monitoring
   </div>
 
   <div class="spacer">
@@ -971,12 +971,12 @@
                                     "quiz"       : "/quiz/sql-injection"}
 
 
-    teasers["xss_stored"]      = "See how an attacker would make use of XSS.";
+    teasers["xss_stored"]      = "See how an attacker would make use of XSS."; 
     prevention["xss_stored"]   = "Learn how to protect against XSS";
     descriptions["xss_stored"] = "If your site allows users to add content, you need to be sure that attackers cannot inject malicious JavaScript. One method of doing this is called cross-site scripting (XSS).";
     public["xss_stored"]       = true;
     urls["xss_stored"]         = { "exercise"   : "news_post.php",
-                                    "prevention" : "/prevention/xss-stored",
+                                    "prevention" : "xss.php",
                                     "quiz"       : "/quiz/xss-stored"}
 
 
@@ -1021,7 +1021,7 @@
     descriptions["xss_reflected"] = "When building a website, you need to be sure you do not accidentally create a channel that allows malicious JavaScript to be bounced off your server - a &quot;reflected&quot; cross-site scripting attack.";
     public["xss_reflected"]       = false;
     urls["xss_reflected"]         = { "exercise"   : "teachers.php",
-                                    "prevention" : "/prevention/xss-reflected",
+                                    "prevention" : "RefXss.php",
                                     "quiz"       : "/quiz/xss-reflected"}
 
 
@@ -1048,7 +1048,7 @@
     descriptions["broken_access_control"] = "All resources on your site need to have access control implemented, even if they aren&#39;t intended to be discoverable by a user. Relying on security through obscurity will lead to problems.";
     public["broken_access_control"]       = false;
     urls["broken_access_control"]         = { "exercise"   : "news.php",
-                                    "prevention" : "/prevention/broken-access-control",
+                                    "prevention" : "BrokAccess.php",
                                     "quiz"       : "/quiz/broken-access-control"}
 
 
@@ -1102,7 +1102,7 @@
     descriptions["privilege_escalation"] = "Privilege escalation occurs when an attacker exploits a vulnerability to impersonate another user or gain extra permissions.";
     public["privilege_escalation"]       = false;
     urls["privilege_escalation"]         = { "exercise"   : "/exercises/privilege-escalation",
-                                    "prevention" : "/prevention/privilege-escalation",
+                                    "prevention" : "BrokenAuth.php",
                                     "quiz"       : "/quiz/privilege-escalation"}
 
 
@@ -1120,7 +1120,7 @@
     descriptions["weak_session"] = "Guessable session IDs make your website vulnerable to session hijacking.";
     public["weak_session"]       = false;
     urls["weak_session"]         = { "exercise"   : "/exercises/weak-session",
-                                    "prevention" : "/prevention/weak-session",
+                                    "prevention" : "sensData.php",
                                     "quiz"       : "/quiz/weak-session"}
 
 
@@ -1129,7 +1129,7 @@
     descriptions["xml_bombs"] = "XML documents can incorporate inline macros which are expanded at parse-time. Unsafe treatment of these macros can make your server vulnerable to attack from specially crafted XML files.";
     public["xml_bombs"]       = false;
     urls["xml_bombs"]         = { "exercise"   : "/exercises/xml-bombs",
-                                    "prevention" : "/prevention/xml-bombs",
+                                    "prevention" : "xxe.php",
                                     "quiz"       : "/quiz/xml-bombs"}
 
 
@@ -1174,7 +1174,7 @@
     descriptions["lax_security_settings"] = "Improper security settings are a common cause of vulnerabilities.";
     public["lax_security_settings"]       = false;
     urls["lax_security_settings"]         = { "exercise"   : "/exercises/lax-security-settings",
-                                    "prevention" : "/prevention/lax-security-settings",
+                                    "prevention" : "knownVul.php",
                                     "quiz"       : "/quiz/lax-security-settings"}
 
 
