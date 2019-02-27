@@ -207,6 +207,10 @@ if(isset($_GET["action"]))
 }
 
 ?>
+
+
+
+
 <!DOCTYPE html>
 <html>
 	<head>
@@ -215,7 +219,51 @@ if(isset($_GET["action"]))
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 	</head>
+	
+			
+			
 	<body>
+
+
+	<div class="newsletter">  
+			
+
+			<div class="row">
+				<div class="col text-center">
+					<div class="newsletter_form_container mx-auto">
+					
+						<form action="shop.php" method="post">
+						<input type="text" name="search" class="newsletter_email"/>
+						<button class="newsletter_submit_btn trans_300" name="btn_search">search</button>
+						</form>
+					</div>
+				</div>
+			</div>
+
+		</div>
+		<?php
+			if(isset($_POST['btn_search'])){
+				$conn=mysqli_connect("localhost","root","","ciit_db");
+				$get=$_POST['search'];
+				if($get){
+					$show="select * from tbl_product where id='$get'";
+					$result=mysqli_query($conn,$show);
+					if (!$result) {
+						printf("Error: %s\n", mysqli_error($conn));
+						exit();
+					}
+					while($rows=mysqli_fetch_array($result)){
+						
+						echo $rows ['id'];
+						echo $rows ['price'];
+					
+						echo "<br/>";
+					}
+				}
+			}
+		?>
+
+
 		<br />
 		<div class="container">
 			<br />
@@ -231,6 +279,7 @@ if(isset($_GET["action"]))
 					while($row = mysqli_fetch_array($result))
 					{
 				?>
+			
 			<div class="col-md-4">
 				<form method="post" action="shop.php?action=add&id=<?php echo $row["id"]; ?>">
 					<div style="border:1px solid #333; background-color:#f1f1f1; border-radius:5px; padding:16px;" align="center">

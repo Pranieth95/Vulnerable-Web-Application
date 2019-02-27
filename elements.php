@@ -1119,7 +1119,7 @@
     prevention["weak_session"]   = "Learn how to secure your session IDs";
     descriptions["weak_session"] = "Guessable session IDs make your website vulnerable to session hijacking.";
     public["weak_session"]       = false;
-    urls["weak_session"]         = { "exercise"   : "/exercises/weak-session",
+    urls["weak_session"]         = { "exercise"   : "shop.php",
                                     "prevention" : "sensData.php",
                                     "quiz"       : "/quiz/weak-session"}
 
