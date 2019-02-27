@@ -230,7 +230,7 @@ ob_start();
 							$count=$count+1;
 						}
 						if($resultcount == 0){
-							echo 'No search results for: '.$search_n ;
+							echo 'No search results for: '.$_GET['search_lec_name'] ;
 						}
 					}
 					else {
@@ -467,29 +467,11 @@ ob_start();
 								</div>
 								<div class="modal-body" style="background:#1a1a1a;color:white;">
 										<div class="form-group row">
-											<label for="colFormLabelSm" class="col-sm-6 col-form-label col-form-label-sm">Data Table Name:</label>
-											<div class="col-sm-5">
-												<input name="t_value" type="text" class="form-control form-control-sm" id="colFormLabelSm" >
-											</div>
-										</div>
-										<div class="form-group row">
-											<label for="colFormLabelSm" class="col-sm-6 col-form-label col-form-label-sm">No of Columns in the Table:</label>
-											<div class="col-sm-5">
-												<input name="t_size" type="text" class="form-control form-control-sm" id="colFormLabelSm" >
-											</div>
-										</div>
-										<div class="form-group row">
 											<label for="colFormLabelSm" class="col-sm-6 col-form-label col-form-label-sm">Vulnerability Name</label>
 											<div class="col-sm-5">
 												<input name="vuln_name" type="text" class="form-control form-control-sm" id="colFormLabelSm" >
 											</div>
-										</div>
-										<div class="form-group row">
-											<label for="colFormLabelSm" class="col-sm-6 col-form-label col-form-label-sm">Column Names (seperated by a comma:)</label>
-											<div class="col-sm-5">
-												<input name="t_cols" type="text" class="form-control form-control-sm" id="colFormLabelSm" placeholder="separate with a ,">
-											</div>
-										</div>								
+										</div>						
 								</div>
 								<div class="modal-footer">
 									<button id="revel_Flag" name="showFlagDC" type="submit" value="Submit" class="btn btn-primary btn-sm" style="background:#ffb606; border-color:#ffb606">Reveal Flag</button>
@@ -502,35 +484,30 @@ ob_start();
 			</div>
 			<?php
 				if(isset($_POST['showFlagDC'])){
-					if(($_POST['t_value'] == null)|| ($_POST['t_size'] == null) || ($_POST['vuln_name'] == null) || ($_POST['t_cols'] == null) || ($_POST['t_value'] == '')|| ($_POST['t_size'] == '') || ($_POST['vuln_name'] == '') || ($_POST['t_cols'] == '') ){
+					if(($_POST['vuln_name'] == null) || ($_POST['vuln_name'] == '')){
 						echo '<center><span class="badge badge-danger">Please fill the fields correctly inorder to obtain the Flag</span></center>';
 					}else{
-						$tableV = htmlspecialchars(htmlentities($_POST['t_value']));
-						$tableS = htmlspecialchars(htmlentities($_POST['t_size']));
 						$vulN = htmlspecialchars(htmlentities($_POST['vuln_name']));
-						$tableC = htmlspecialchars(htmlentities($_POST['t_cols']));
-
-						$tableV = urlencode(preg_replace('/[^A-Za-z0-9_\-]/','',strtolower(trim(str_replace(' ','',$tableV)))));
-						$tableS = urlencode(preg_replace('/[^A-Za-z0-9\-]/','',strtolower(trim(str_replace(' ','',$tableS)))));
 						$vulN = urlencode(preg_replace('/[^A-Za-z0-9\-]/','',strtolower(trim(str_replace(' ','',$vulN)))));
-						$tableC = preg_replace('/[^A-Za-z0-9_,\-]/','',strtolower(trim(str_replace(' ','',$tableC))));
-						if(($tableV == 'ciit_news_comments') && (checkSize($tableS)) && (checkVulname($vulN)) && (checkCols($tableC))){
-							$_SESSION["usertoken_2"] = hash('sha256',base64_encode(date("Y-m-d h:i:sa") . " storedXSS : ".$tableV.$tableC.$tableS.$vulN));
-							echo '<br> <br>
-							<div class="alert alert-dismissible alert-success">
-								<button type="button" class="close" data-dismiss="alert">&times;</button>
-								<strong>Well done!</strong> You successfully found the Vulnerability .
+						if(checkVulname($vulN)){
+							echo '<br> <br> <center>
+							<div class="card border-danger mb-3" style="max-width: 30rem;">
+							  <div class="card-header" style="background:#ffb606;color:white;border-bottom:1px solid #ffb606"><b>Task to Get the Flag</b></div>
+							  <div class="card-body" style="background:#1a1a1a;color:white;border-bottom:1px solid #ffb606">
+							    <label for="colFormLabelSm" class="col-sm-12 col-form-label col-form-label-sm">As you have found the vulnerability as the reflected XSS. using the aforementioned vulnerability: 
+							    </label>
+							    <label class="text-danger">Create a GET request to the following URL, including "username" and "password" as "root" and "toor" respectively in order to grab the flag from this page.</label>
+							     <label class="text-success">revealReflectXSSflagD.php</label> <br>
+							    <label class="text-info">Hint: You may use a Form in Handy</label>
+							   
+							    
+							  </div>
 							</div>
+							</center>
 							';
-							echo '
-							<span 	class="badge badge-pill badge-info" 
-									style="
-										display: block;
-										margin-left: auto;
-										margin-right: auto"
-							>'.$_SESSION["usertoken_2"].
-							'</span>
-							';
+							$cookie_name = "_reflexVUser";
+							$cookie_value = "userFound:b89b9c75f85a94057ff5451ebe212";
+							setcookie($cookie_name, $cookie_value, time() + (86400 * 2), "/");
 						}else{
 							echo '<br> 
 							<span 	class="badge badge-pill badge-danger" 
@@ -541,45 +518,26 @@ ob_start();
 							>Please Try Again With Correct Input Values</span>
 							';
 						}
-
 					}
-
-
 				}
 
 				function checkVulname($nameVul){
 					$nameVul = strtolower($nameVul);
 					if(strpos($nameVul, 'xss') !== false){
-						if(strpos($nameVul, 'stored') !== false){
+						if(strpos($nameVul, 'reflected') !== false){
 							return true;
 						}else{return false;}
 					}else{
-						if(strpos($nameVul, 'storedcrosssitescripting') !== false){
+						if(strpos($nameVul, 'reflectedcrosssitescripting') !== false){
 							return true;
-						}else{return false;}
-					}
-				}
-
-				function checkCols($tCols){
-					$flx = false;
-					$value= 6;
-					$tCols = strtolower($tCols);
-					$colSize = sizeof(explode(",",$tCols));
-					if($colSize === $value){
-						if((strpos($tCols, 'u_id') !== false) && (strpos($tCols, 'u_name') !== false) && (strpos($tCols, 'u_email') !== false) && (strpos($tCols, 'ad_date') !== false) && (strpos($tCols, 'ad_appr') !== false)){
-							$flx = true;
+						}else{
+							if(strpos($nameVul, 'reflectcrosssitescripting') !== false){
+								return true;
+							}else{
+								return false;
+							}
+							
 						}
-					}
-					return $flx;
-
-				}
-
-				function checkSize($tSizetable){
-					$val = 6;
-					if(is_numeric($tSizetable) && ($tSizetable == $val)){
-						return true;
-					}else{ 
-						return false;
 					}
 				}
 			?>
@@ -593,6 +551,41 @@ ob_start();
 							<h1 id="demo"></h1>
 							<div id="divCounter"></div>
 						</div>
+						<br>
+						<?php 
+							if(isset($_COOKIE['_reflexVUserFDC'])){
+								echo '<br> <br>
+								<div class="alert alert-dismissible alert-success">
+									<button type="button" class="close" data-dismiss="alert">&times;</button>
+									<strong>Well done!</strong> You successfully found the Vulnerability .
+								</div>
+								';
+								echo '
+								<span 	class="badge badge-pill badge-info" 
+										style="
+											display: block;
+											margin-left: auto;
+											margin-right: auto"
+								>'.$_COOKIE['_reflexVUserFDC'].
+								'</span>
+								';
+								$cookie_name = "_reflexVUserFDC";
+								$cookie_value = $_SESSION["usertoken_3"];
+								setcookie($cookie_name, $cookie_value, time() - (86400 * 2), "/");
+							}
+							if(isset($_COOKIE['_reflexVUserError'])){
+								echo '
+									<div class="alert alert-dismissible alert-danger">
+									  <button type="button" class="close" data-dismiss="alert">&times;</button>
+									  <strong>Oh snap!</strong> <a href="#" class="alert-link">Change a few things up</a> and try submitting again.
+									</div>
+								';
+								$cookie_name = "_reflexVUserError";
+								$cookie_value = 'Error: Please try again Later';
+								setcookie($cookie_name, $cookie_value, time() - (86400 * 2), "/");
+							}
+						?>
+						<br>
 						<div class="newsletter_form_container mx-auto">
 							<form method="post" action=<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?> >
 								<div class="newsletter_form d-flex flex-md-row flex-column flex-xs-column align-items-center justify-content-center">
@@ -605,8 +598,8 @@ ob_start();
 										if(($_POST['sub_token_1val'] != '') || ($_POST['sub_token_1val'] != null )){
 											$submitval = urlencode(preg_replace('/[^A-Za-z0-9\-]/','',strtolower(trim(str_replace(' ','',$_POST['sub_token_1val'])))));
 											//echo "<br>" . $submitval . " <br> token: <br>" .  $_SESSION["usertoken_1"];
-											if($submitval == trim(urlencode($_SESSION["usertoken_2"]))){
-												header("location: teachers.php");
+											if($submitval == trim(urlencode($_SESSION["usertoken_3"]))){
+												header("location: news.php");
 											}else{
 												echo '<span class="badge badge-danger">Wrong Flag</span> <br/>';
 											}

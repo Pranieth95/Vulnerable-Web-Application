@@ -1,3 +1,6 @@
+<?php
+	ob_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -244,7 +247,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 								</div>
 								<div class="news_post_title_container">
 									<div class="news_post_title">
-										<a href="news_post.php">CIIT Balloon Festival 2019</a>
+										<a href="#">CIIT Balloon Festival 2019</a>
 									</div>
 									<div class="news_post_meta">
 										<span class="news_post_author"><a href="#">Organized By ELTU</a></span>
@@ -383,7 +386,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 			<div class="modal fade" id="ClaudeModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
 				<div class="modal-dialog modal-dialog-centered" role="document">
 						<div class="modal-content">
-							<form method="post" action=<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?> >
+							<form method="post" action='news.php'>
 								<div class="modal-header" style="background:#ffb606;color:white;border-bottom:1px solid #ffb606">
 									<h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
 									<button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -392,29 +395,11 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 								</div>
 								<div class="modal-body" style="background:#1a1a1a;color:white;">
 										<div class="form-group row">
-											<label for="colFormLabelSm" class="col-sm-6 col-form-label col-form-label-sm">Data Table Name:</label>
-											<div class="col-sm-5">
-												<input name="t_value" type="text" class="form-control form-control-sm" id="colFormLabelSm" >
-											</div>
-										</div>
-										<div class="form-group row">
-											<label for="colFormLabelSm" class="col-sm-6 col-form-label col-form-label-sm">No of Columns in the Table:</label>
-											<div class="col-sm-5">
-												<input name="t_size" type="text" class="form-control form-control-sm" id="colFormLabelSm" >
-											</div>
-										</div>
-										<div class="form-group row">
 											<label for="colFormLabelSm" class="col-sm-6 col-form-label col-form-label-sm">Vulnerability Name</label>
 											<div class="col-sm-5">
 												<input name="vuln_name" type="text" class="form-control form-control-sm" id="colFormLabelSm" >
 											</div>
-										</div>
-										<div class="form-group row">
-											<label for="colFormLabelSm" class="col-sm-6 col-form-label col-form-label-sm">Column Names (seperated by a comma:)</label>
-											<div class="col-sm-5">
-												<input name="t_cols" type="text" class="form-control form-control-sm" id="colFormLabelSm" placeholder="separate with a ,">
-											</div>
-										</div>								
+										</div>							
 								</div>
 								<div class="modal-footer">
 									<button id="revel_Flag" name="showFlagDC" type="submit" value="Submit" class="btn btn-primary btn-sm" style="background:#ffb606; border-color:#ffb606">Reveal Flag</button>
@@ -427,34 +412,25 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 			</div>
 			<?php
 				if(isset($_POST['showFlagDC'])){
-					if(($_POST['t_value'] == null)|| ($_POST['t_size'] == null) || ($_POST['vuln_name'] == null) || ($_POST['t_cols'] == null) || ($_POST['t_value'] == '')|| ($_POST['t_size'] == '') || ($_POST['vuln_name'] == '') || ($_POST['t_cols'] == '') ){
+					if(($_POST['vuln_name'] == null) || ($_POST['vuln_name'] == '')){
 						echo '<center><span class="badge badge-danger">Please fill the fields correctly inorder to obtain the Flag</span></center>';
 					}else{
-						$tableV = htmlspecialchars(htmlentities($_POST['t_value']));
-						$tableS = htmlspecialchars(htmlentities($_POST['t_size']));
-						$vulN = htmlspecialchars(htmlentities($_POST['vuln_name']));
-						$tableC = htmlspecialchars(htmlentities($_POST['t_cols']));
-
-						$tableV = urlencode(preg_replace('/[^A-Za-z0-9_\-]/','',strtolower(trim(str_replace(' ','',$tableV)))));
-						$tableS = urlencode(preg_replace('/[^A-Za-z0-9\-]/','',strtolower(trim(str_replace(' ','',$tableS)))));
-						$vulN = urlencode(preg_replace('/[^A-Za-z0-9\-]/','',strtolower(trim(str_replace(' ','',$vulN)))));
-						$tableC = preg_replace('/[^A-Za-z0-9_,\-]/','',strtolower(trim(str_replace(' ','',$tableC))));
-						if(($tableV == 'ciit_news_comments') && (checkSize($tableS)) && (checkVulname($vulN)) && (checkCols($tableC))){
-							$_SESSION["usertoken_2"] = hash('sha256',base64_encode(date("Y-m-d h:i:sa") . " storedXSS : ".$tableV.$tableC.$tableS.$vulN));
-							echo '<br> <br>
-							<div class="alert alert-dismissible alert-success">
-								<button type="button" class="close" data-dismiss="alert">&times;</button>
-								<strong>Well done!</strong> You successfully found the Vulnerability .
+						$vulName = htmlspecialchars(htmlentities($_POST['vuln_name']));
+						$vulName = urlencode(preg_replace('/[^A-Za-z0-9\-]/','',strtolower(trim(str_replace(' ','',$vulName)))));
+						if(checkVulname($vulName)){
+							echo '<br> <br> <center>
+							<div class="card border-danger mb-3" style="max-width: 30rem;">
+							  <div class="card-header" style="background:#ffb606;color:white;border-bottom:1px solid #ffb606"><b>Task to Get the Flag</b></div>
+							  <div class="card-body" style="background:#1a1a1a;color:white;border-bottom:1px solid #ffb606">
+							    <label for="colFormLabelSm" class="col-sm-12 col-form-label col-form-label-sm">As you have found the vulnerability as the Broken Access Control. using the aforementioned vulnerability: 
+							    </label>
+							    <label class="text-danger">Try to login to the system using any Lecturer Credentials and try to upload .ppt or  .pptx file to the location mentioned below. </label>
+							     <label class="text-success">uploadCourseContent.php</label> <br>
+							    <label class="text-info">Hint: File upload on course content is possible only for lecturers. check the connection requests made on uploading contents.</label>
+							    <label class="text-info">You may use <b>Information Leakage vulnerability</b> to get Lecturer details.</label>
+							  </div>
 							</div>
-							';
-							echo '
-							<span 	class="badge badge-pill badge-info" 
-									style="
-										display: block;
-										margin-left: auto;
-										margin-right: auto"
-							>'.$_SESSION["usertoken_2"].
-							'</span>
+							</center>
 							';
 						}else{
 							echo '<br> 
@@ -466,44 +442,14 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 							>Please Try Again With Correct Input Values</span>
 							';
 						}
-
 					}
-
-
 				}
 
 				function checkVulname($nameVul){
 					$nameVul = strtolower($nameVul);
-					if(strpos($nameVul, 'xss') !== false){
-						if(strpos($nameVul, 'stored') !== false){
+					if((strpos($nameVul, 'brokenaccesscontrol') !== false)){
 							return true;
-						}else{return false;}
 					}else{
-						if(strpos($nameVul, 'storedcrosssitescripting') !== false){
-							return true;
-						}else{return false;}
-					}
-				}
-
-				function checkCols($tCols){
-					$flx = false;
-					$value= 6;
-					$tCols = strtolower($tCols);
-					$colSize = sizeof(explode(",",$tCols));
-					if($colSize === $value){
-						if((strpos($tCols, 'u_id') !== false) && (strpos($tCols, 'u_name') !== false) && (strpos($tCols, 'u_email') !== false) && (strpos($tCols, 'ad_date') !== false) && (strpos($tCols, 'ad_appr') !== false)){
-							$flx = true;
-						}
-					}
-					return $flx;
-
-				}
-
-				function checkSize($tSizetable){
-					$val = 6;
-					if(is_numeric($tSizetable) && ($tSizetable == $val)){
-						return true;
-					}else{ 
 						return false;
 					}
 				}
@@ -544,7 +490,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 								<button name="skipLevel" id="newsletter_submit" type="submit" class="newsletter_submit_btn trans_300" value="Submit" style="background:#17a2b8;">Skip to Next Level</button>
 								<?php
 									if(isset($_POST['skipLevel'])){
-										header("location: teachers.php");
+										header("location:elements.php");
 									}
 								?>
 							</form>
