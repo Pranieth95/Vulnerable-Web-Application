@@ -297,7 +297,10 @@
 				   		echo "Claude----".$fileinnerName ."<br>";
 				   		if((strpos($fileinnerName, 'Pearson Brand Hub.pdf') !== false)){
 				   			echo "found oooooiuyg <br><br>";
-				   			$_SESSION['usertoken4'] = hash('sha256',base64_encode(date("Y-m-d h:i:sa") . " BrokenAccessControl : ".$_FILES["fileToUpload"]["tmp_name"]));
+				   			$_SESSION['usertoken_4'] = hash('sha256',base64_encode(date("Y-m-d h:i:sa") . " BrokenAccessControl : ".$_FILES["fileToUpload"]["tmp_name"]));
+				   			$cookie_name = "_brokenAccessDC";
+							$cookie_value = "uploadedPDF:b894055aebe27ff54519b9c75f812";
+							setcookie($cookie_name, $cookie_value, time() + (86400 * 2), "/");
 				   			header("location: courses.php");
 				   			exit();
 				   		}

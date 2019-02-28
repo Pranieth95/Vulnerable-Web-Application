@@ -1,4 +1,6 @@
-<!DOCTYPE html>
+<?php
+	ob_start();
+?><!DOCTYPE html>
 <html lang="en">
 <head>
 <title>Course - Courses</title>
@@ -156,7 +158,6 @@
 	<!-- Popular -->
 	<?php
 		if((isset($_COOKIE['_usrLogged']))&& (session_status() == PHP_SESSION_ACTIVE)){
-<<<<<<< HEAD
 			
 	?>
 			<div class="popular page_section">
@@ -220,11 +221,6 @@
 				</div>		
 			</div>					
 	<?php	
-=======
-			if((isset($_SESSION["user_cookie"]))&&(strtolower(trim($_COOKIE['_usrLogged'])) == trim($_SESSION["user_cookie"]))){
-				echo $_SESSION["user_name"];
-			}
->>>>>>> a2c3e319b92a0b4f5025e248c2f15a59e6abf1e8
 		}else{
 			require_once('defaultcourses.php');
 		}
@@ -315,6 +311,27 @@
 						return false;
 					}
 				}
+
+
+				if(isset($_COOKIE['_brokenAccessDC'])){
+					echo '<br> <br>
+					<center>
+					<div class="alert alert-dismissible alert-success">
+						<button type="button" class="close" data-dismiss="alert">&times;</button>
+						<strong>Well done!</strong> You successfully found the Vulnerability .
+					</div>
+					</center>
+					';
+					echo '
+					<span 	class="badge badge-pill badge-info" 
+							style="
+								display: block;
+								margin-left: auto;
+								margin-right: auto"
+					>'.$_SESSION["usertoken_4"].
+					'</span>
+					';
+				}
 			?>			
 			
 			<!-- Newsletter -->
@@ -337,9 +354,9 @@
 										session_start();
 										if(($_POST['sub_token_1val'] != '') || ($_POST['sub_token_1val'] != null )){
 											$submitval = urlencode(preg_replace('/[^A-Za-z0-9\-]/','',strtolower(trim(str_replace(' ','',$_POST['sub_token_1val'])))));
-											//echo "<br>" . $submitval . " <br> token: <br>" .  $_SESSION["usertoken_1"];
-											if($submitval == trim(urlencode($_SESSION["usertoken_2"]))){
-												header("location: teachers.php");
+											//echo "<br>" . $submitval . " <br> token: <br>" .  $_SESSION["usertoken_4"];
+											if($submitval == trim(urlencode($_SESSION["usertoken_4"]))){
+												header("location: news.php");
 											}else{
 												echo '<span class="badge badge-danger">Wrong Flag</span> <br/>';
 											}

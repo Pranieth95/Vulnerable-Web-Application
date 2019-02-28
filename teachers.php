@@ -535,8 +535,8 @@ ob_start();
 								return true;
 							}else{
 								return false;
-							}
 							
+}							
 						}
 					}
 				}
@@ -599,7 +599,7 @@ ob_start();
 											$submitval = urlencode(preg_replace('/[^A-Za-z0-9\-]/','',strtolower(trim(str_replace(' ','',$_POST['sub_token_1val'])))));
 											//echo "<br>" . $submitval . " <br> token: <br>" .  $_SESSION["usertoken_1"];
 											if($submitval == trim(urlencode($_SESSION["usertoken_3"]))){
-												header("location: news.php");
+												header("location: courses.php");
 											}else{
 												echo '<span class="badge badge-danger">Wrong Flag</span> <br/>';
 											}
