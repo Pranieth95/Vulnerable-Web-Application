@@ -159,7 +159,6 @@
 				if(($caseFlag[1] =="C18FB8E2A42BEBB783B2079357ECF5F6A43886C724D1EFABE20F7F7E2E1D89F9")&&(strpos($ref, 'http://localhost/CISOColabNewPHP/shop.php') !== FALSE)){
 					
 					if((strtolower(trim($userName[0])) != null)||($_GET['UsrReveal'] != null)){
-						echo 'praneeth';
 						require_once('../../connect.php');
 						$sql = "SELECT userName, timeEnter FROM challengerDetails";
 						$result = $conn->query($sql);

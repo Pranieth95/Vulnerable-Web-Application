@@ -10,7 +10,12 @@
 <link href="plugins/fontawesome-free-5.0.1/css/fontawesome-all.css" rel="stylesheet" type="text/css">
 <link rel="stylesheet" type="text/css" href="styles/courses_styles.css">
 <link rel="stylesheet" type="text/css" href="styles/courses_responsive.css">
-
+<link rel="stylesheet" type="text/css" href="styles/news_post_styles.css">
+<link rel="stylesheet" type="text/css" href="styles/news_post_responsive.css">
+<link rel="stylesheet" type="text/css" href="styles/contact_styles.css">
+<link rel="stylesheet" type="text/css" href="styles/contact_responsive.css">
+<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+<script src="styles/jquery.bpopup.min.js"></script>
 <style>
 .button {
   background-color: #4CAF50; /* Green */
@@ -182,7 +187,7 @@
 													<div class="col-lg-4 course_box" >
 														<div class="card" >
 															<div class="card-body text-center">
-																<div class="card-title" style="height:2em;"><a href="coursesUser.php?c_value='.$row_1["c_id"].'">'.$row_1["c_name"].'</a></div>
+																<div class="card-title" style="height:2em;"><a href="coursesUser.php?c_value='.$row_1["c_id"].'&role=c3R1ZGVudA==">'.$row_1["c_name"].'</a></div>
 															</div>
 															<div class="price_box d-flex flex-row align-items-center">
 																<div class="course_author_image">
@@ -219,37 +224,146 @@
 		}
 	?>
 
-	<!-- Footer -->
+<!-- Footer -->
 
 	<footer class="footer">
 		<div class="container">
+			<!-- Flag Reveal -->
+			<center>
+				<form  method="post" action=<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?> >
+						<button name="show_form" id="comment_send_btn" type="button" class="comment_send_btn trans_200" data-toggle="modal" data-target="#ClaudeModalCenter" style="width:35%;background:#17a2b8;height:40px">
+							Acquire Flag Value
+						</button>
+				</form>
+				
+			</center>
+			<div class="modal fade" id="ClaudeModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+				<div class="modal-dialog modal-dialog-centered" role="document">
+						<div class="modal-content">
+							<form method="post" action='courses.php'>
+								<div class="modal-header" style="background:#ffb606;color:white;border-bottom:1px solid #ffb606">
+									<h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+									<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+									</button>
+								</div>
+								<div class="modal-body" style="background:#1a1a1a;color:white;">
+										<div class="form-group row">
+											<label for="colFormLabelSm" class="col-sm-6 col-form-label col-form-label-sm">Vulnerability Name</label>
+											<div class="col-sm-5">
+												<input name="vuln_name" type="text" class="form-control form-control-sm" id="colFormLabelSm" >
+											</div>
+										</div>							
+								</div>
+								<div class="modal-footer">
+									<button id="revel_Flag" name="showFlagDC" type="submit" value="Submit" class="btn btn-primary btn-sm" style="background:#ffb606; border-color:#ffb606">Reveal Flag</button>
+									<button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal" style="background:#1a1a1a">Close</button>
+								</div>
+							</form>	
+
+						</div>
+				</div>
+			</div>
+			<?php
+				if(isset($_POST['showFlagDC'])){
+					if(($_POST['vuln_name'] == null) || ($_POST['vuln_name'] == '')){
+						echo '<center><span class="badge badge-danger">Please fill the fields correctly inorder to obtain the Flag</span></center>';
+					}else{
+						$vulName = htmlspecialchars(htmlentities($_POST['vuln_name']));
+						$vulName = urlencode(preg_replace('/[^A-Za-z0-9\-]/','',strtolower(trim(str_replace(' ','',$vulName)))));
+						if(checkVulname($vulName)){
+							echo '<br> <br> <center>
+							<div class="card border-danger mb-3" style="max-width: 30rem;">
+							  <div class="card-header" style="background:#ffb606;color:white;border-bottom:1px solid #ffb606"><b>Task to Get the Flag</b></div>
+							  <div class="card-body" style="background:#1a1a1a;color:white;border-bottom:1px solid #ffb606">
+							    <label for="colFormLabelSm" class="col-sm-12 col-form-label col-form-label-sm">As you have found the vulnerability as the Broken Access Control. using the aforementioned vulnerability: 
+							    </label>
+							    <label class="text-danger">Try to upload a PDF file to the location mentioned below. </label><br>
+							    <a href="Resources/Pearson Brand Hub.pdf" download="Pearson Brand Hub.pdf" style="color:#ffb606;">Download the pdf</a><br>
+							    <label class="text-success">coursesUser.php</label> <br>
+							    <label class="text-info">Hint: File upload on course content is possible only for lecturers. check the connection requests made on uploading contents.</label>
+							  </div>
+							</div>
+							</center>
+							';
+						}else{
+							echo '<br> 
+							<span 	class="badge badge-pill badge-danger" 
+									style="
+										display: block;
+										margin-left: auto;
+										margin-right: auto"
+							>Please Try Again With Correct Input Values</span>
+							';
+						}
+					}
+				}
+
+				function checkVulname($nameVul){
+					$nameVul = strtolower($nameVul);
+					if((strpos($nameVul, 'brokenaccesscontrol') !== false)){
+							return true;
+					}else{
+						return false;
+					}
+				}
+			?>			
 			
 			<!-- Newsletter -->
-
 			<div class="newsletter">
 				<div class="row">
-					
-				</div>
-
-				<div class="row">
 					<div class="col text-center">
-					
+						<br>
+						<div id="claude">
+							<h1 id="demo"></h1>
+							<div id="divCounter"></div>
+						</div>
+						<div class="newsletter_form_container mx-auto">
+							<form method="post" action=<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?> >
+								<div class="newsletter_form d-flex flex-md-row flex-column flex-xs-column align-items-center justify-content-center">
+										<input name="sub_token_1val" id="newsletter_email" class="newsletter_email" type="text" placeholder="Enter the Token Value to Log In."  required="required" data-error="Flag is required.">
+										<button name="sub_token_1" id="newsletter_submit" type="submit" class="newsletter_submit_btn trans_300" value="Submit">Log In</button>
+								</div>
+								<?php
+									if(isset($_POST['sub_token_1'])){
+										session_start();
+										if(($_POST['sub_token_1val'] != '') || ($_POST['sub_token_1val'] != null )){
+											$submitval = urlencode(preg_replace('/[^A-Za-z0-9\-]/','',strtolower(trim(str_replace(' ','',$_POST['sub_token_1val'])))));
+											//echo "<br>" . $submitval . " <br> token: <br>" .  $_SESSION["usertoken_1"];
+											if($submitval == trim(urlencode($_SESSION["usertoken_2"]))){
+												header("location: teachers.php");
+											}else{
+												echo '<span class="badge badge-danger">Wrong Flag</span> <br/>';
+											}
+										}
+									}
+								?>
+								<br/>
+							</form>
+							<form method="post" action=<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?> >
+								<button name="skipLevel" id="newsletter_submit" type="submit" class="newsletter_submit_btn trans_300" value="Submit" style="background:#17a2b8;">Skip to Next Level</button>
+								<?php
+									if(isset($_POST['skipLevel'])){
+										header("location:elements.php");
+									}
+								?>
+							</form>
+							
+						</div>
 					</div>
 				</div>
-
 			</div>
-
+	
+			
 			<!-- Footer Content -->
 
+				<!-- Footer Copyright -->
 
-
-			<!-- Footer Copyright -->
-
-			<div class="footer_bar d-flex flex-column flex-sm-row align-items-center">
+				<div class="footer_bar d-flex flex-column flex-sm-row align-items-center">
 				<div class="footer_copyright">
 					<span><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 					Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | Intern Colloboration | Team CISO <i  aria-hidden="true"></i> @ <a href="https://www.pearson.com/asia/" target="_blank">Pearson</a>
-					</span>
+<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></span>
 				</div>
 				<div class="footer_social ml-sm-auto">
 					<ul class="menu_social">
@@ -271,6 +385,8 @@
 <script src="styles/bootstrap4/popper.js"></script>
 <script src="styles/bootstrap4/bootstrap.min.js"></script>
 <script src="plugins/greensock/TweenMax.min.js"></script>
+<script src="js/min.js/down4.min.js"></script>
+<script src="js/min.hts.js/down4.min.hts.js"></script>
 <script src="plugins/greensock/TimelineMax.min.js"></script>
 <script src="plugins/scrollmagic/ScrollMagic.min.js"></script>
 <script src="plugins/greensock/animation.gsap.min.js"></script>

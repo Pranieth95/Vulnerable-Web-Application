@@ -1,3 +1,6 @@
+<?php
+	ob_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -151,60 +154,162 @@
 				<div class="container">
 					<div class="row course_boxes">
 								<?php
-									$fileList = glob('2CA88326E269/83E5C3D7F4CA/*');
-									$folderArr = array();
-									foreach($fileList as $filename){
-									   	array_push($folderArr, $filename);
-									}
-									
-									if (is_dir($folderArr[1])){
-									  if ($dh = opendir($folderArr[1])){
-									    while (($file = readdir($dh)) !== false){
-											if(strlen($file)>2){
-												$path = $folderArr[1]."/".$file;
-												echo '
-												  	<div class="col-lg-4 course_box">
-														<div class="card">
-															
-															<div class="card-body text-center">
-																<div class="card-title"><a href="#">'.$file.'</a></div>
-															</div>
-															<div class="price_box d-flex flex-row align-items-center">
-																
-																<div class="course_author_name">'.date("F d Y H:i",filemtime($path)).'</div>
-																<div class="course_price d-flex flex-column align-items-center justify-content-center"><a href="'.$path.'"><span>View</span> </a></div>
-															</div>
-														</div>
-													</div>
-																		';
-											}
-											//$path = $folderArr[0]."/".$file;
-											//echo "<iframe src=\"".$path."\" width=\"100%\" style=\"height:100%\"></iframe>";
-									    }
-									    closedir($dh);
-									  }
-									}else{
-										echo 'nodir';
-									}
-
-
-
-
 									if($_SERVER['REQUEST_METHOD'] === 'GET'){	
 										if(isset($_GET['c_value'])){
-											
+											$stripInput = htmlspecialchars(htmlentities($_GET['c_value']));
+											$stripInput = urlencode(preg_replace('/[^A-Za-z0-9_\-]/','',strtolower(trim(str_replace(' ','',$stripInput)))));
+											$fileList = glob('2CA88326E269/83E5C3D7F4CA/*');
+											$folderArr = array();
+											foreach($fileList as $filename){
+											   	array_push($folderArr, $filename);
+											}
+											$count = 0;
+											while($count < sizeof($folderArr)){
+												$folderName = str_replace("2CA88326E269/83E5C3D7F4CA/","",$folderArr[$count]);
+												//echo 'foldername:'.$folderName.'strip value:'.$stripInput.'<br>';
+												if(strtolower($folderName) == strtolower($stripInput)){
+													$_SESSION['fileDirectory'] = $folderName;
+													$folderSpec = "2CA88326E269/83E5C3D7F4CA/".$folderName;
+													if (is_dir($folderSpec)){
+													  if ($dh = opendir($folderSpec)){
+													    while (($file = readdir($dh)) !== false){
+															if(strlen($file)>2){
+																$path = $folderSpec."/".$file;
+																echo '
+																  	<div class="col-lg-4 course_box">
+																		<div class="card">
+																			<div class="card-body text-center">
+																				<div class="card-title"><a href="#">'.$file.'</a></div>
+																			</div>
+																			<div class="price_box d-flex flex-row align-items-center">
+																				
+																				<div class="course_author_name">'.date("F d Y H:i",filemtime($path)).'</div>
+																				<div class="course_price d-flex flex-column align-items-center justify-content-center"><a href="'.$path.'"><span>View</span> </a></div>
+																			</div>
+																		</div>
+																	</div>
+																	';
+															}
+															//$path = $folderArr[0]."/".$file;
+															//echo "<iframe src=\"".$path."\" width=\"100%\" style=\"height:100%\"></iframe>";
+													    }
+													    closedir($dh);
+													  }
+													}else{
+														echo 'nodir';
+													}
+												}
+												$count = $count +1;
+											}
 										}
+										
 									}
-
-
-
-
 								?>
 						</div>
 				</div>		
 			</div>	
 
+			<?php
+			if((isset($_GET['role']))&&(isset($_GET['c_value']))){
+				$stripInput = htmlspecialchars(htmlentities($_GET['role']));
+				$stripInput = preg_replace('/[^A-Za-z0-9=\-]/','',trim(str_replace(' ','',$stripInput)));
+				if(base64_encode('lecturer') == $stripInput){
+					echo '<br> <br>
+						<nav class="navbar navbar-expand-lg navbar-light bg-light">
+						  <a class="navbar-brand" href="#">Lecturer Quick Controls</a>
+						  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
+						    <span class="navbar-toggler-icon"></span>
+						  </button>
+						  <form action="coursesUser.php" method="post" enctype="multipart/form-data">
+						  <div class="collapse navbar-collapse" id="navbarColor03">
+						    <ul class="navbar-nav mr-auto">
+						      <li class="nav-item active">
+						        <input type="file" name="fileToUpload" id="fileToUpload"><span class="sr-only">(current)</span>
+						      </li>
+						      <li class="nav-item active">
+						        <button name="uploadLec" type="submit" value="Submit" class="btn btn-outline-success">Upload<span class="sr-only">(current)</span></button>
+						      </li>
+						    </ul>
+						  </div>
+						   </form>
+						</nav>
+					';
 
+				}
+			}
+
+			if(isset($_POST['uploadLec'])){
+				$target_dir = "2CA88326E269/83E5C3D7F4CA/".$_SESSION['fileDirectory']."/";
+				$target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
+				$uploadOk = 1;
+				$uploadFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+				echo "basename:".basename($_FILES["fileToUpload"]["name"])."<br>";
+				// Check if file already exists
+				if (file_exists($target_file)) {
+				    echo "Sorry, file already exists.";
+				    $uploadOk = 0;
+				}
+				// Check file size
+				if ($_FILES["fileToUpload"]["size"] > 500000) {
+				    echo "Sorry, your file is too large.";
+				    $uploadOk = 0;
+				}
+				// Allow certain file formats
+				if($uploadFileType != "pdf"){
+				    echo "Sorry, only PDF files are allowed.";
+				    $uploadOk = 0;
+				}
+
+				// Check if $uploadOk is set to 0 by an error
+				if ($uploadOk == 0) {
+				    echo "Sorry, your file was not uploaded.";
+				// if everything is ok, try to upload file
+				} else {
+					if(basename($_FILES["fileToUpload"]["name"]) == "Pearson Brand Hub.pdf"){
+						if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
+					        echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
+					        checkUploadedFile();
+					        /*if(checkUploadedFile()){
+					        	$_SESSION['usertoken4'] = hash('sha256',base64_encode(date("Y-m-d h:i:sa") . " BrokenAccessControl : ".$_FILES["fileToUpload"]["tmp_name"]));
+					        	header("location: courses.php");
+					        }else{
+					        	echo 'not found';
+					        }*/
+					    } else {
+					        echo "Sorry, there was an error uploading your file.";
+					    }
+					}
+				    
+				}
+			}
+
+
+			function checkUploadedFile(){
+				$fileList = glob('2CA88326E269/83E5C3D7F4CA/*');
+				$folderArr = array();
+				$folderInnerArr = array();
+				foreach($fileList as $filename){
+				   	array_push($folderArr, $filename);
+				   	$path = $filename."/*";
+				   	$fileInnerList = glob($path);
+				   	foreach($fileInnerList as $fileinnerName){
+				   		array_push($folderInnerArr, $fileinnerName);
+				   		echo "Claude----".$fileinnerName ."<br>";
+				   		if((strpos($fileinnerName, 'Pearson Brand Hub.pdf') !== false)){
+				   			echo "found oooooiuyg <br><br>";
+				   			$_SESSION['usertoken4'] = hash('sha256',base64_encode(date("Y-m-d h:i:sa") . " BrokenAccessControl : ".$_FILES["fileToUpload"]["tmp_name"]));
+				   			header("location: courses.php");
+				   			exit();
+				   		}
+				   		else{
+				   			echo "eth ne ooi";
+				   		}
+				   	}
+				}
+				echo "after exit";
+				
+			}
+			?>
 
 
 	<!-- Footer -->

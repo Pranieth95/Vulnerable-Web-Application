@@ -54,7 +54,6 @@
 					<span>
 								<?php 
 										session_start();
-										echo session_id();
 										if((isset($_COOKIE['_usrLogged']))&& (session_status() == PHP_SESSION_ACTIVE)){
 											if((isset($_SESSION["user_cookie"]))&&(strtolower(trim($_COOKIE['_usrLogged'])) == trim($_SESSION["user_cookie"]))){
 												echo $_SESSION["user_name"];
@@ -425,10 +424,10 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 							  <div class="card-body" style="background:#1a1a1a;color:white;border-bottom:1px solid #ffb606">
 							    <label for="colFormLabelSm" class="col-sm-12 col-form-label col-form-label-sm">As you have found the vulnerability as the Broken Access Control. using the aforementioned vulnerability: 
 							    </label>
-							    <label class="text-danger">Try to login to the system using any Lecturer Credentials and try to upload .ppt or  .pptx file to the location mentioned below. </label>
-							     <label class="text-success">uploadCourseContent.php</label> <br>
+							    <label class="text-danger">Try to upload a PDF file to the location mentioned below. </label><br>
+							    <a href="Resources/Pearson Brand Hub.pdf" download="BrandHub" style="color:#ffb606;">Download the pdf</a><br>
+							    <label class="text-success">coursesUser.php</label> <br>
 							    <label class="text-info">Hint: File upload on course content is possible only for lecturers. check the connection requests made on uploading contents.</label>
-							    <label class="text-info">You may use <b>Information Leakage vulnerability</b> to get Lecturer details.</label>
 							  </div>
 							</div>
 							</center>
@@ -533,8 +532,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 <script src="styles/bootstrap4/bootstrap.min.js"></script>
 <script src="plugins/greensock/TweenMax.min.js"></script>
 <script src="plugins/greensock/TimelineMax.min.js"></script>
-<script src="js/min.js/down4.min.js"></script>
-<script src="js/min.hts.js/down4.min.hts.js"></script>
+
 <script src="plugins/scrollmagic/ScrollMagic.min.js"></script>
 <script src="plugins/greensock/animation.gsap.min.js"></script>
 <script src="plugins/greensock/ScrollToPlugin.min.js"></script>
