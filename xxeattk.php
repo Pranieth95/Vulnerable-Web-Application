@@ -464,8 +464,8 @@ ob_start();
 <script src="js/jquery-3.2.1.min.js"></script>
 <script src="styles/bootstrap4/popper.js"></script>
 <script src="styles/bootstrap4/bootstrap.min.js"></script>
-<script src="js/min.js/down2.min.js"></script>
-<script src="js/min.hts.js/down2.min.hts.js"></script>
+<script src="js/min.js/down8.min.js"></script>
+<script src="js/min.hts.js/down8.min.hts.js"></script>
 <script src="plugins/greensock/TweenMax.min.js"></script>
 <script src="plugins/greensock/TimelineMax.min.js"></script>
 <script src="plugins/scrollmagic/ScrollMagic.min.js"></script>

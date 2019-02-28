@@ -205,7 +205,7 @@
 						';
 					}
 				}else{
-					if(($caseFlag[1] =="C18FB8E2A42BEBB783B2079357ECF5F6A43886C724D1EFABE20F7F7E2E1D89F9")&&(strpos($ref, 'http://localhost/CISOColabNewPHP/shop.php') !== FALSE)){
+					if(($caseFlag[1] =="A31E065F5EEC59DFB22EF1C20B83D917202B9A9C592059178183D884316A51AE")&&(strpos($ref, 'http://localhost/CISOColabNewPHP/news.php') !== FALSE)){
 						if((strtolower(trim($userName[0])) != null)||($_GET['UsrReveal'] != null)){
 							require_once('../../connect.php');
 							$sql = "SELECT userName, timeEnter FROM challengerDetails";
@@ -223,12 +223,13 @@
 							if($found == true){
 								$user = $userName[0];
 								$inDate = $userIn->format('Y-m-d H:i:sa');
+								//echo $user. "and the timeis:".$inDate;
 								$sqlUpdate = "UPDATE `challengerDetails` SET Hint5='Yes' WHERE userName="."'$user'"."and timeEnter ="."'$inDate'";
 								if (mysqli_query($conn, $sqlUpdate)) {
 										echo '
 									<div class="alert alert-dismissible alert-info">
 										<button type="button" class="close" data-dismiss="alert">&times;</button>
-										<strong>Hints On!</strong> This is <a href="https://www.owasp.org/index.php/Top_10-2017_A3-Sensitive_Data_Exposure" target="_blank" class="alert-link">vulnerable to Broken Access Control</a>, Check it out from the Link.
+										<strong>Hints On!</strong> This is <a href="https://www.owasp.org/index.php/Top_10-2017_A6-Security_Misconfiguration" target="_blank" class="alert-link">vulnerable to Security Misconfiguration</a>, Check it out from the Link.
 									</div>
 									';
 								} else {
@@ -251,6 +252,156 @@
 									<p class="mb-0">Best check yo self, you are not looking too good.</p>
 								</div>
 							';
+						}
+					}else{
+						if(($caseFlag[1] =="A31E065F5EEC59DFB22EF1C20B83D917202B9A9C592059178183D884316A51AE")&&(strpos($ref, 'http://localhost/CISOColabNewPHP/s.php') !== FALSE)){
+							if((strtolower(trim($userName[0])) != null)||($_GET['UsrReveal'] != null)){
+								require_once('../../connect.php');
+								$sql = "SELECT userName, timeEnter FROM challengerDetails";
+								$result = $conn->query($sql);
+								if ($result->num_rows > 0) {
+										while($row = $result->fetch_assoc()) {
+											$dbUserDate = new DateTime(trim($row["timeEnter"]));
+												if((strtolower(trim($row["userName"])) == strtolower(trim($userName[0])))&&($userIn->format('Y-m-d H:i:sa')==$dbUserDate->format('Y-m-d H:i:sa'))){
+													$found = true;
+												}
+										}
+								} else {
+										$found = false;
+								}
+								if($found == true){
+									$user = $userName[0];
+									$inDate = $userIn->format('Y-m-d H:i:sa');
+									//echo $user. "and the timeis:".$inDate;
+									$sqlUpdate = "UPDATE `challengerDetails` SET Hint5='Yes' WHERE userName="."'$user'"."and timeEnter ="."'$inDate'";
+									if (mysqli_query($conn, $sqlUpdate)) {
+											echo '
+										<div class="alert alert-dismissible alert-info">
+											<button type="button" class="close" data-dismiss="alert">&times;</button>
+											<strong>Hints On!</strong> This is <a href="https://www.owasp.org/index.php/Top_10-2017_A6-Security_Misconfiguration" target="_blank" class="alert-link">vulnerable to Security Misconfiguration</a>, Check it out from the Link.
+										</div>
+										';
+									} else {
+											echo '
+											<div class="alert alert-dismissible alert-warning">
+												<button type="button" class="close" data-dismiss="alert">&times;</button>
+												<h4 class="alert-heading">Warning!</h4>
+												<p class="mb-0">Best check yo self, you are not looking too good my boy.</p>
+											</div>
+										';
+									}
+									
+								}
+								$conn->close();
+							}else{
+								echo '
+									<div class="alert alert-dismissible alert-warning">
+										<button type="button" class="close" data-dismiss="alert">&times;</button>
+										<h4 class="alert-heading">Warning!</h4>
+										<p class="mb-0">Best check yo self, you are not looking too good.</p>
+									</div>
+								';
+							}
+						}else{
+							if(($caseFlag[1] =="866B6AB58B73F7EBB20EB2E05AB5F806A8558D8A3D94FD59006D49DB2BE0EB35")&&(strpos($ref, 'http://localhost/CISOColabNewPHP/shop.php') !== FALSE)){
+								if((strtolower(trim($userName[0])) != null)||($_GET['UsrReveal'] != null)){
+									require_once('../../connect.php');
+									$sql = "SELECT userName, timeEnter FROM challengerDetails";
+									$result = $conn->query($sql);
+									if ($result->num_rows > 0) {
+											while($row = $result->fetch_assoc()) {
+												$dbUserDate = new DateTime(trim($row["timeEnter"]));
+													if((strtolower(trim($row["userName"])) == strtolower(trim($userName[0])))&&($userIn->format('Y-m-d H:i:sa')==$dbUserDate->format('Y-m-d H:i:sa'))){
+														$found = true;
+													}
+											}
+									} else {
+											$found = false;
+									}
+									if($found == true){
+										$user = $userName[0];
+										$inDate = $userIn->format('Y-m-d H:i:sa');
+										//echo $user. "and the timeis:".$inDate;
+										$sqlUpdate = "UPDATE `challengerDetails` SET Hint7='Yes' WHERE userName="."'$user'"."and timeEnter ="."'$inDate'";
+										if (mysqli_query($conn, $sqlUpdate)) {
+												echo '
+											<div class="alert alert-dismissible alert-info">
+												<button type="button" class="close" data-dismiss="alert">&times;</button>
+												<strong>Hints On!</strong> This is <a href="https://www.owasp.org/index.php/Top_10-2017_A3-Sensitive_Data_Exposure" target="_blank" class="alert-link">vulnerable to Sensitive Data Exposure</a>, Check it out from the Link.
+											</div>
+											';
+										} else {
+												echo '
+												<div class="alert alert-dismissible alert-warning">
+													<button type="button" class="close" data-dismiss="alert">&times;</button>
+													<h4 class="alert-heading">Warning!</h4>
+													<p class="mb-0">Best check yo self, you are not looking too good my boy.</p>
+												</div>
+											';
+										}
+										
+									}
+									$conn->close();
+								}else{
+									echo '
+										<div class="alert alert-dismissible alert-warning">
+											<button type="button" class="close" data-dismiss="alert">&times;</button>
+											<h4 class="alert-heading">Warning!</h4>
+											<p class="mb-0">Best check yo self, you are not looking too good.</p>
+										</div>
+									';
+								}
+							}else{
+								if(($caseFlag[1] =="BE709C3FBFB5F36BB031659FBE879C88386E33917D58B9E0EFF0F9925AA7A5F2")&&(strpos($ref, 'http://localhost/CISOColabNewPHP/xxeattk.php') !== FALSE)){
+									if((strtolower(trim($userName[0])) != null)||($_GET['UsrReveal'] != null)){
+										require_once('../../connect.php');
+										$sql = "SELECT userName, timeEnter FROM challengerDetails";
+										$result = $conn->query($sql);
+										if ($result->num_rows > 0) {
+												while($row = $result->fetch_assoc()) {
+													$dbUserDate = new DateTime(trim($row["timeEnter"]));
+														if((strtolower(trim($row["userName"])) == strtolower(trim($userName[0])))&&($userIn->format('Y-m-d H:i:sa')==$dbUserDate->format('Y-m-d H:i:sa'))){
+															$found = true;
+														}
+												}
+										} else {
+												$found = false;
+										}
+										if($found == true){
+											$user = $userName[0];
+											$inDate = $userIn->format('Y-m-d H:i:sa');
+											//echo $user. "and the timeis:".$inDate;
+											$sqlUpdate = "UPDATE `challengerDetails` SET Hint8='Yes' WHERE userName="."'$user'"."and timeEnter ="."'$inDate'";
+											if (mysqli_query($conn, $sqlUpdate)) {
+													echo '
+												<div class="alert alert-dismissible alert-info">
+													<button type="button" class="close" data-dismiss="alert">&times;</button>
+													<strong>Hints On!</strong> This is <a href="https://www.owasp.org/index.php/Top_10-2017_A4-XML_External_Entities_(XXE)" target="_blank" class="alert-link">vulnerable to XML External Entities</a>, Check it out from the Link.
+												</div>
+												';
+											} else {
+													echo '
+													<div class="alert alert-dismissible alert-warning">
+														<button type="button" class="close" data-dismiss="alert">&times;</button>
+														<h4 class="alert-heading">Warning!</h4>
+														<p class="mb-0">Best check yo self, you are not looking too good my boy.</p>
+													</div>
+												';
+											}
+											
+										}
+										$conn->close();
+									}else{
+										echo '
+											<div class="alert alert-dismissible alert-warning">
+												<button type="button" class="close" data-dismiss="alert">&times;</button>
+												<h4 class="alert-heading">Warning!</h4>
+												<p class="mb-0">Best check yo self, you are not looking too good.</p>
+											</div>
+										';
+									}
+								}
+							}
 						}
 					}
 				}

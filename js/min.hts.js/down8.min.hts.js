@@ -5,16 +5,16 @@ $('#claude').on('click','#revealHintUsr',function(e){
 	//alert("Claude:"+ userDetails);
 	var d = new Date();
 	var storeItem = userDetails +"ViewedAt:"+d.getFullYear()+"/"+d.getMonth()+"/"+d.getDate()+" "+d.getHours()+":"+d.getMinutes()+":"+d.getSeconds();
-	localStorage.setItem("SensitiveDataExposure", storeItem);
+	localStorage.setItem("ExternalEntityXMLatt", storeItem);
   loadHint1_Value();
 });
 							            
 function loadHint1_Value() {
   var urlSend = "42E6AE8EA03B/1277AC2F7B5F/show_valueUsr.php?";
-  var value = localStorage.getItem("SensitiveDataExposure");
+  var value = localStorage.getItem("ExternalEntityXMLatt");
   var uri = value.split(";")
   var param = "UsrReveal="+(uri[0]||'none');
-  var sentURI = urlSend+param+"|C18FB8E2A42BEBB783B2079357ECF5F6A43886C724D1EFABE20F7F7E2E1D89F9";
+  var sentURI = urlSend+param+"|BE709C3FBFB5F36BB031659FBE879C88386E33917D58B9E0EFF0F9925AA7A5F2";
   //alert(sentURI);
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {

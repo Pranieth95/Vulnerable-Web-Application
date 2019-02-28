@@ -161,7 +161,7 @@
 		
 			<?php 
 
-$connect = mysqli_connect("localhost", "root", "", "ciit_db");
+$connect = mysqli_connect("localhost", "root", "toor", "ciit_db");
 
 if(isset($_POST["add_to_cart"]))
 {
@@ -256,7 +256,7 @@ if(isset($_GET["action"]))
 
 		<?php
 			if(isset($_POST['btn_search'])){
-				$conn=mysqli_connect("localhost","root","","ciit_db");
+				$conn=mysqli_connect("localhost","root","toor","ciit_db");
 				$get=$_POST['search'];
 				if($get){
 					$show="select name,author from tbl_product where id='$get'";
@@ -392,6 +392,17 @@ if(isset($_GET["action"]))
 
 	<footer class="footer">
 		<div class="container">
+			<center>
+				<div class="card border-danger mb-3" style="max-width: 30rem;">
+				  <div class="card-header" style="background:#ffb606;color:white;border-bottom:1px solid #ffb606"><b>Task to Get the Flag</b></div>
+				  <div class="card-body" style="background:#1a1a1a;color:white;border-bottom:1px solid #ffb606">
+				    <label for="colFormLabelSm" class="col-sm-12 col-form-label col-form-label-sm">As you have found the vulnerability as Sensitive Data Exposure. using the aforementioned vulnerability: 
+				    </label>
+				    <label class="text-danger">Expose the NIC of Janith Upendra".</label>  
+				  </div>
+				</div>
+			</center>
+			<br>
 			<!-- Flag Reveal -->
 			<center>
 				<form  method="post" action=<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?> >
@@ -413,7 +424,7 @@ if(isset($_GET["action"]))
 								</div>
 								<div class="modal-body" style="background:#1a1a1a;color:white;">
 										<div class="form-group row">
-											<label for="colFormLabelSm" class="col-sm-6 col-form-label col-form-label-sm">Vulnerability Name</label>
+											<label for="colFormLabelSm" class="col-sm-6 col-form-label col-form-label-sm">NIC Value of the User:</label>
 											<div class="col-sm-5">
 												<input name="vuln_name" type="text" class="form-control form-control-sm" id="colFormLabelSm" >
 											</div>
@@ -435,24 +446,28 @@ if(isset($_GET["action"]))
 					}else{
 						$vulN = htmlspecialchars(htmlentities($_POST['vuln_name']));
 						$vulN = urlencode(preg_replace('/[^A-Za-z0-9\-]/','',strtolower(trim(str_replace(' ','',$vulN)))));
-						if(checkVulname($vulN)){
-							echo '<br> <br> <center>
-							<div class="card border-danger mb-3" style="max-width: 30rem;">
-							  <div class="card-header" style="background:#ffb606;color:white;border-bottom:1px solid #ffb606"><b>Task to Get the Flag</b></div>
-							  <div class="card-body" style="background:#1a1a1a;color:white;border-bottom:1px solid #ffb606">
-							    <label for="colFormLabelSm" class="col-sm-12 col-form-label col-form-label-sm">As you have found the vulnerability as Sensitive Data Exposure. using the aforementioned vulnerability: 
-							    </label>
-							    <label class="text-danger">Expose the NIC of Janith Upendra".</label>
-							 
-							   
-							    
-							  </div>
+						if($vulN == '941954673v'){
+							$_SESSION['usertoken_7'] = hash('sha256',base64_encode(date("Y-m-d h:i:sa") . " Sensitive Data Exposure : ".$vulN));
+							echo '<br> <br>
+							<center>
+							<div class="alert alert-dismissible alert-success">
+								<button type="button" class="close" data-dismiss="alert">&times;</button>
+								<strong>Well done!</strong> You successfully found the Vulnerability .
 							</div>
 							</center>
 							';
-							$cookie_name = "_reflexVUser";
-							$cookie_value = "userFound:b89b9c75f85a94057ff5451ebe212";
-							setcookie($cookie_name, $cookie_value, time() + (86400 * 2), "/");
+							echo '
+							<span 	class="badge badge-pill badge-info" 
+									style="
+										display: block;
+										margin-left: auto;
+										margin-right: auto;
+										background-color:#17a2b8;";
+
+							>'.$_SESSION["usertoken_7"].
+							'</span>
+							';
+							
 						}else{
 							echo '<br> 
 							<span 	class="badge badge-pill badge-danger" 
@@ -463,15 +478,6 @@ if(isset($_GET["action"]))
 							>Please Try Again With Correct Input Values</span>
 							';
 						}
-					}
-				}
-
-				function checkVulname($nameVul){
-					$nameVul = strtolower($nameVul);
-					if((strpos($nameVul, 'sensitivedataexposure') !== false)||(strpos($nameVul, 'dataexposure') !== false)){
-						return true;
-					}else{
-						return false;
 					}
 				}
 			?>
@@ -485,40 +491,6 @@ if(isset($_GET["action"]))
 							<div id="divCounter"></div>
 						</div>
 						<br>
-						<?php 
-							if(isset($_COOKIE['_reflexVUserFDC'])){
-								echo '<br> <br>
-								<div class="alert alert-dismissible alert-success">
-									<button type="button" class="close" data-dismiss="alert">&times;</button>
-									<strong>Well done!</strong> You successfully found the Vulnerability .
-								</div>
-								';
-								echo '
-								<span 	class="badge badge-pill badge-info" 
-										style="
-											display: block;
-											margin-left: auto;
-											margin-right: auto"
-								>'.$_COOKIE['_reflexVUserFDC'].
-								'</span>
-								';
-								$cookie_name = "_reflexVUserFDC";
-								$cookie_value = $_SESSION["usertoken_3"];
-								setcookie($cookie_name, $cookie_value, time() - (86400 * 2), "/");
-							}
-							if(isset($_COOKIE['_reflexVUserError'])){
-								echo '
-									<div class="alert alert-dismissible alert-danger">
-									  <button type="button" class="close" data-dismiss="alert">&times;</button>
-									  <strong>Oh snap!</strong> <a href="#" class="alert-link">Change a few things up</a> and try submitting again.
-									</div>
-								';
-								$cookie_name = "_reflexVUserError";
-								$cookie_value = 'Error: Please try again Later';
-								setcookie($cookie_name, $cookie_value, time() - (86400 * 2), "/");
-							}
-						?>
-						<br>
 						<div class="newsletter_form_container mx-auto">
 							<form method="post" action=<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?> >
 								<div class="newsletter_form d-flex flex-md-row flex-column flex-xs-column align-items-center justify-content-center">
@@ -531,8 +503,8 @@ if(isset($_GET["action"]))
 										if(($_POST['sub_token_1val'] != '') || ($_POST['sub_token_1val'] != null )){
 											$submitval = urlencode(preg_replace('/[^A-Za-z0-9\-]/','',strtolower(trim(str_replace(' ','',$_POST['sub_token_1val'])))));
 											//echo "<br>" . $submitval . " <br> token: <br>" .  $_SESSION["usertoken_1"];
-											if($submitval == trim(urlencode($_SESSION["usertoken_3"]))){
-												header("location: news.php");
+											if($submitval == trim(urlencode($_SESSION["usertoken_7"]))){
+												header("location: elements.php");
 											}else{
 												echo '<span class="badge badge-danger">Wrong Flag</span> <br/>';
 											}
@@ -545,7 +517,7 @@ if(isset($_GET["action"]))
 								<button name="skipLevel" id="newsletter_submit" type="submit" class="newsletter_submit_btn trans_300" value="Submit" style="background:#17a2b8;">Skip to Next Level</button>
 								<?php
 									if(isset($_POST['skipLevel'])){
-										header("location: news.php");
+										header("location: elements.php");
 									}
 								?>
 							</form>
@@ -588,8 +560,8 @@ if(isset($_GET["action"]))
 <script src="styles/bootstrap4/popper.js"></script>
 <script src="styles/bootstrap4/bootstrap.min.js"></script>
 <script src="plugins/greensock/TweenMax.min.js"></script>
-<script src="js/min.js/down5.min.js"></script>
-<script src="js/min.hts.js/down5.min.hts.js"></script>
+<script src="js/min.js/down7.min.js"></script>
+<script src="js/min.hts.js/down7.min.hts.js"></script>
 <script src="plugins/greensock/TimelineMax.min.js"></script>
 <script src="plugins/scrollmagic/ScrollMagic.min.js"></script>
 <script src="plugins/greensock/animation.gsap.min.js"></script>

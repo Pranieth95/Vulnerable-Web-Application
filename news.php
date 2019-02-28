@@ -54,10 +54,6 @@
 					<span>
 								<?php 
 										session_start();
-<<<<<<< HEAD
-										
-=======
->>>>>>> de0c006b220a3a7f8e5f3cd1e0397df186606410
 										if((isset($_COOKIE['_usrLogged']))&& (session_status() == PHP_SESSION_ACTIVE)){
 											if((isset($_SESSION["user_cookie"]))&&(strtolower(trim($_COOKIE['_usrLogged'])) == trim($_SESSION["user_cookie"]))){
 												echo $_SESSION["user_name"];
@@ -380,99 +376,25 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 
 		<footer class="footer">
 		<div class="container">
-			<!-- Flag Reveal -->
-			<center>
-				<form  method="post" action=<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?> >
-						<button name="show_form" id="comment_send_btn" type="button" class="comment_send_btn trans_200" data-toggle="modal" data-target="#ClaudeModalCenter" style="width:35%;background:#17a2b8;height:40px">
-							Acquire Flag Value
-						</button>
-				</form>
-				
-			</center>
-			<div class="modal fade" id="ClaudeModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-				<div class="modal-dialog modal-dialog-centered" role="document">
-						<div class="modal-content">
-							<form method="post" action=<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?> >
-								<div class="modal-header" style="background:#ffb606;color:white;border-bottom:1px solid #ffb606">
-									<h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
-									<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-									<span aria-hidden="true">&times;</span>
-									</button>
-								</div>
-								<div class="modal-body" style="background:#1a1a1a;color:white;">
-										<div class="form-group row">
-											<label for="colFormLabelSm" class="col-sm-6 col-form-label col-form-label-sm">Vulnerability Name</label>
-											<div class="col-sm-5">
-												<input name="vuln_name" type="text" class="form-control form-control-sm" id="colFormLabelSm" >
-											</div>
-										</div>						
-								</div>
-								<div class="modal-footer">
-									<button id="revel_Flag" name="showFlagDC" type="submit" value="Submit" class="btn btn-primary btn-sm" style="background:#ffb606; border-color:#ffb606">Reveal Flag</button>
-									<button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal" style="background:#1a1a1a">Close</button>
-								</div>
-							</form>	
-
+			<!-- Newsletter -->
+			<div class="newsletter">
+				<div class="row">
+					<div class="col text-center">
+						<div id="claude">
+							<h1 id="demo"></h1>
+							<div id="divCounter"></div>
 						</div>
-				</div>
-			</div>
-			<?php
-				if(isset($_POST['showFlagDC'])){
-					if(($_POST['vuln_name'] == null) || ($_POST['vuln_name'] == '')){
-						echo '<center><span class="badge badge-danger">Please fill the fields correctly inorder to obtain the Flag</span></center>';
-					}else{
-						$vulN = htmlspecialchars(htmlentities($_POST['vuln_name']));
-						$vulN = urlencode(preg_replace('/[^A-Za-z0-9\-]/','',strtolower(trim(str_replace(' ','',$vulN)))));
-						if(checkVulname($vulN)){
-							echo '<br> <br> <center>
+						<br>
+						<center>
 							<div class="card border-danger mb-3" style="max-width: 30rem;">
 							  <div class="card-header" style="background:#ffb606;color:white;border-bottom:1px solid #ffb606"><b>Task to Get the Flag</b></div>
 							  <div class="card-body" style="background:#1a1a1a;color:white;border-bottom:1px solid #ffb606">
 							    <label for="colFormLabelSm" class="col-sm-12 col-form-label col-form-label-sm">As you have found the vulnerability as security misconfiguration. using the aforementioned vulnerability: 
 							    </label>
 							    <label class="text-danger">Find the Apache API Version".</label>
-							 
-							   
-							    
 							  </div>
 							</div>
 							</center>
-							';
-							$cookie_name = "_reflexVUser";
-							$cookie_value = "userFound:b89b9c75f85a94057ff5451ebe212";
-							setcookie($cookie_name, $cookie_value, time() + (86400 * 2), "/");
-						}else{
-							echo '<br> 
-							<span 	class="badge badge-pill badge-danger" 
-									style="
-										display: block;
-										margin-left: auto;
-										margin-right: auto"
-							>Please Try Again With Correct Input Values</span>
-							';
-						}
-					}
-				}
-
-				function checkVulname($nameVul){
-					$nameVul = strtolower($nameVul);
-					if((strpos($nameVul, 'securitymisconfiguration') !== false)||(strpos($nameVul, 'misconfiguration') !== false)){
-						return true;
-					}else{
-						return false;
-					}
-				}
-			?>
-			<!-- Newsletter -->
-			<div class="newsletter">
-				<div class="row">
-					<div class="col text-center">
-						<br>
-						<div id="claude">
-							<h1 id="demo"></h1>
-							<div id="divCounter"></div>
-						</div>
-						<br>
 						<?php 
 							if(isset($_COOKIE['_reflexVUserFDC'])){
 								echo '<br> <br>
@@ -506,7 +428,83 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 								setcookie($cookie_name, $cookie_value, time() - (86400 * 2), "/");
 							}
 						?>
-						<br>
+						<!-- Flag Reveal -->
+						<?php
+							if(isset($_POST['showFlagDC'])){
+								if(($_POST['vuln_name'] == null) || ($_POST['vuln_name'] == '')){
+									echo '<center><span class="badge badge-danger">Please fill the fields correctly inorder to obtain the Flag</span></center>';
+								}else{
+									$vulN = htmlspecialchars(htmlentities($_POST['vuln_name']));
+									$vulN = urlencode(preg_replace('/[^A-Za-z0-9\-]/','',strtolower(trim(str_replace(' ','',$vulN)))));
+									if($vulN == '20120211'){
+										$_SESSION['usertoken_5'] = hash('sha256',base64_encode(date("Y-m-d h:i:sa") . " Security Misconfiguration : ".$vulN));
+										echo '<br> <br>
+										<center>
+										<div class="alert alert-dismissible alert-success">
+											<button type="button" class="close" data-dismiss="alert">&times;</button>
+											<strong>Well done!</strong> You successfully found the Vulnerability .
+										</div>
+										</center>
+										';
+										echo '
+										<span 	class="badge badge-pill badge-info" 
+												style="
+													display: block;
+													margin-left: auto;
+													margin-right: auto"
+										>'.$_SESSION["usertoken_5"].
+										'</span>
+										';
+									}else{
+										echo '<br> 
+										<span 	class="badge badge-pill badge-danger" 
+												style="
+													display: block;
+													margin-left: auto;
+													margin-right: auto"
+										>Please Try Again With Correct Input Values</span>
+										';
+									}
+								}
+							}
+						?>
+
+						<br><br>
+						<center>
+							<form  method="post" action=<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?> >
+									<button name="show_form" id="comment_send_btn" type="button" class="comment_send_btn trans_200" data-toggle="modal" data-target="#ClaudeModalCenter" style="width:35%;background:#17a2b8;height:40px">
+										Acquire Flag Value
+									</button>
+							</form>
+							
+						</center>
+						<div class="modal fade" id="ClaudeModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+							<div class="modal-dialog modal-dialog-centered" role="document">
+									<div class="modal-content">
+										<form method="post" action=<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?> >
+											<div class="modal-header" style="background:#ffb606;color:white;border-bottom:1px solid #ffb606">
+												<h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+												<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+												<span aria-hidden="true">&times;</span>
+												</button>
+											</div>
+											<div class="modal-body" style="background:#1a1a1a;color:white;">
+													<div class="form-group row">
+														<label for="colFormLabelSm" class="col-sm-6 col-form-label col-form-label-sm">Apache API Version</label>
+														<div class="col-sm-5">
+															<input name="vuln_name" type="text" class="form-control form-control-sm" id="colFormLabelSm" >
+														</div>
+													</div>						
+											</div>
+											<div class="modal-footer">
+												<button id="revel_Flag" name="showFlagDC" type="submit" value="Submit" class="btn btn-primary btn-sm" style="background:#ffb606; border-color:#ffb606">Reveal Flag</button>
+												<button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal" style="background:#1a1a1a">Close</button>
+											</div>
+										</form>	
+
+									</div>
+							</div>
+						</div>
 						<div class="newsletter_form_container mx-auto">
 							<form method="post" action=<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?> >
 								<div class="newsletter_form d-flex flex-md-row flex-column flex-xs-column align-items-center justify-content-center">
@@ -519,8 +517,8 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 										if(($_POST['sub_token_1val'] != '') || ($_POST['sub_token_1val'] != null )){
 											$submitval = urlencode(preg_replace('/[^A-Za-z0-9\-]/','',strtolower(trim(str_replace(' ','',$_POST['sub_token_1val'])))));
 											//echo "<br>" . $submitval . " <br> token: <br>" .  $_SESSION["usertoken_1"];
-											if($submitval == trim(urlencode($_SESSION["usertoken_3"]))){
-												header("location: news.php");
+											if($submitval == trim(urlencode($_SESSION["usertoken_5"]))){
+												header("location: s.php");
 											}else{
 												echo '<span class="badge badge-danger">Wrong Flag</span> <br/>';
 											}
@@ -579,11 +577,6 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 <script src="js/min.js/down5.min.js"></script>
 <script src="js/min.hts.js/down5.min.hts.js"></script>
 <script src="plugins/greensock/TimelineMax.min.js"></script>
-<<<<<<< HEAD
-<script src="js/min.js/down5.min.js"></script>
-<script src="js/min.hts.js/down5.min.hts.js"></script>
-=======
->>>>>>> de0c006b220a3a7f8e5f3cd1e0397df186606410
 <script src="plugins/scrollmagic/ScrollMagic.min.js"></script>
 <script src="plugins/greensock/animation.gsap.min.js"></script>
 <script src="plugins/greensock/ScrollToPlugin.min.js"></script>
