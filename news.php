@@ -54,6 +54,10 @@
 					<span>
 								<?php 
 										session_start();
+<<<<<<< HEAD
+=======
+										
+>>>>>>> a2c3e319b92a0b4f5025e248c2f15a59e6abf1e8
 										if((isset($_COOKIE['_usrLogged']))&& (session_status() == PHP_SESSION_ACTIVE)){
 											if((isset($_SESSION["user_cookie"]))&&(strtolower(trim($_COOKIE['_usrLogged'])) == trim($_SESSION["user_cookie"]))){
 												echo $_SESSION["user_name"];

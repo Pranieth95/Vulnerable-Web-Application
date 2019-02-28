@@ -1083,7 +1083,7 @@
     prevention["information_leakage"]   = "Learn how to stop leaking information";
     descriptions["information_leakage"] = "Revealing system information helps an attacker learn about your site, and gives them an idea how it might be attacked.";
     public["information_leakage"]       = false;
-    urls["information_leakage"]         = { "exercise"   : ".git",
+    urls["information_leakage"]         = { "exercise"   : "robots.txt",
                                     "prevention" : "infoLeakage.php",
                                     "quiz"       : "/quiz/information-leakage"}
 
