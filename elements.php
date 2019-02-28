@@ -827,7 +827,7 @@
 
 </div>
 -->
- 
+ <!--
         <div id="lax_security_settings"
      class="exercise-link active">
 
@@ -854,8 +854,8 @@
   </div>
 
 </div>
-
- 
+-->
+ <!--
         <div id="toxic_dependencies"
      class="exercise-link active">
 
@@ -882,7 +882,7 @@
   </div>
 
 </div>
-
+-->
     </div>
 
 
@@ -1047,7 +1047,7 @@
     prevention["broken_access_control"]   = "Learn how to correctly Implement Access Control";
     descriptions["broken_access_control"] = "All resources on your site need to have access control implemented, even if they aren&#39;t intended to be discoverable by a user. Relying on security through obscurity will lead to problems.";
     public["broken_access_control"]       = false;
-    urls["broken_access_control"]         = { "exercise"   : "news.php",
+    urls["broken_access_control"]         = { "exercise"   : "courses.php",
                                     "prevention" : "BrokAccess.php",
                                     "quiz"       : "/quiz/broken-access-control"}
 
@@ -1083,7 +1083,7 @@
     prevention["information_leakage"]   = "Learn how to stop leaking information";
     descriptions["information_leakage"] = "Revealing system information helps an attacker learn about your site, and gives them an idea how it might be attacked.";
     public["information_leakage"]       = false;
-    urls["information_leakage"]         = { "exercise"   : "robots.txt",
+    urls["information_leakage"]         = { "exercise"   : "news.php",
                                     "prevention" : "infoLeakage.php",
                                     "quiz"       : "/quiz/information-leakage"}
 
@@ -1128,7 +1128,7 @@
     prevention["xml_bombs"]   = "Learn how to protect against XML Bombs";
     descriptions["xml_bombs"] = "XML documents can incorporate inline macros which are expanded at parse-time. Unsafe treatment of these macros can make your server vulnerable to attack from specially crafted XML files.";
     public["xml_bombs"]       = false;
-    urls["xml_bombs"]         = { "exercise"   : "/exercises/xml-bombs",
+    urls["xml_bombs"]         = { "exercise"   : "xxeattk.php",
                                     "prevention" : "xxe.php",
                                     "quiz"       : "/quiz/xml-bombs"}
 

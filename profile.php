@@ -1,21 +1,25 @@
+<?php
+	ob_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Course - Courses</title>
+<title>Course - News</title>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="description" content="Course Project">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" type="text/css" href="styles/bootstrap4/bootstrap.min.css">
 <link href="plugins/fontawesome-free-5.0.1/css/fontawesome-all.css" rel="stylesheet" type="text/css">
-<link rel="stylesheet" type="text/css" href="styles/courses_styles.css">
-<link rel="stylesheet" type="text/css" href="styles/courses_responsive.css">
+<link rel="stylesheet" type="text/css" href="styles/news_styles.css">
+<link rel="stylesheet" type="text/css" href="styles/news_responsive.css">
 <link rel="stylesheet" type="text/css" href="styles/news_post_styles.css">
 <link rel="stylesheet" type="text/css" href="styles/news_post_responsive.css">
 <link rel="stylesheet" type="text/css" href="styles/contact_styles.css">
 <link rel="stylesheet" type="text/css" href="styles/contact_responsive.css">
 <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
 <script src="styles/jquery.bpopup.min.js"></script>
+
 
 <style>
 .button {
@@ -74,7 +78,6 @@
 						<li class="main_nav_item"><a href="teachers.php">Lecturers</a></li>
 						<li class="main_nav_item"><a href="elements.php">Dashboard</a></li>
 						<li class="main_nav_item"><a href="shop.php">Ebooks</a></li>
-					
 					</ul>
 				</div>
 			</nav>
@@ -82,7 +85,7 @@
 		<div class="header_side d-flex flex-row justify-content-center align-items-center">
 			<img src="images/phone-call.svg" alt="">
 			<form id="search_form" class="search_form" method="post" action="news.php">
-				<span class="label "><button id="contact_send_btn" name="form_logout" type="submit" class="button button2" value="Submit">Student Logout</button></span>
+				<span class="label label-danger"><button id="contact_send_btn" name="form_logout" type="submit" class="button button2" value="Submit">Student Logout</button></span>
 			</form>
 			<?php
 				//unset($_SESSION['PHPSESSID']);
@@ -119,9 +122,12 @@
 		<div class="menu_inner menu_mm">
 			<div class="menu menu_mm">
 				<ul class="menu_list menu_mm">
-					<li class="menu_item menu_mm"><a href="news.php">Home</a></li>
+					<li class="menu_item menu_mm"><a href="index.php">Home</a></li>
+					<li class="menu_item menu_mm"><a href="#">About us</a></li>
 					<li class="menu_item menu_mm"><a href="courses.php">Courses</a></li>
-				
+					<li class="menu_item menu_mm"><a href="elements.php">Elements</a></li>
+					<li class="menu_item menu_mm"><a href="#">News</a></li>
+					<li class="menu_item menu_mm"><a href="contact.php">Contact</a></li>
 				</ul>
 
 				<!-- Menu Social -->
@@ -136,7 +142,9 @@
 					</ul>
 				</div>
 
-				<div class="menu_copyright menu_mm">Colorlib All rights reserved</div>
+				<div class="menu_copyright menu_mm"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></div>
 			</div>
 
 		</div>
@@ -147,250 +155,144 @@
 
 	<div class="home">
 		<div class="home_background_container prlx_parent">
-			<div class="home_background prlx" style="background-image:url(images/courses_background.jpg)"></div>
+			<div class="home_background prlx" style="background-image:url(images/news_background.jpg)"></div>
 		</div>
 		<div class="home_content">
-			<h1>e-Shop</h1>
+			<h1>The News</h1>
 		</div>
 	</div>
 
-	<!-- Popular -->
+	<!-- News -->
 
-	<div >
+	<div class="news">
 		<div class="container">
-		
-			<?php 
-
-$connect = mysqli_connect("localhost", "root", "", "ciit_db");
-
-if(isset($_POST["add_to_cart"]))
-{
-	if(isset($_SESSION["shopping_cart"]))
-	{
-		$item_array_id = array_column($_SESSION["shopping_cart"], "item_id");
-		if(!in_array($_GET["id"], $item_array_id))
-		{
-			$count = count($_SESSION["shopping_cart"]);
-			$item_array = array(
-				'item_id'			=>	$_GET["id"],
-				'item_name'			=>	$_POST["hidden_name"],
-				'item_price'		=>	$_POST["hidden_price"],
-				'item_quantity'		=>	$_POST["quantity"]
-			);
-			$_SESSION["shopping_cart"][$count] = $item_array;
-		}
-		else
-		{
-			echo '<script>alert("Item Already Added")</script>';
-		}
-	}
-	else
-	{
-		$item_array = array(
-			'item_id'			=>	$_GET["id"],
-			'item_name'			=>	$_POST["hidden_name"],
-			'item_price'		=>	$_POST["hidden_price"],
-			'item_quantity'		=>	$_POST["quantity"]
-		);
-		$_SESSION["shopping_cart"][0] = $item_array;
-	}
-}
-
-if(isset($_GET["action"]))
-{
-	if($_GET["action"] == "delete")
-	{
-		foreach($_SESSION["shopping_cart"] as $keys => $values)
-		{
-			if($values["item_id"] == $_GET["id"])
-			{
-				unset($_SESSION["shopping_cart"][$keys]);
-				echo '<script>alert("Item Removed")</script>';
-				echo '<script>window.location="shop.php"</script>';
-			}
-		}
-	}
-}
-
-?>
-
-
-
-
-<!DOCTYPE html>
-<html>
-	<head>
-		<title>Shopping Cart</title>
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-	</head>
-	
-			
-			
-	<body>
-
-
-	<div class="newsletter">  
-			
-
 			<div class="row">
-				<div class="col text-center">
-					<div class="newsletter_form_container mx-auto">
+				
+				<!-- News Column -->
+
+				<div class="col-lg-8">
 					
-						<form action="shop.php" method="post">
-						<input type="text" name="search" class="newsletter_email"/>
-						<button class="newsletter_submit_btn trans_300" name="btn_search">search</button>
-						</form>
+					<div class="news_posts">
+						<!-- News Post -->
+						<div class="news_post">
+							<div class="news_post_image">
+								<img src="images/news_1.jpg" alt="https://unsplash.com/@dsmacinnes">
+							</div>
+							<div class="news_post_top d-flex flex-column flex-sm-row">
+								<div class="news_post_date_container">
+									<div class="news_post_date d-flex flex-column align-items-center justify-content-center">
+										<div>18</div>
+										<div>dec</div>
+									</div>
+								</div>
+								<div class="news_post_title_container">
+									<div class="news_post_title">
+										<a href="news_post.php?<?php echo htmlentities(session_name().'='.session_id()); ?>">Why do you need a qualification?</a>
+									</div>
+									<div class="news_post_meta">
+										<span class="news_post_author"><a href="#">By Christian Smith</a></span>
+										<span>|</span>
+										<span class="news_post_comments"><a href="#">3 Comments</a></span>
+									</div>
+								</div>
+							</div>
+							<div class="news_post_text">
+								<p>Professional qualifications are becoming increasingly popular in a wide range of industry sectors - not least of all fundraising - because they not only help to provide employees with industry-specific skills but can also demonstrate  ..</p>
+							</div>
+							<div class="news_post_button text-center trans_200">
+								<a href="news_post.php">Read More</a>
+							</div>
+						</div>
+
+						
+
+					</div>
+
+					<!-- Page Nav -->
+
+					<div class="news_page_nav">
+						
+					</div>
+
+				</div>
+
+				<!-- Sidebar Column -->
+
+				<div class="col-lg-4">
+					<div class="sidebar">
+
+						<!-- Archives -->
+						<div class="sidebar_section">
+							<div class="sidebar_section_title">
+								<h3>Upload Assignments</h3>
+							</div>
+							<ul class="sidebar_list">
+								<li class="sidebar_list_item"><a href="xxeattk.php">Try XML Validator before submit.</a></li>
+								<!--<li class="sidebar_list_item"><a href="#">All you need to know</a></li>
+								<li class="sidebar_list_item"><a href="#">Uncategorized</a></li>
+								<li class="sidebar_list_item"><a href="#">About Our Departments</a></li>
+								<li class="sidebar_list_item"><a href="#">Choose the right course</a></li>-->
+							</ul>
+						</div>
+
+						<!-- Latest Posts -->
+
+						<div class="sidebar_section">
+							<div class="sidebar_section_title">
+								<h3>Latest posts</h3>
+							</div>
+							
+							<div class="latest_posts">
+								
+								<!-- Latest Post -->
+								<div class="latest_post">
+									<div class="latest_post_image">
+										
+									</div>
+									<div class="latest_post_title"><a href="#">Why do you need a qualification?</a></div>
+									<div class="latest_post_meta">
+										<span class="latest_post_author"><a href="#">By Professor Saman Wijesundara</a></span>
+										<span>|</span>
+										<span class="latest_post_comments"><a href="#">3 Comments</a></span>
+									</div>
+								</div>
+
+								<!-- Latest Post -->
+								<div class="latest_post">
+									<div class="latest_post_image">
+									
+									</div>
+									<div class="latest_post_title"><a href="#">How to Build yor Career With CIIT</a></div>
+									<div class="latest_post_meta">
+										<span class="latest_post_author"><a href="#">By Professor Denzil Abayakoon</a></span>
+										<span>|</span>
+										<span class="latest_post_comments"><a href="#">1 Comments</a></span>
+									</div>
+								</div>
+
+								
+								
+							</div>
+								
+						</div>
+
+						<!-- Tags -->
+
+						<div class="sidebar_section">
+							
+						</div>
+
 					</div>
 				</div>
 			</div>
-
-		</div>
-		<table class="table table-bordered">
-					<tr>
-						<th width="30%">Name of the Book</th>
-						<th width="10%">Author</th>
-						
-					</tr>
-
-		<?php
-			if(isset($_POST['btn_search'])){
-				$conn=mysqli_connect("localhost","root","","ciit_db");
-				$get=$_POST['search'];
-				if($get){
-					$show="select name,author from tbl_product where id='$get'";
-					$result=mysqli_query($conn,$show);
-					if (!$result) {
-						printf("Error: %s\n", mysqli_error($conn));
-						exit();
-					}
-					while($rows=mysqli_fetch_array($result)){
-						
-					    echo "<tr> <td>".$rows ['name']."</td>"; 
-						echo  "<td>".$rows ['author']."</td> </tr>"; 
-						echo "<br/></table>";
-
-
-
-
-						
-					}
-				}
-			}
-		?>
-
-
-		<br />
-		<div class="container">
-			<br />
-			<br />
-			<br />
-			
-			<br /><br />
-			<?php
-				$query = "SELECT * FROM tbl_product ORDER BY id ASC";
-				$result = mysqli_query($connect, $query);
-				if(mysqli_num_rows($result) > 0)
-				{
-					while($row = mysqli_fetch_array($result))
-					{
-				?>
-			
-			<div class="col-md-4">
-				<form method="post" action="shop.php?action=add&id=<?php echo $row["id"]; ?>">
-					<div style="border:1px solid #333; background-color:#f1f1f1; border-radius:5px; padding:16px;" align="center">
-						<img src="images/<?php echo $row["image"]; ?>" class="img-responsive" /><br />
-
-						<h4 class="text-info"><?php echo $row["name"]; ?></h4>
-
-						<h4 class="text-danger">$ <?php echo $row["price"]; ?></h4>
-
-						<input type="text" name="quantity" value="1" class="form-control" />
-
-						<input type="hidden" name="hidden_name" value="<?php echo $row["name"]; ?>" />
-
-						<input type="hidden" name="hidden_price" value="<?php echo $row["price"]; ?>" />
-
-						<input type="submit" name="add_to_cart" style="margin-top:5px;" class="btn btn-success" value="Add to Cart" />
-
-					</div>
-				</form>
-			</div>
-			<?php
-					}
-				}
-			?>
-			<div style="clear:both"></div>
-			<br />
-			<h3>Order Details</h3>
-			<div class="table-responsive">
-				<table class="table table-bordered">
-					<tr>
-						<th width="40%">Ebook Name</th>
-						<th width="10%">Quantity</th>
-						<th width="20%">Price</th>
-						<th width="15%">Total</th>
-						<th width="5%">Action</th>
-					</tr>
-					<?php
-					if(!empty($_SESSION["shopping_cart"]))
-					{
-						$total = 0;
-						foreach($_SESSION["shopping_cart"] as $keys => $values)
-						{
-					?>
-					<tr>
-						<td><?php echo $values["item_name"]; ?></td>
-						<td><?php echo $values["item_quantity"]; ?></td>
-						<td>$ <?php echo $values["item_price"]; ?></td>
-						<td>$ <?php echo number_format($values["item_quantity"] * $values["item_price"], 2);?></td>
-						<td><a href="shop.php?action=delete&id=<?php echo $values["item_id"]; ?>"><span class="text-danger">Remove</span></a></td>
-					</tr>
-					<?php
-							$total = $total + ($values["item_quantity"] * $values["item_price"]);
-						}
-					?>
-					<tr>
-						<td colspan="3" align="right">Total</td>
-						<td align="right">$ <?php echo number_format($total, 2); ?></td>
-						<td></td>
-					</tr>
-					<?php
-					}
-					?>
-						
-				</table>
-			</div>
 		</div>
 	</div>
-	<br />
-	</body>
-</html>
 
-<?php
+	
 
-?>
+		<!-- Footer -->
 
-
-
-
-
-
-
-
-
-
-
-
-
-			
-		</div>		
-	</div>
-
-	<!-- Footer -->
-
-	<footer class="footer">
+		<footer class="footer">
 		<div class="container">
 			<!-- Flag Reveal -->
 			<center>
@@ -440,9 +342,9 @@ if(isset($_GET["action"]))
 							<div class="card border-danger mb-3" style="max-width: 30rem;">
 							  <div class="card-header" style="background:#ffb606;color:white;border-bottom:1px solid #ffb606"><b>Task to Get the Flag</b></div>
 							  <div class="card-body" style="background:#1a1a1a;color:white;border-bottom:1px solid #ffb606">
-							    <label for="colFormLabelSm" class="col-sm-12 col-form-label col-form-label-sm">As you have found the vulnerability as Sensitive Data Exposure. using the aforementioned vulnerability: 
+							    <label for="colFormLabelSm" class="col-sm-12 col-form-label col-form-label-sm">As you have found the vulnerability as security misconfiguration. using the aforementioned vulnerability: 
 							    </label>
-							    <label class="text-danger">Expose the NIC of Janith Upendra".</label>
+							    <label class="text-danger">Find the Apache API Version".</label>
 							 
 							   
 							    
@@ -468,7 +370,7 @@ if(isset($_GET["action"]))
 
 				function checkVulname($nameVul){
 					$nameVul = strtolower($nameVul);
-					if((strpos($nameVul, 'sensitivedataexposure') !== false)||(strpos($nameVul, 'dataexposure') !== false)){
+					if((strpos($nameVul, 'securitymisconfiguration') !== false)||(strpos($nameVul, 'misconfiguration') !== false)){
 						return true;
 					}else{
 						return false;

@@ -54,7 +54,10 @@
 					<span>
 								<?php 
 										session_start();
+<<<<<<< HEAD
 										
+=======
+>>>>>>> de0c006b220a3a7f8e5f3cd1e0397df186606410
 										if((isset($_COOKIE['_usrLogged']))&& (session_status() == PHP_SESSION_ACTIVE)){
 											if((isset($_SESSION["user_cookie"]))&&(strtolower(trim($_COOKIE['_usrLogged'])) == trim($_SESSION["user_cookie"]))){
 												echo $_SESSION["user_name"];
@@ -286,14 +289,14 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 						<!-- Archives -->
 						<div class="sidebar_section">
 							<div class="sidebar_section_title">
-								<h3>Archives</h3>
+								<h3>Upload Assignments</h3>
 							</div>
 							<ul class="sidebar_list">
-								<li class="sidebar_list_item"><a href="#">Cyber Security for MSc.</a></li>
-								<li class="sidebar_list_item"><a href="#">All you need to know</a></li>
+								<li class="sidebar_list_item"><a href="xxeattk.php">Try XML Validator before submit.</a></li>
+								<!--<li class="sidebar_list_item"><a href="#">All you need to know</a></li>
 								<li class="sidebar_list_item"><a href="#">Uncategorized</a></li>
 								<li class="sidebar_list_item"><a href="#">About Our Departments</a></li>
-								<li class="sidebar_list_item"><a href="#">Choose the right course</a></li>
+								<li class="sidebar_list_item"><a href="#">Choose the right course</a></li>-->
 							</ul>
 						</div>
 
@@ -371,9 +374,11 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 		</div>
 	</div>
 
-	<!-- Footer -->
+	
 
-	<footer class="footer">
+		<!-- Footer -->
+
+		<footer class="footer">
 		<div class="container">
 			<!-- Flag Reveal -->
 			<center>
@@ -387,7 +392,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 			<div class="modal fade" id="ClaudeModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
 				<div class="modal-dialog modal-dialog-centered" role="document">
 						<div class="modal-content">
-							<form method="post" action='news.php'>
+							<form method="post" action=<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?> >
 								<div class="modal-header" style="background:#ffb606;color:white;border-bottom:1px solid #ffb606">
 									<h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
 									<button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -400,7 +405,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 											<div class="col-sm-5">
 												<input name="vuln_name" type="text" class="form-control form-control-sm" id="colFormLabelSm" >
 											</div>
-										</div>							
+										</div>						
 								</div>
 								<div class="modal-footer">
 									<button id="revel_Flag" name="showFlagDC" type="submit" value="Submit" class="btn btn-primary btn-sm" style="background:#ffb606; border-color:#ffb606">Reveal Flag</button>
@@ -416,23 +421,26 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 					if(($_POST['vuln_name'] == null) || ($_POST['vuln_name'] == '')){
 						echo '<center><span class="badge badge-danger">Please fill the fields correctly inorder to obtain the Flag</span></center>';
 					}else{
-						$vulName = htmlspecialchars(htmlentities($_POST['vuln_name']));
-						$vulName = urlencode(preg_replace('/[^A-Za-z0-9\-]/','',strtolower(trim(str_replace(' ','',$vulName)))));
-						if(checkVulname($vulName)){
+						$vulN = htmlspecialchars(htmlentities($_POST['vuln_name']));
+						$vulN = urlencode(preg_replace('/[^A-Za-z0-9\-]/','',strtolower(trim(str_replace(' ','',$vulN)))));
+						if(checkVulname($vulN)){
 							echo '<br> <br> <center>
 							<div class="card border-danger mb-3" style="max-width: 30rem;">
 							  <div class="card-header" style="background:#ffb606;color:white;border-bottom:1px solid #ffb606"><b>Task to Get the Flag</b></div>
 							  <div class="card-body" style="background:#1a1a1a;color:white;border-bottom:1px solid #ffb606">
-							    <label for="colFormLabelSm" class="col-sm-12 col-form-label col-form-label-sm">As you have found the vulnerability as the Broken Access Control. using the aforementioned vulnerability: 
+							    <label for="colFormLabelSm" class="col-sm-12 col-form-label col-form-label-sm">As you have found the vulnerability as security misconfiguration. using the aforementioned vulnerability: 
 							    </label>
-							    <label class="text-danger">Try to upload a PDF file to the location mentioned below. </label><br>
-							    <a href="Resources/Pearson Brand Hub.pdf" download="BrandHub" style="color:#ffb606;">Download the pdf</a><br>
-							    <label class="text-success">coursesUser.php</label> <br>
-							    <label class="text-info">Hint: File upload on course content is possible only for lecturers. check the connection requests made on uploading contents.</label>
+							    <label class="text-danger">Find the Apache API Version".</label>
+							 
+							   
+							    
 							  </div>
 							</div>
 							</center>
 							';
+							$cookie_name = "_reflexVUser";
+							$cookie_value = "userFound:b89b9c75f85a94057ff5451ebe212";
+							setcookie($cookie_name, $cookie_value, time() + (86400 * 2), "/");
 						}else{
 							echo '<br> 
 							<span 	class="badge badge-pill badge-danger" 
@@ -448,14 +456,13 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 
 				function checkVulname($nameVul){
 					$nameVul = strtolower($nameVul);
-					if((strpos($nameVul, 'brokenaccesscontrol') !== false)){
-							return true;
+					if((strpos($nameVul, 'securitymisconfiguration') !== false)||(strpos($nameVul, 'misconfiguration') !== false)){
+						return true;
 					}else{
 						return false;
 					}
 				}
-			?>			
-			
+			?>
 			<!-- Newsletter -->
 			<div class="newsletter">
 				<div class="row">
@@ -465,6 +472,41 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 							<h1 id="demo"></h1>
 							<div id="divCounter"></div>
 						</div>
+						<br>
+						<?php 
+							if(isset($_COOKIE['_reflexVUserFDC'])){
+								echo '<br> <br>
+								<div class="alert alert-dismissible alert-success">
+									<button type="button" class="close" data-dismiss="alert">&times;</button>
+									<strong>Well done!</strong> You successfully found the Vulnerability .
+								</div>
+								';
+								echo '
+								<span 	class="badge badge-pill badge-info" 
+										style="
+											display: block;
+											margin-left: auto;
+											margin-right: auto"
+								>'.$_COOKIE['_reflexVUserFDC'].
+								'</span>
+								';
+								$cookie_name = "_reflexVUserFDC";
+								$cookie_value = $_SESSION["usertoken_3"];
+								setcookie($cookie_name, $cookie_value, time() - (86400 * 2), "/");
+							}
+							if(isset($_COOKIE['_reflexVUserError'])){
+								echo '
+									<div class="alert alert-dismissible alert-danger">
+									  <button type="button" class="close" data-dismiss="alert">&times;</button>
+									  <strong>Oh snap!</strong> <a href="#" class="alert-link">Change a few things up</a> and try submitting again.
+									</div>
+								';
+								$cookie_name = "_reflexVUserError";
+								$cookie_value = 'Error: Please try again Later';
+								setcookie($cookie_name, $cookie_value, time() - (86400 * 2), "/");
+							}
+						?>
+						<br>
 						<div class="newsletter_form_container mx-auto">
 							<form method="post" action=<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?> >
 								<div class="newsletter_form d-flex flex-md-row flex-column flex-xs-column align-items-center justify-content-center">
@@ -477,8 +519,8 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 										if(($_POST['sub_token_1val'] != '') || ($_POST['sub_token_1val'] != null )){
 											$submitval = urlencode(preg_replace('/[^A-Za-z0-9\-]/','',strtolower(trim(str_replace(' ','',$_POST['sub_token_1val'])))));
 											//echo "<br>" . $submitval . " <br> token: <br>" .  $_SESSION["usertoken_1"];
-											if($submitval == trim(urlencode($_SESSION["usertoken_2"]))){
-												header("location: teachers.php");
+											if($submitval == trim(urlencode($_SESSION["usertoken_3"]))){
+												header("location: news.php");
 											}else{
 												echo '<span class="badge badge-danger">Wrong Flag</span> <br/>';
 											}
@@ -487,11 +529,11 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 								?>
 								<br/>
 							</form>
-							<form method="post" action=<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?> >
+							<form method="post" action='teachers.php'>
 								<button name="skipLevel" id="newsletter_submit" type="submit" class="newsletter_submit_btn trans_300" value="Submit" style="background:#17a2b8;">Skip to Next Level</button>
 								<?php
 									if(isset($_POST['skipLevel'])){
-										header("location:elements.php");
+										header("location: news.php");
 									}
 								?>
 							</form>
@@ -500,13 +542,15 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 					</div>
 				</div>
 			</div>
-	
 			
+
 			<!-- Footer Content -->
 
-				<!-- Footer Copyright -->
 
-				<div class="footer_bar d-flex flex-column flex-sm-row align-items-center">
+
+			<!-- Footer Copyright -->
+
+			<div class="footer_bar d-flex flex-column flex-sm-row align-items-center">
 				<div class="footer_copyright">
 					<span><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 					Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | Intern Colloboration | Team CISO <i  aria-hidden="true"></i> @ <a href="https://www.pearson.com/asia/" target="_blank">Pearson</a>
@@ -532,9 +576,14 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 <script src="styles/bootstrap4/popper.js"></script>
 <script src="styles/bootstrap4/bootstrap.min.js"></script>
 <script src="plugins/greensock/TweenMax.min.js"></script>
-<script src="plugins/greensock/TimelineMax.min.js"></script>
 <script src="js/min.js/down5.min.js"></script>
 <script src="js/min.hts.js/down5.min.hts.js"></script>
+<script src="plugins/greensock/TimelineMax.min.js"></script>
+<<<<<<< HEAD
+<script src="js/min.js/down5.min.js"></script>
+<script src="js/min.hts.js/down5.min.hts.js"></script>
+=======
+>>>>>>> de0c006b220a3a7f8e5f3cd1e0397df186606410
 <script src="plugins/scrollmagic/ScrollMagic.min.js"></script>
 <script src="plugins/greensock/animation.gsap.min.js"></script>
 <script src="plugins/greensock/ScrollToPlugin.min.js"></script>
