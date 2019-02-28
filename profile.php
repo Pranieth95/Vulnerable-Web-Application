@@ -204,75 +204,14 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 							</div>
 						</div>
 
-						<!-- News Post -->
-						<div class="news_post">
-							<div class="news_post_image">
-								<img src="images/news_2.jpg" alt="https://unsplash.com/@dsmacinnes">
-							</div>
-							<div class="news_post_top d-flex flex-column flex-sm-row">
-								<div class="news_post_date_container">
-									<div class="news_post_date d-flex flex-column align-items-center justify-content-center">
-										<div>18</div>
-										<div>dec</div>
-									</div>
-								</div>
-								<div class="news_post_title_container">
-									<div class="news_post_title">
-										<a href="news_post.php">G.C.E. Advanced Level Result Sheets</a>
-									</div>
-									<div class="news_post_meta">
-									
-									</div>
-								</div>
-							</div>
-							<div class="news_post_text">
-								<p>If you have not fulfilled the above entry Criteria You can Postpone the Degree or Transfer the Programme or else ask for a Refund. Please make  All Requests on or befor 7th February 2019.</p>
-							</div>
-							<div class="news_post_button text-center trans_200">
-								<a href="#">Read More</a>
-							</div>
-						</div>
+						
 
-						<!-- News Post -->
-						<div class="news_post">
-							<div class="news_post_image">
-								<img src="images/news_3.jpg" alt="https://unsplash.com/@dsmacinnes">
-							</div>
-							<div class="news_post_top d-flex flex-column flex-sm-row">
-								<div class="news_post_date_container">
-									<div class="news_post_date d-flex flex-column align-items-center justify-content-center">
-										<div>18</div>
-										<div>dec</div>
-									</div>
-								</div>
-								<div class="news_post_title_container">
-									<div class="news_post_title">
-										<a href="#">CIIT Balloon Festival 2019</a>
-									</div>
-									<div class="news_post_meta">
-										<span class="news_post_author"><a href="#">Organized By ELTU</a></span>
-										<span>|</span>
-										
-									</div>
-								</div>
-							</div>
-							<div class="news_post_text">
-								
-							</div>
-							<!--<div class="news_post_button text-center trans_200">
-								<a href="news_post.php">Read More</a>
-							</div>-->
-						</div>
 					</div>
 
 					<!-- Page Nav -->
 
 					<div class="news_page_nav">
-						<ul>
-							<li class="active text-center trans_200"><a href="#">01</a></li>
-							<li class="text-center trans_200"><a href="#">02</a></li>
-							<li class="text-center trans_200"><a href="#">03</a></li>
-						</ul>
+						
 					</div>
 
 				</div>
@@ -308,7 +247,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 								<!-- Latest Post -->
 								<div class="latest_post">
 									<div class="latest_post_image">
-										<img src="images/latest_1.jpg" alt="https://unsplash.com/@dsmacinnes">
+										
 									</div>
 									<div class="latest_post_title"><a href="#">Why do you need a qualification?</a></div>
 									<div class="latest_post_meta">
@@ -321,7 +260,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 								<!-- Latest Post -->
 								<div class="latest_post">
 									<div class="latest_post_image">
-										<img src="images/latest_2.jpg" alt="https://unsplash.com/@erothermel">
+									
 									</div>
 									<div class="latest_post_title"><a href="#">How to Build yor Career With CIIT</a></div>
 									<div class="latest_post_meta">
@@ -331,18 +270,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 									</div>
 								</div>
 
-								<!-- Latest Post -->
-								<div class="latest_post">
-									<div class="latest_post_image">
-										<img src="images/latest_3.jpg" alt="https://unsplash.com/@element5digital">
-									</div>
-									<div class="latest_post_title"><a href="#">Why take Our Graduate Programmes?</a></div>
-									<div class="latest_post_meta">
-										<span class="latest_post_author"><a href="#">By Mr. Nuwan Perera</a></span>
-										<span>|</span>
-										<span class="latest_post_comments"><a href="#">2 Comments</a></span>
-									</div>
-								</div>
+								
 								
 							</div>
 								
@@ -351,17 +279,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 						<!-- Tags -->
 
 						<div class="sidebar_section">
-							<div class="sidebar_section_title">
-								<h3>Tags</h3>
-							</div>
-							<div class="tags d-flex flex-row flex-wrap">
-								<div class="tag"><a href="#">Course</a></div>
-								<div class="tag"><a href="#">Design</a></div>
-								<div class="tag"><a href="#">FAQ</a></div>
-								<div class="tag"><a href="#">Teachers</a></div>
-								<div class="tag"><a href="#">School</a></div>
-								<div class="tag"><a href="#">Graduate</a></div>
-							</div>
+							
 						</div>
 
 					</div>

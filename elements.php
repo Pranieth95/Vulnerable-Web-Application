@@ -827,7 +827,7 @@
 
 </div>
 -->
- 
+ <!--
         <div id="lax_security_settings"
      class="exercise-link active">
 
@@ -854,8 +854,8 @@
   </div>
 
 </div>
-
- 
+-->
+ <!--
         <div id="toxic_dependencies"
      class="exercise-link active">
 
@@ -882,7 +882,7 @@
   </div>
 
 </div>
-
+-->
     </div>
 
 
