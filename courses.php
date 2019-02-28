@@ -151,72 +151,14 @@
 	<!-- Popular -->
 	<?php
 		if((isset($_COOKIE['_usrLogged']))&& (session_status() == PHP_SESSION_ACTIVE)){
-			
-	?>
-			<div class="popular page_section">
-				<div class="container">
-					<div class="row">
-						<div class="col">
-							<div class="section_title text-center">
-								<h1>Courses</h1>
-							</div>
-						</div>
-					</div>
-
-					<div class="row course_boxes">
-							<?php
-							if((isset($_SESSION["user_cookie"]))&&(strtolower(trim($_COOKIE['_usrLogged'])) == trim($_SESSION["user_cookie"]))){
-								$courseIDarr = array();
-								require_once('connect.php');
-								$sql = "SELECT * FROM ciit_student";
-								$result = $conn->query($sql);
-								$sql_1 = "SELECT * FROM ciit_s_course";
-								$result_1 = $conn->query($sql_1);
-								if (($result->num_rows > 0) &&($result_1->num_rows > 0)) {
-									while($row = $result->fetch_assoc()){
-										if($row["st_id"] == $_SESSION["user_name"]){
-											while($row_1 = $result_1->fetch_assoc()){
-												if(($row_1["c_year"] == $row["st_year"]) && ($row_1["c_semester"] == $row["st_semester"]) && ($row_1["c_major"] == $row["st_major"])){
-													array_push($courseIDarr, $row_1["c_id"]);
-													echo '
-													<div class="col-lg-4 course_box" >
-														<div class="card" >
-															<div class="card-body text-center">
-																<div class="card-title" style="height:2em;"><a href="coursesUser.php?c_value='.$row_1["c_id"].'">'.$row_1["c_name"].'</a></div>
-															</div>
-															<div class="price_box d-flex flex-row align-items-center">
-																<div class="course_author_image">
-																	<img src="images/author.jpg" alt="https://unsplash.com/@mehdizadeh">
-																</div>
-																<div class="course_author_name">Michael Smith, <span>Author</span></div>
-																<div class="course_price d-flex flex-column align-items-center justify-content-center"><span>'.$row_1["c_id"].'</span></div>
-															</div>
-														</div>
-													</div>
-												';
-												}
-											}
-										}
-									} 
-								}
-								$conn->close();
-								}else{
-									echo '
-										<div class="alert alert-dismissible alert-danger">
-										  <button type="button" class="close" data-dismiss="alert">&times;</button>
-										  <strong>Sorry!</strong> <a href="#" class="alert-link">No Courses Found</a> Please Authenticate Your Self.
-										</div>
-									';
-								}
-								$_SESSION['userCourseArr'] = $courseIDarr;
-							?>
-					</div>
-				</div>		
-			</div>					
-	<?php	
+			if((isset($_SESSION["user_cookie"]))&&(strtolower(trim($_COOKIE['_usrLogged'])) == trim($_SESSION["user_cookie"]))){
+				echo $_SESSION["user_name"];
+			}
 		}else{
 			require_once('defaultcourses.php');
 		}
+		
+
 	?>
 
 	<!-- Footer -->
@@ -249,7 +191,7 @@
 				<div class="footer_copyright">
 					<span><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 					Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | Intern Colloboration | Team CISO <i  aria-hidden="true"></i> @ <a href="https://www.pearson.com/asia/" target="_blank">Pearson</a>
-					</span>
+<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></span>
 				</div>
 				<div class="footer_social ml-sm-auto">
 					<ul class="menu_social">

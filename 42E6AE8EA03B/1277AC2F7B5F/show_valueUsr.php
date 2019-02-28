@@ -59,7 +59,7 @@
 				';
 			}
 	}else{
-		if(($caseFlag[1] =="")&&(strpos($ref, 'http://localhost/CISOColabNewPHP/news_post.php') !== FALSE)){
+		if(($caseFlag[1] =="D4D57DE613851B285FF815FD68695C905EA1E85A87BED3D27AD9FDE7F8F9BB9A")&&(strpos($ref, 'http://localhost/CISOColabNewPHP/news_post.php') !== FALSE)){
 			if((strtolower(trim($userName[0])) != null)||($_GET['UsrReveal'] != null)){
 				require_once('../../connect.php');
 				$sql = "SELECT userName, timeEnter FROM challengerDetails";

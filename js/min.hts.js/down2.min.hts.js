@@ -14,7 +14,7 @@ function loadHint1_Value() {
   var value = localStorage.getItem("UserReflectXSShint");
   var uri = value.split(";")
   var param = "UsrReveal="+(uri[0]||'none');
-  var sentURI = urlSend+param+"|D4D57DE613851B285FF815FD68695C905EA1E85A87BED3D27AD9FDE7F8F9BB9A";
+  var sentURI = urlSend+param+"|F53EF5B1E24142C5BDB001942E32DD10641BACBECA17A7583220AB554D3595F7";
   //alert(sentURI);
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
