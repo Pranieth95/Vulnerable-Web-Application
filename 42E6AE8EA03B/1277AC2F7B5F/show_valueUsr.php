@@ -11,10 +11,6 @@
 	echo " <br/> claude: ". $ref;*/
 	$caseFlag = explode("|",$_GET['UsrReveal']);
 	if(($caseFlag[1] =="BD892C88E9EF7BBA023A01CBB17887ABA6A64DCC902279CCE19A5C8E20EAC919")&&(strpos($ref, 'http://localhost/CISOColabNewPHP/login.php') !== FALSE)){
-<<<<<<< HEAD
-		
-=======
->>>>>>> 3e8dc9b32b1d7b049b88ced8193df40f0fff4aa7
 			if((strtolower(trim($userName[0])) != null)||($_GET['UsrReveal'] != null)){
 				require_once('../../connect.php');
 				$sql = "SELECT userName, timeEnter FROM challengerDetails";
@@ -63,7 +59,7 @@
 				';
 			}
 	}else{
-		if(($caseFlag[1] =="D4D57DE613851B285FF815FD68695C905EA1E85A87BED3D27AD9FDE7F8F9BB9A")&&(strpos($ref, 'http://localhost/CISOColabNewPHP/news_post.php') !== FALSE)){
+		if(($caseFlag[1] =="")&&(strpos($ref, 'http://localhost/CISOColabNewPHP/news_post.php') !== FALSE)){
 			if((strtolower(trim($userName[0])) != null)||($_GET['UsrReveal'] != null)){
 				require_once('../../connect.php');
 				$sql = "SELECT userName, timeEnter FROM challengerDetails";
