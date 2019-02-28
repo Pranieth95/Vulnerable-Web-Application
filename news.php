@@ -518,7 +518,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 											$submitval = urlencode(preg_replace('/[^A-Za-z0-9\-]/','',strtolower(trim(str_replace(' ','',$_POST['sub_token_1val'])))));
 											//echo "<br>" . $submitval . " <br> token: <br>" .  $_SESSION["usertoken_1"];
 											if($submitval == trim(urlencode($_SESSION["usertoken_5"]))){
-												header("location: s.php");
+												header("location: elements.php");
 											}else{
 												echo '<span class="badge badge-danger">Wrong Flag</span> <br/>';
 											}
