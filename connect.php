@@ -2,7 +2,7 @@
 
 $servername = "localhost";
 $username = "root";
-$password = "toor";
+$password = "";
 $dbname = "ciit_db";
 
 // Create connection

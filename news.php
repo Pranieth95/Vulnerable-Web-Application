@@ -54,6 +54,7 @@
 					<span>
 								<?php 
 										session_start();
+										echo session_id();
 										if((isset($_COOKIE['_usrLogged']))&& (session_status() == PHP_SESSION_ACTIVE)){
 											if((isset($_SESSION["user_cookie"]))&&(strtolower(trim($_COOKIE['_usrLogged'])) == trim($_SESSION["user_cookie"]))){
 												echo $_SESSION["user_name"];
@@ -187,7 +188,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 								</div>
 								<div class="news_post_title_container">
 									<div class="news_post_title">
-										<a href="news_post.php">Why do you need a qualification?</a>
+										<a href="news_post.php?<?php echo htmlentities(session_name().'='.session_id()); ?>">Why do you need a qualification?</a>
 									</div>
 									<div class="news_post_meta">
 										<span class="news_post_author"><a href="#">By Christian Smith</a></span>
