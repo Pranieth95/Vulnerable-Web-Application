@@ -247,12 +247,19 @@ if(isset($_GET["action"]))
 			</div>
 
 		</div>
+		<table class="table table-bordered">
+					<tr>
+						<th width="30%">Name of the Book</th>
+						<th width="10%">Author</th>
+						
+					</tr>
+
 		<?php
 			if(isset($_POST['btn_search'])){
 				$conn=mysqli_connect("localhost","root","","ciit_db");
 				$get=$_POST['search'];
 				if($get){
-					$show="select * from tbl_product where id='$get'";
+					$show="select name,author from tbl_product where id='$get'";
 					$result=mysqli_query($conn,$show);
 					if (!$result) {
 						printf("Error: %s\n", mysqli_error($conn));
@@ -260,10 +267,14 @@ if(isset($_GET["action"]))
 					}
 					while($rows=mysqli_fetch_array($result)){
 						
-						echo $rows ['id'];
-						echo $rows ['price'];
-					
-						echo "<br/>";
+					    echo "<tr> <td>".$rows ['name']."</td>"; 
+						echo  "<td>".$rows ['author']."</td> </tr>"; 
+						echo "<br/></table>";
+
+
+
+
+						
 					}
 				}
 			}
@@ -431,7 +442,7 @@ if(isset($_GET["action"]))
 							  <div class="card-body" style="background:#1a1a1a;color:white;border-bottom:1px solid #ffb606">
 							    <label for="colFormLabelSm" class="col-sm-12 col-form-label col-form-label-sm">As you have found the vulnerability as Sensitive Data Exposure. using the aforementioned vulnerability: 
 							    </label>
-							    <label class="text-danger">Find the NIC of Author who has written the book "How to be a Hacker".</label>
+							    <label class="text-danger">Expose the NIC of Janith Upendra".</label>
 							 
 							   
 							    
