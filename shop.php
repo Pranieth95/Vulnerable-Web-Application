@@ -1,3 +1,6 @@
+<?php
+	ob_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -502,7 +505,7 @@ if(isset($_GET["action"]))
 										session_start();
 										if(($_POST['sub_token_1val'] != '') || ($_POST['sub_token_1val'] != null )){
 											$submitval = urlencode(preg_replace('/[^A-Za-z0-9\-]/','',strtolower(trim(str_replace(' ','',$_POST['sub_token_1val'])))));
-											//echo "<br>" . $submitval . " <br> token: <br>" .  $_SESSION["usertoken_1"];
+											echo "<br>" . $submitval . " <br> token: <br>" .  $_SESSION["usertoken_7"];
 											if($submitval == trim(urlencode($_SESSION["usertoken_7"]))){
 												header("location: elements.php");
 											}else{
