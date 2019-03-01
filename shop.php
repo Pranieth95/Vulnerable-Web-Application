@@ -161,7 +161,7 @@
 		
 			<?php 
 
-$connect = mysqli_connect("localhost", "root", "toor", "ciit_db");
+$connect = mysqli_connect("localhost", "root", "", "ciit_db");
 
 if(isset($_POST["add_to_cart"]))
 {
@@ -256,7 +256,7 @@ if(isset($_GET["action"]))
 
 		<?php
 			if(isset($_POST['btn_search'])){
-				$conn=mysqli_connect("localhost","root","toor","ciit_db");
+				$conn=mysqli_connect("localhost","root","","ciit_db");
 				$get=$_POST['search'];
 				if($get){
 					$show="select name,author from tbl_product where id='$get'";
