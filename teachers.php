@@ -599,7 +599,16 @@ ob_start();
 											$submitval = urlencode(preg_replace('/[^A-Za-z0-9\-]/','',strtolower(trim(str_replace(' ','',$_POST['sub_token_1val'])))));
 											//echo "<br>" . $submitval . " <br> token: <br>" .  $_SESSION["usertoken_1"];
 											if($submitval == trim(urlencode($_SESSION["usertoken_3"]))){
-												header("location: courses.php");
+												require_once('connect.php');
+												$userCookie = base64_decode($_COOKIE['_usrPlayName']);
+												$userCookie = explode("-",$userCookie);
+												$user = $userCookie[0];
+												//echo 'claudeeee----'.$userCookie[0];
+												$sqlUpdate = "UPDATE `challengerComplete` SET ch3='Yes' WHERE userName="."'$user'";
+												if (mysqli_query($conn, $sqlUpdate)) {
+													$conn->close();
+													header("location: courses.php");
+												}
 											}else{
 												echo '<span class="badge badge-danger">Wrong Flag</span> <br/>';
 											}
@@ -612,7 +621,7 @@ ob_start();
 								<button name="skipLevel" id="newsletter_submit" type="submit" class="newsletter_submit_btn trans_300" value="Submit" style="background:#17a2b8;">Skip to Next Level</button>
 								<?php
 									if(isset($_POST['skipLevel'])){
-										header("location: news.php");
+										header("location: courses.php");
 									}
 								?>
 							</form>

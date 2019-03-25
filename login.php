@@ -97,6 +97,13 @@ ob_start();
 		$regDate = (String)date("Y-m-d h:i:sa");
 		$stmt->execute();
 		$stmt->close();
+
+		$stmt1 = $conn->prepare("INSERT INTO `challengerComplete` (userName) VALUES (?)");
+		$stmt1->bind_param("s",$userName);
+		$userName = $userGameVal;
+		$stmt1->execute();
+		$stmt1->close();
+
 	}
 ?>
 <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -321,7 +328,17 @@ ob_start();
 											$submitval = urlencode(preg_replace('/[^A-Za-z0-9\-]/','',strtolower(trim(str_replace(' ','',$_POST['sub_token_1val'])))));
 											//echo "<br>" . $submitval . " <br> token: <br>" .  $_SESSION["usertoken_1"];
 											if($submitval == trim(urlencode($_SESSION["usertoken_1"]))){
-												header("location: news_post.php");
+												require_once('connect.php');
+												$userCookie = base64_decode($_COOKIE['_usrPlayName']);
+												$userCookie = explode("-",$userCookie);
+												$user = $userCookie[0];
+												//echo 'claudeeee----'.$userCookie[0];
+												$sqlUpdate = "UPDATE `challengerComplete` SET ch1='Yes' WHERE userName="."'$user'";
+												if (mysqli_query($conn, $sqlUpdate)) {
+													$conn->close();
+													header("location: news_post.php");
+												}
+												
 											}else{
 												echo '<span class="badge badge-danger">Wrong Flag</span> <br/>';
 											}
