@@ -1,10 +1,11 @@
 <?php
 ob_start();
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Edit Password</title>
+<title>XML- Validater</title>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="description" content="Course Project">
@@ -65,6 +66,7 @@ ob_start();
 					<img src="images/logo.png" alt="">
 					<span>		
 								<?php 
+								
 										session_start();
 										if((isset($_COOKIE['_usrLogged']))&& (session_status() == PHP_SESSION_ACTIVE)){
 											if((isset($_SESSION["user_cookie"]))&&(strtolower(trim($_COOKIE['_usrLogged'])) == trim($_SESSION["user_cookie"]))){
@@ -76,6 +78,12 @@ ob_start();
 											echo "GUEST";
 										}
 										
+								?>
+								<?php
+if (session_id() == 'bvqrmc61o6m755fg98h68vqvmc')
+{
+    echo '<script>alert("Congratulations! You found the Vulnerability. The Flag is edf11ec39d16fae68eaeedffd4cfaeb4")</script>';
+}
 								?>
 					</span>
 				</div>
@@ -99,6 +107,8 @@ ob_start();
 			<form id="search_form" class="search_form" method="post" action="news.php">
 				<span class="label label-danger"><button id="contact_send_btn" name="form_logout" type="submit" class="button button2" value="Submit">Student Logout</button></span>
 			</form>
+		
+
 			<?php
 				//unset($_SESSION['PHPSESSID']);
 				if ($_SERVER['REQUEST_METHOD'] === 'POST'){
@@ -113,6 +123,7 @@ ob_start();
 				}
 				
 			?>
+		
 		</div>
 		<!-- Button trigger modal -->
 		<button id="usrHintVul" type="button" class="btn btn-outline-dark btn-sm" data-toggle="modal" data-target="#exampleModalCenter">
@@ -171,7 +182,7 @@ ob_start();
 			<div class="home_background prlx" style="background-image:url(images/news_background.jpg)"></div>
 		</div>
 		<div class="home_content">
-			<h1>Edit Profile</h1>
+			<h1>Broken Authentication</h1>
 		</div>
 	</div>
 
@@ -188,40 +199,26 @@ ob_start();
 					<!-- Leave Comment -->
 
 					<div class="leave_comment">
-						<div class="leave_comment_title">Change Your Password Here!</div>
+						<div class="leave_comment_title">Edit Profile</div>
+
+						<div class="news_post_image">
+								<img src="images/project.jpg" alt="https://unsplash.com/@dsmacinnes">
+							</div>
 
 						<div class="leave_comment_form_container">
 							<form  method="post">
-								<textarea name="xml" id="comment_form_message" class="text_field contact_form_message" name="message" placeholder="Password" required="required" data-error="Please, write us a message."></textarea>
-								<button type="submit" value="Submit" id="comment_send_btn" class="comment_send_btn trans_200">Change</button>
+							<!--
+								<textarea name="xml" id="comment_form_message" class="text_field contact_form_message" name="message" placeholder="New Password" required="required" data-error="Please, write us a message."></textarea>
+								<button type="submit" value="Submit" id="comment_send_btn" class="comment_send_btn trans_200">Update</button>-->
 							</form>
 							<?php
-							  if(!empty($_POST["xml"])) {
-							    libxml_disable_entity_loader (false); 
-							    $xmlfile = $_POST["xml"];
-							    $dom = new DOMDocument();
-							    $dom->loadXML($xmlfile, LIBXML_NOENT | LIBXML_DTDLOAD);
-							    
-							    $x = $dom->documentElement;
-							    foreach ($x->childNodes AS $item) {
-								  print $item->nodeName . "=" . $item->nodeValue . "<br>";
-								}
-
-								}
-								    // echo "Book Details<br/><br/>Name : $name<br/>Author : $author<br/>Price : $price/-";
+							  
 							  
 							?>
 
 						</div>
 						<br/><br/><br/>
-						<center>
-							<form  method="post" action=<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?> >
-									<button name="show_form" id="comment_send_btn" type="button" class="comment_send_btn trans_200" data-toggle="modal" data-target="#ClaudeModalCenter" style="width:35%;background:#17a2b8;height:40px">
-										Acquire Flag Value
-									</button>
-							</form>
-							
-						</center>
+				
 						<div class="modal fade" id="ClaudeModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
 							<div class="modal-dialog modal-dialog-centered" role="document">
 									<div class="modal-content">
@@ -362,15 +359,11 @@ ob_start();
 						<br/><br/><br/><br/><br/><br/>
 						<div class="about">
 							<div class="about_title">Note to the User</div>
-							<p class="about_text">Hello User, this XML validater page may contain some vulnerabilities in it. You can find them by trial and error or any method you wish. Submit the flag inorder to advance to the next challenge from below.</p>
+							<p class="about_text">Here a student has sent a screen shot of Balloon festival notice to another student </p>
+						
 							<div class="contact_info">
 								<ul>
-									<li class="contact_info_item">
-										<div class="contact_info_icon">
-											<img src="images/exam.svg" alt="https://www.flaticon.com/authors/lucy-g">
-										</div>
-										<a target="_blank" href="2CA88326E269/sqli-sourcecode.txt" style="color:#ffb606" >Click to View the Source Code </a>
-										</li>
+								
 									
 								</ul>
 							</div>

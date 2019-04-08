@@ -1,6 +1,11 @@
 
 <?php
+<<<<<<< HEAD
   ob_start();
+=======
+//session_id( 'mySessionId' );
+session_start();
+>>>>>>> 0e4db2f5e5ce77d8ed8fe7a4e39b1207a5112801
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -1105,7 +1110,7 @@
     prevention["privilege_escalation"]   = "Learn how to protect against Privilege Escalation";
     descriptions["privilege_escalation"] = "Privilege escalation occurs when an attacker exploits a vulnerability to impersonate another user or gain extra permissions.";
     public["privilege_escalation"]       = false;
-    urls["privilege_escalation"]         = { "exercise"   : "/exercises/privilege-escalation",
+    urls["privilege_escalation"]         = { "exercise"   : "profile.php?<?php echo htmlentities(session_name().'='.session_id()); ?>",
                                     "prevention" : "BrokenAuth.php",
                                     "quiz"       : "/quiz/privilege-escalation"}
 
