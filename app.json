@@ -1,0 +1,7 @@
+{
+  "name": "Course Sample",
+  "description": "CISO interns collab",
+  "repository": "https://github.com/ryanmiriyagalla/CISOColabNewPHP.git",
+  "logo": "https://node-js-sample.herokuapp.com/node.png",
+  "keywords": ["php", "ciso", "static"]
+}

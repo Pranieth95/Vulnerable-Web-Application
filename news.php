@@ -531,7 +531,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 								<button name="skipLevel" id="newsletter_submit" type="submit" class="newsletter_submit_btn trans_300" value="Submit" style="background:#17a2b8;">Skip to Next Level</button>
 								<?php
 									if(isset($_POST['skipLevel'])){
-										header("location: news.php");
+										header("location: elements.php");
 									}
 								?>
 							</form>

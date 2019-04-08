@@ -126,6 +126,7 @@
 					if($found == true){
 						$user = $userName[0];
 						$inDate = $userIn->format('Y-m-d H:i:sa');
+						echo "username:".$user."timeEnter is:".$inDate."<br>";
 						$sqlUpdate = "UPDATE `challengerDetails` SET Hint3='Yes' WHERE userName="."'$user'"."and timeEnter ="."'$inDate'";
 						if (mysqli_query($conn, $sqlUpdate)) {
 						    echo '
@@ -175,6 +176,7 @@
 						if($found == true){
 							$user = $userName[0];
 							$inDate = $userIn->format('Y-m-d H:i:sa');
+							echo "username:".$user."timeEnter is:".$inDate."<br>";
 							$sqlUpdate = "UPDATE `challengerDetails` SET Hint4='Yes' WHERE userName="."'$user'"."and timeEnter ="."'$inDate'";
 							if (mysqli_query($conn, $sqlUpdate)) {
 									echo '
