@@ -420,7 +420,7 @@ ob_start();
 								<br/>
 							</form>
 							<form method="post" action=<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?> >
-								<button name="skipLevel" id="newsletter_submit" type="submit" class="newsletter_submit_btn trans_300" value="Submit" style="background:#17a2b8;">Skip to Next Level</button>
+								<button name="skipLevel" id="newsletter_submit" type="submit" class="newsletter_submit_btn trans_300" value="Submit" style="background:#17a2b8;">Finish The Level</button>
 								<?php
 									if(isset($_POST['skipLevel'])){
 										header("location: teachers.php");

@@ -507,7 +507,18 @@ if(isset($_GET["action"]))
 											$submitval = urlencode(preg_replace('/[^A-Za-z0-9\-]/','',strtolower(trim(str_replace(' ','',$_POST['sub_token_1val'])))));
 											echo "<br>" . $submitval . " <br> token: <br>" .  $_SESSION["usertoken_7"];
 											if($submitval == trim(urlencode($_SESSION["usertoken_7"]))){
-												header("location: elements.php");
+												$userCookie = base64_decode($_COOKIE['_usrPlayName']);
+												$userCookie = explode("-",$userCookie);
+												$user = $userCookie[0];
+												$sqlUpdate = "UPDATE `challengerDetails` SET ch7='Yes' WHERE userName="."'$user'";
+												//echo $sqlUpdate."";
+												require("connect.php");
+												if (mysqli_query($conn, $sqlUpdate)) {
+													$conn->close();
+													header("location: elements.php");
+												}else{
+													echo "didn't workout";
+												}
 											}else{
 												echo '<span class="badge badge-danger">Wrong Flag</span> <br/>';
 											}

@@ -56,8 +56,10 @@ ob_start();
 										if((isset($_COOKIE['_usrLogged']))&& (session_status() == PHP_SESSION_ACTIVE)){
 											if((isset($_SESSION["user_cookie"]))&&(strtolower(trim($_COOKIE['_usrLogged'])) == trim($_SESSION["user_cookie"]))){
 												echo $_SESSION["user_name"];
+												$_SESSION['user_who'] = $_SESSION["user_name"];
 											}else{
 												echo "GUEST";
+												$_SESSION['user_who'] = 'guest';
 											}
 										}else{
 											echo "GUEST";
@@ -71,12 +73,9 @@ ob_start();
 			<!-- Main Navigation -->
 			<nav class="main_nav_container">
 				<div class="main_nav">
-					<ul class="main_nav_list">
-						<li class="main_nav_item"><a href="news.php">home</a></li>
-						<li class="main_nav_item"><a href="courses.php">Modules</a></li>
-						<li class="main_nav_item"><a href="teachers.php">Lecturers</a></li>
+				<ul class="main_nav_list">
 						<li class="main_nav_item"><a href="elements.php">Dashboard</a></li>
-						<li class="main_nav_item"><a href="shop.php">Ebooks</a></li>
+						
 					</ul>
 				</div>
 			</nav>
@@ -604,7 +603,7 @@ ob_start();
 												$userCookie = explode("-",$userCookie);
 												$user = $userCookie[0];
 												//echo 'claudeeee----'.$userCookie[0];
-												$sqlUpdate = "UPDATE `challengerComplete` SET ch3='Yes' WHERE userName="."'$user'";
+												$sqlUpdate = "UPDATE `challengerDetails` SET ch3='Yes' WHERE userName="."'$user'";
 												if (mysqli_query($conn, $sqlUpdate)) {
 													$conn->close();
 													header("location: courses.php");

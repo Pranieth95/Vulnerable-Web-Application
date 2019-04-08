@@ -54,9 +54,7 @@ ob_start();
 		</div>
 </div>
 <div class="super_container">
-
 	<!-- Header -->
-
 	<header class="header d-flex flex-row">
 		<div class="header_content d-flex flex-row align-items-center">
 			<!-- Logo -->
@@ -279,10 +277,12 @@ We only offer the highest quality of teaching from experts in the field. Extensi
 								}
 
 								function deleteUserComment($nameCom, $dateCom){
+									
 									$servername = "localhost";
 									$username = "root";
-									$password = "";
+									$password = "toor";
 									$dbname = "ciit_db";
+									
 
 									// Create connection
 									$conn = new mysqli($servername, $username, $password,$dbname);
@@ -294,10 +294,11 @@ We only offer the highest quality of teaching from experts in the field. Extensi
 									$sqlDel = "DELETE FROM ciit_news_comments WHERE u_name="."'$nameCom'"."and ad_date ="."'$dateCom'";
 									if (mysqli_query($conn, $sqlDel)) {
 										echo "Record deleted successfully";
-										//header("Refresh:0");
+										echo "<meta http-equiv=\"refresh\" content=\"0;URL=news_post.php\">";
 									} else {
 										echo "Error deleting record: " . mysqli_error($conn);
 									}
+									$conn->close();
 								}
 								
 							?>
@@ -644,7 +645,7 @@ We only offer the highest quality of teaching from experts in the field. Extensi
 												$userCookie = explode("-",$userCookie);
 												$user = $userCookie[0];
 												//echo 'claudeeee----'.$userCookie[0];
-												$sqlUpdate = "UPDATE `challengerComplete` SET ch2='Yes' WHERE userName="."'$user'";
+												$sqlUpdate = "UPDATE `challengerDetails` SET ch2='Yes' WHERE userName="."'$user'";
 												if (mysqli_query($conn, $sqlUpdate)) {
 													$conn->close();
 													header("location: teachers.php");

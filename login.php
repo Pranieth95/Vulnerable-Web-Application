@@ -210,12 +210,12 @@ ob_start();
                                 <button id="contact_send_btn" name="form_lsubmit" type="submit" class="contact_send_btn trans_200" value="Submit">Login</button>
 							</form>
 							<?php
-                            if(isset($_POST['form_lsubmit'])){
-                                //header('Location: courses.php');
-                                if(isset($_POST['form_lname'])&& isset($_POST['form_lpass'])){
+                  if(isset($_POST['form_lsubmit'])){
+                  //header('Location: courses.php');
+                  if(isset($_POST['form_lname'])&& isset($_POST['form_lpass'])){
 									session_start();
-                                    require("connect.php");
-                                    $uname = $_POST['form_lname'];
+									require("connect.php");
+									$uname = $_POST['form_lname'];
 									$pass = $_POST['form_lpass'];
 									$stripped_uname = str_replace(' ','',$uname);
 									$stripped_pswd = str_replace(' ','',$pass);
@@ -333,7 +333,7 @@ ob_start();
 												$userCookie = explode("-",$userCookie);
 												$user = $userCookie[0];
 												//echo 'claudeeee----'.$userCookie[0];
-												$sqlUpdate = "UPDATE `challengerComplete` SET ch1='Yes' WHERE userName="."'$user'";
+												$sqlUpdate = "UPDATE `challengerDetails` SET ch1='Yes' WHERE userName="."'$user'";
 												if (mysqli_query($conn, $sqlUpdate)) {
 													$conn->close();
 													header("location: news_post.php");

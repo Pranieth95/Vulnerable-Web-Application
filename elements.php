@@ -1,3 +1,7 @@
+
+<?php
+  ob_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -1219,9 +1223,94 @@
 	</div>
 
 	<!-- Footer -->
+<?php 
 
+  session_start();
+  if((isset($_SESSION["user_cookie"]))&&(strtolower(trim($_COOKIE['_usrLogged'])) == trim($_SESSION["user_cookie"]))){
+    //echo $_SESSION["user_name"];
+  }else{
+    $_SESSION["user_name"] = "GUEST";
+  }
+
+?>
+<div class="card" style="width: 60rem;">
+  <div class="card-body">
+    <h5 class="card-title" style="font-size:2.25rem;">User: <?php echo $_SESSION["user_name"];?></h5>
+    <h6 class="card-subtitle" style="color:#C88E00;background:#FFD266">Welcome User..</h6>
+    <p class="card-text" style="color:#ffffff">Here lies all your Challenges and once you finish all the challenges or, if you feel to finish the Challenges to obtain the SCORE. Please click the Finish Button.</p>
+      <button name="EndGame" id="EndGame" type="submit"  value="Submit" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Finish</button>
+  </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    
+    <div class="modal-content">
+        <div class="modal-header" style="background:#ffb606;color:white;border-bottom:1px solid #ffb606">
+          <h5 class="modal-title" id="exampleModalLabel">Are You Sure - Leave and Obtain Score</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body" style="background:#1a1a1a;color:white;">
+          Do you really want to Finish The Game. If you click Finish. All your unsaved work will discard and you will obtain a score for the challenges you have solved.
+        </div>
+        <div id="CloseChanges" class="modal-footer">
+           <form method="post" action="elements.php">
+            <button id="RemoveItems" name="FinishMate" type="submit" value="Submit" class="btn btn-primary" style="background:#DC143C;border-color:#DC143C;margin-bottom:0px;">Yes, Please </button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">No, I Don't</button>
+          </form>
+        </div>
+    </div>
+  </div>
+</div>
+
+<?php
+    if(isset($_POST["FinishMate"])){
+        function getCookie($valueIn){
+          foreach($_COOKIE as  $key => $val)
+            {
+              if($key == $valueIn){
+                return $val;
+              }
+            }
+        } 
+        //UpdateDB
+        $userCookie = base64_decode($_COOKIE['_usrPlayName']);
+        $userCookie = explode("-",$userCookie);
+        $user = $userCookie[0];
+        $regDate = (String)date("Y-m-d h:i:sa");
+        $sqlUpdate = "UPDATE `challengerDetails` SET timeLeave= "."'$regDate'"." WHERE userName="."'$user'";
+        //echo $sqlUpdate."";
+        require("connect.php");
+        if (mysqli_query($conn, $sqlUpdate)) {
+          $conn->close();
+        }
+
+      unset($_COOKIE["_usrLogged"]);
+      setcookie("_usrLogged", $_SESSION["user_cookie"], time() - (86400 * 2), "/", "",false,true);
+      setcookie("_usrAgr", getCookie('_usrAgr'), time() - (86400 * 2), "/", "",false,true);
+      //setcookie("_usrPlayName",getCookie('_usrPlayName'), time() - (86400 * 2), "/", "",false,true);
+      setcookie("_reflexVUser", getCookie('_reflexVUser'), time() - (86400 * 2), "/", "",false,true);
+      setcookie("_brokenAccessDC", getCookie('_brokenAccessDC'), time() - (86400 * 2), "/", "",false,true);
+      setcookie("_gat", getCookie('_gat'), time() - (86400 * 2), "/", "",false,true);
+      setcookie("_ga", getCookie('_ga'), time() - (86400 * 2), "/", "",false,true);
+      setcookie("_gid", getCookie('_gid'), time() - (86400 * 2), "/", "",false,true);
+      
+      header('Location: DisplayScore.php');
+      exit();   
+
+    }
   
-	
+
+?>
+<script type="text/javascript">
+  $('#CloseChanges').on('click','#RemoveItems',function(e){
+    localStorage.clear();
+  });
+</script>
 
 
 <script src="js/jquery-3.2.1.min.js"></script>

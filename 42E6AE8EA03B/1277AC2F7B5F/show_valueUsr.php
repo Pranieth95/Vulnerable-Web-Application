@@ -28,7 +28,8 @@
 				}
 				if($found == true){
 					$user = $userName[0];
-					$inDate = $userIn->format('Y-m-d H:i:sa');
+					$inDate = $userIn->format('Y-m-d h:i:sa');
+					echo "User:".$user."timeEnter =".$inDate;
 					$sqlUpdate = "UPDATE `challengerDetails` SET Hint1='Yes' WHERE userName="."'$user'"."and timeEnter ="."'$inDate'";
 					if (mysqli_query($conn, $sqlUpdate)) {
 					    echo '
@@ -63,6 +64,7 @@
 			if((strtolower(trim($userName[0])) != null)||($_GET['UsrReveal'] != null)){
 				require_once('../../connect.php');
 				$sql = "SELECT userName, timeEnter FROM challengerDetails";
+				echo "DC";
 				$result = $conn->query($sql);
 				if ($result->num_rows > 0) {
 				    while($row = $result->fetch_assoc()) {
@@ -76,7 +78,8 @@
 				}
 				if($found == true){
 					$user = $userName[0];
-					$inDate = $userIn->format('Y-m-d H:i:sa');
+					$inDate = $userIn->format('Y-m-d h:i:sa');
+					echo "User:".$user."timeEnter =".$inDate;
 					$sqlUpdate = "UPDATE `challengerDetails` SET Hint2='Yes' WHERE userName="."'$user'"."and timeEnter ="."'$inDate'";
 					if (mysqli_query($conn, $sqlUpdate)) {
 					    echo '
@@ -125,7 +128,7 @@
 					}
 					if($found == true){
 						$user = $userName[0];
-						$inDate = $userIn->format('Y-m-d H:i:sa');
+						$inDate = $userIn->format('Y-m-d h:i:sa');
 						echo "username:".$user."timeEnter is:".$inDate."<br>";
 						$sqlUpdate = "UPDATE `challengerDetails` SET Hint3='Yes' WHERE userName="."'$user'"."and timeEnter ="."'$inDate'";
 						if (mysqli_query($conn, $sqlUpdate)) {
@@ -175,7 +178,7 @@
 						}
 						if($found == true){
 							$user = $userName[0];
-							$inDate = $userIn->format('Y-m-d H:i:sa');
+							$inDate = $userIn->format('Y-m-d h:i:sa');
 							echo "username:".$user."timeEnter is:".$inDate."<br>";
 							$sqlUpdate = "UPDATE `challengerDetails` SET Hint4='Yes' WHERE userName="."'$user'"."and timeEnter ="."'$inDate'";
 							if (mysqli_query($conn, $sqlUpdate)) {
@@ -224,7 +227,7 @@
 							}
 							if($found == true){
 								$user = $userName[0];
-								$inDate = $userIn->format('Y-m-d H:i:sa');
+								$inDate = $userIn->format('Y-m-d h:i:sa');
 								//echo $user. "and the timeis:".$inDate;
 								$sqlUpdate = "UPDATE `challengerDetails` SET Hint5='Yes' WHERE userName="."'$user'"."and timeEnter ="."'$inDate'";
 								if (mysqli_query($conn, $sqlUpdate)) {
@@ -273,7 +276,7 @@
 								}
 								if($found == true){
 									$user = $userName[0];
-									$inDate = $userIn->format('Y-m-d H:i:sa');
+									$inDate = $userIn->format('Y-m-d h:i:sa');
 									//echo $user. "and the timeis:".$inDate;
 									$sqlUpdate = "UPDATE `challengerDetails` SET Hint5='Yes' WHERE userName="."'$user'"."and timeEnter ="."'$inDate'";
 									if (mysqli_query($conn, $sqlUpdate)) {
@@ -322,7 +325,7 @@
 									}
 									if($found == true){
 										$user = $userName[0];
-										$inDate = $userIn->format('Y-m-d H:i:sa');
+										$inDate = $userIn->format('Y-m-d h:i:sa');
 										//echo $user. "and the timeis:".$inDate;
 										$sqlUpdate = "UPDATE `challengerDetails` SET Hint7='Yes' WHERE userName="."'$user'"."and timeEnter ="."'$inDate'";
 										if (mysqli_query($conn, $sqlUpdate)) {
@@ -371,7 +374,7 @@
 										}
 										if($found == true){
 											$user = $userName[0];
-											$inDate = $userIn->format('Y-m-d H:i:sa');
+											$inDate = $userIn->format('Y-m-d h:i:sa');
 											//echo $user. "and the timeis:".$inDate;
 											$sqlUpdate = "UPDATE `challengerDetails` SET Hint8='Yes' WHERE userName="."'$user'"."and timeEnter ="."'$inDate'";
 											if (mysqli_query($conn, $sqlUpdate)) {

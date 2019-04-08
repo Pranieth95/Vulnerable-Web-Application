@@ -354,21 +354,19 @@
 										session_start();
 										if(($_POST['sub_token_1val'] != '') || ($_POST['sub_token_1val'] != null )){
 											$submitval = urlencode(preg_replace('/[^A-Za-z0-9\-]/','',strtolower(trim(str_replace(' ','',$_POST['sub_token_1val'])))));
-											//echo "<br>" . $submitval . " <br> token: <br>" .  $_SESSION["usertoken_4"]."<br>";
+											//echo "<br>" . $submitval . " <br> token: <br>" .  $_SESSION["usertoken_4"];
 											if($submitval == trim(urlencode($_SESSION["usertoken_4"]))){
-												require_once('connect.php');
 												$userCookie = base64_decode($_COOKIE['_usrPlayName']);
 												$userCookie = explode("-",$userCookie);
-												$user = trim($userCookie[0]);
-												//echo 'claudeeee----'.$user.'<br>';
-												$user = trim($user);
-												$sqlUpdate = "UPDATE challengerComplete SET ch4='Yes' WHERE userName="."'$user'";
-												//echo $sqlUpdate;
+												$user = $userCookie[0];
+												$sqlUpdate = "UPDATE `challengerDetails` SET ch4='Yes' WHERE userName="."'$user'";
+												//echo $sqlUpdate."";
+												require("connect.php");
 												if (mysqli_query($conn, $sqlUpdate)) {
 													$conn->close();
 													header("location: news.php");
 												}else{
-													echo 'query no run'.mysqli_error($conn);
+													echo "didn't workout";
 												}
 											}else{
 												echo '<span class="badge badge-danger">Wrong Flag</span> <br/>';

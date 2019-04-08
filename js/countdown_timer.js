@@ -1,10 +1,10 @@
 var limit = 8;
-if(localStorage.getItem("counter")){
-	if(localStorage.getItem("counter") == "Over"){
+if(localStorage.getItem("ch1-counter")){
+	if(localStorage.getItem("ch1-counter") == "Over"){
 		var value = limit;
 		loadHint1_Login();
 	}else{
-		var value = localStorage.getItem("counter");
+		var value = localStorage.getItem("ch1-counter");
 	}
 	}else{
 		var value = 0;
@@ -19,11 +19,11 @@ if(timesRun > limit){
 timesRun += 1;
 if(value != NaN){
 	if(value >= limit){
-	  localStorage.setItem("counter", "Over");
+	  localStorage.setItem("ch1-counter", "Over");
 	  timesRun += 1;
 	}else{
 	  value = parseInt(value)+1;
-	  localStorage.setItem("counter", value);
+	  localStorage.setItem("ch1-counter", value);
 	}
 	var rem = limit - value;
 	var mins = Math.floor(rem/60);
@@ -69,7 +69,7 @@ var x = setInterval(function() {
 */
 function loadHint1_Login() {
 	var urlSend = "42E6AE8EA03B/show_hint.php";
-	var value = localStorage.getItem("counter");
+	var value = localStorage.getItem("ch1-counter");
 	var param = "store="+value;
 	var xhttp = new XMLHttpRequest();
 	xhttp.onreadystatechange = function() {
