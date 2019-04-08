@@ -1,3 +1,8 @@
+
+<?php
+//session_id( 'mySessionId' );
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -1101,7 +1106,7 @@
     prevention["privilege_escalation"]   = "Learn how to protect against Privilege Escalation";
     descriptions["privilege_escalation"] = "Privilege escalation occurs when an attacker exploits a vulnerability to impersonate another user or gain extra permissions.";
     public["privilege_escalation"]       = false;
-    urls["privilege_escalation"]         = { "exercise"   : "/exercises/privilege-escalation",
+    urls["privilege_escalation"]         = { "exercise"   : "profile.php?<?php echo htmlentities(session_name().'='.session_id()); ?>",
                                     "prevention" : "BrokenAuth.php",
                                     "quiz"       : "/quiz/privilege-escalation"}
 
