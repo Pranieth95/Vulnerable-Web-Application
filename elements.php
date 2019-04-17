@@ -1,11 +1,8 @@
 
 <?php
-<<<<<<< HEAD
-  ob_start();
-=======
 //session_id( 'mySessionId' );
+ob_start();
 session_start();
->>>>>>> 0e4db2f5e5ce77d8ed8fe7a4e39b1207a5112801
 ?>
 <!DOCTYPE html>
 <html lang="en">

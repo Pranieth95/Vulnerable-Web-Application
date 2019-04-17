@@ -259,7 +259,7 @@
 							';
 						}
 					}else{
-						if(($caseFlag[1] =="A31E065F5EEC59DFB22EF1C20B83D917202B9A9C592059178183D884316A51AE")&&(strpos($ref, 'http://localhost/CISOColabNewPHP/s.php') !== FALSE)){
+						if(($caseFlag[1] =="C18FB8E2A42BEBB783B2079357ECF5F6A43886C724D1EFABE20F7F7E2E1D89F9")&&(strpos($ref, 'http://localhost/CISOColabNewPHP/profile.php') !== FALSE)){
 							if((strtolower(trim($userName[0])) != null)||($_GET['UsrReveal'] != null)){
 								require_once('../../connect.php');
 								$sql = "SELECT userName, timeEnter FROM challengerDetails";
@@ -278,12 +278,13 @@
 									$user = $userName[0];
 									$inDate = $userIn->format('Y-m-d h:i:sa');
 									//echo $user. "and the timeis:".$inDate;
-									$sqlUpdate = "UPDATE `challengerDetails` SET Hint5='Yes' WHERE userName="."'$user'"."and timeEnter ="."'$inDate'";
+									$sqlUpdate = "UPDATE `challengerDetails` SET Hint6='Yes' WHERE userName="."'$user'"."and timeEnter ="."'$inDate'";
 									if (mysqli_query($conn, $sqlUpdate)) {
 											echo '
 										<div class="alert alert-dismissible alert-info">
 											<button type="button" class="close" data-dismiss="alert">&times;</button>
-											<strong>Hints On!</strong> This is <a href="https://www.owasp.org/index.php/Top_10-2017_A6-Security_Misconfiguration" target="_blank" class="alert-link">vulnerable to Security Misconfiguration</a>, Check it out from the Link.
+											<strong>Hints On!</strong> This is <a href="https://www.owasp.org/index.php/Top_10-2017_A2-Broken_Authentication" target="_blank" class="alert-link">vulnerable to Broken Authentication</a>, <br> Check it out from the Link. This page may conatin a vulnerability related to sessions. Check the Image Thoroughly
+
 										</div>
 										';
 									} else {
@@ -332,7 +333,7 @@
 												echo '
 											<div class="alert alert-dismissible alert-info">
 												<button type="button" class="close" data-dismiss="alert">&times;</button>
-												<strong>Hints On!</strong> This is <a href="https://www.owasp.org/index.php/Top_10-2017_A3-Sensitive_Data_Exposure" target="_blank" class="alert-link">vulnerable to Sensitive Data Exposure</a>, Check it out from the Link.
+												<strong>Hints On!</strong> This is <a href="https://www.owasp.org/index.php/Top_10-2017_A3-Sensitive_Data_Exposure" target="_blank" class="alert-link">vulnerable to Sensitive Data Exposure</a>, Check it out from the Link. This page may contain a vulnerability that may lead to get insight details of the system. due to poor Script Handling
 											</div>
 											';
 										} else {

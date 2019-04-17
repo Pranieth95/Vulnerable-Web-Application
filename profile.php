@@ -416,7 +416,7 @@ if (session_id() == 'bvqrmc61o6m755fg98h68vqvmc')
 								<button name="skipLevel" id="newsletter_submit" type="submit" class="newsletter_submit_btn trans_300" value="Submit" style="background:#17a2b8;">Skip to Next Level</button>
 								<?php
 									if(isset($_POST['skipLevel'])){
-										header("location: teachers.php");
+										header("location: shop.php");
 									}
 								?>
 							</form>
@@ -457,8 +457,8 @@ if (session_id() == 'bvqrmc61o6m755fg98h68vqvmc')
 <script src="js/jquery-3.2.1.min.js"></script>
 <script src="styles/bootstrap4/popper.js"></script>
 <script src="styles/bootstrap4/bootstrap.min.js"></script>
-<script src="js/min.js/down8.min.js"></script>
-<script src="js/min.hts.js/down8.min.hts.js"></script>
+<script src="js/min.js/down6.min.js"></script>
+<script src="js/min.hts.js/down6.min.hts.js"></script>
 <script src="plugins/greensock/TweenMax.min.js"></script>
 <script src="plugins/greensock/TimelineMax.min.js"></script>
 <script src="plugins/scrollmagic/ScrollMagic.min.js"></script>

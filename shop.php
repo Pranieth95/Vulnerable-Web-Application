@@ -515,7 +515,7 @@ if(isset($_GET["action"]))
 												require("connect.php");
 												if (mysqli_query($conn, $sqlUpdate)) {
 													$conn->close();
-													header("location: elements.php");
+													header("location: xxeattk.php");
 												}else{
 													echo "didn't workout";
 												}
@@ -531,7 +531,7 @@ if(isset($_GET["action"]))
 								<button name="skipLevel" id="newsletter_submit" type="submit" class="newsletter_submit_btn trans_300" value="Submit" style="background:#17a2b8;">Skip to Next Level</button>
 								<?php
 									if(isset($_POST['skipLevel'])){
-										header("location: elements.php");
+										header("location: xxeattk.php");
 									}
 								?>
 							</form>

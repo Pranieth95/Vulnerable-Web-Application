@@ -157,7 +157,7 @@ if($_GET['store']=="Over"){
                     </div>
                   ';
         }else{
-          if($_GET['store']=="Terminate"){
+          if($_GET['store']=="Hault"){
             echo '
                       <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
                       <script src="styles/jquery.bpopup.min.js"></script>
